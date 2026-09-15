@@ -17,11 +17,10 @@ export default function Home() {
             <span className="title-rule" aria-hidden />
           </h1>
           <p className="lede home-lede">
-            Share hours. Guests pick a week day, take a slot, confirm. That&apos;s the job.
+            Share hours. Guests scan the week, take a slot, confirm once.
           </p>
           <p className="home-body">
-            Maya&apos;s desk is already seeded — Mon–Fri windows, 30‑minute Intro by default. No
-            account wall.
+            Maya&apos;s desk is seeded Mon–Fri. Open the host desk or try the live page.
           </p>
 
           <div className="hero-actions hero-actions-one">

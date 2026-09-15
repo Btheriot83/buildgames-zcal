@@ -35,7 +35,7 @@ export const ONBOARD_CARDS: OnboardCard[] = [
   {
     id: "link",
     title: "This is your link.",
-    body: "/b/maya — open it, pick a week day, take a slot, confirm. That's the whole job.",
+    body: "/b/maya — open it, scan the week, take a slot, confirm once. That's the whole job.",
     cta: "Open my page",
   },
   {

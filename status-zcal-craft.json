@@ -1,0 +1,55 @@
+{
+  "product": "Sundial",
+  "slug": "zcal",
+  "phase": "craft-wave-contest",
+  "identity": "Clearline",
+  "identityLocked": true,
+  "demoUrl": "https://buildgames-zcal.vercel.app",
+  "professionalBars": {
+    "savvycal": "https://savvycal.com/",
+    "calcom": "https://cal.com/",
+    "cloneOriginal": "https://zcal.co/"
+  },
+  "sop": "narrow/CRAFT_WAVE_CONTEST.md",
+  "constraints": {
+    "clearlineLocked": true,
+    "flatMaterials": true,
+    "friendWalkthroughKept": true,
+    "homepageLiveMiniKept": true,
+    "capCraftLoops": 8,
+    "doNotMessageBrandon": true
+  },
+  "loopsCounted": 8,
+  "roundCommits": [
+    "57afe99",
+    "3d29cbd",
+    "ce345d2",
+    "b683ca0",
+    "ea9dd2f",
+    "f6c49ee",
+    "2bd9840",
+    "ee8132f"
+  ],
+  "deltas": [
+    "craft1: SavvyCal week-of-columns — slots under each day",
+    "craft2: host card hairline + flat Cal.com restraint",
+    "craft3: typography elevation — serif host + weight hierarchy",
+    "craft4: purposeful button transitions ≤240ms",
+    "craft5: denser week slots hero + duration stack",
+    "craft6: home live week-columns mini + tighter copy",
+    "craft7: one-confirm Cal.com black CTA restraint",
+    "craft8: critic polish — flat lock + week-scan onboard"
+  ],
+  "critic": {
+    "mode": "screenshot-only",
+    "verdictPath": "gauntlet/shots-craft/CRITIC_VERDICT.md",
+    "shotsDir": "/workspace/build-games/narrow/shots/sundial-craft",
+    "overallVsProBars": "CLOSE_NOT_CLEAN_WIN",
+    "candidateScore": 8.2,
+    "calcomScore": 8.5,
+    "savvycalScore": 8.5,
+    "note": "Week-of-columns closes elevate 7.5 shortfall; still short of surpassing Cal.com/SavvyCal."
+  },
+  "branch": "craft/zcal-clearline-contest",
+  "repo": "https://github.com/Btheriot83/buildgames-zcal"
+}

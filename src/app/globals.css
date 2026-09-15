@@ -4088,3 +4088,608 @@ button.surface-card:active:not(:disabled) {
 .home-shell-levels .home-visual-frame {
   display: none !important;
 }
+
+
+/* ===== craft1: SavvyCal week-of-columns density ===== */
+.week-density-wrap { margin-bottom: 0.25rem; }
+.week-density {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.35rem;
+  align-items: stretch;
+  min-height: 16.5rem;
+}
+.week-col {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid #d4d7db;
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+}
+.week-col.is-open { background: #f7f8f9; border-color: #c8ced4; }
+.week-col.is-active {
+  border-color: #121416;
+  box-shadow: inset 0 0 0 1.5px #c41e3a;
+  background: #fff;
+}
+.week-col.is-disabled { opacity: 0.42; background: #f4f5f4; }
+.week-col-head {
+  appearance: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.12rem;
+  width: 100%;
+  padding: 0.45rem 0.2rem 0.4rem;
+  border: 0;
+  border-bottom: 1px solid #e2e5e8;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  color: #121416;
+}
+.week-col-head:disabled { cursor: not-allowed; }
+.week-col.is-active .week-col-head {
+  background: #121416;
+  color: #f7f8f6;
+  border-bottom-color: #121416;
+}
+.week-col.is-active .week-day-wd { color: #c8ced4 !important; }
+.week-col.is-active .week-day-count { color: #f0c4cc !important; }
+.week-col-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  padding: 0.4rem 0.3rem 0.45rem;
+  flex: 1;
+  min-height: 11.5rem;
+}
+.week-slot {
+  appearance: none;
+  width: 100%;
+  border: 1px solid #d0d4d8;
+  border-radius: 7px;
+  background: #fff;
+  color: #121416;
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  padding: 0.38rem 0.15rem;
+  cursor: pointer;
+  line-height: 1.15;
+  transition: background 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+.week-slot:hover {
+  border-color: #121416;
+  background: #f4f5f4;
+}
+.week-slot.is-active {
+  background: #121416;
+  border-color: #121416;
+  color: #f7f8f6;
+}
+.week-col-empty {
+  display: block;
+  text-align: center;
+  color: #b0b6bc;
+  font-size: 0.85rem;
+  padding-top: 2.5rem;
+}
+.week-col-more {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: #5c636a;
+  font: inherit;
+  font-size: 0.65rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.2rem;
+  text-align: center;
+}
+.week-col-more:hover { color: #121416; }
+.elevate-split[data-mode="week"] { display: none !important; }
+.elevate-pick .pick-toolbar { margin-bottom: 0.65rem; }
+@media (max-width: 820px) {
+  .week-density {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    min-height: 0;
+  }
+  .week-col-slots { min-height: 8.5rem; }
+}
+@media (max-width: 520px) {
+  .week-density { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .week-slot { transition: none !important; }
+}
+
+
+/* ===== craft2: Cal.com host hairline + flat anti-slop ===== */
+.book-host.host-card,
+.book-card.surface-card {
+  box-shadow: none !important;
+  filter: none !important;
+  background-image: none !important;
+  border: 1px solid #d4d7db !important;
+  border-radius: 12px !important;
+}
+.book-host.host-card {
+  padding: 1rem 0.95rem 1.1rem !important;
+}
+.host-portrait {
+  width: 2.85rem !important;
+  height: 2.85rem !important;
+  max-width: 2.85rem !important;
+  border-radius: 999px !important;
+  border: 1px solid #d0d4d8 !important;
+  margin-bottom: 0.55rem !important;
+  overflow: hidden;
+}
+.host-portrait .host-photo,
+.host-portrait img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  display: block;
+  opacity: 1 !important;
+}
+.book-host .eyebrow {
+  font-size: 0.58rem !important;
+  letter-spacing: 0.14em !important;
+  margin-bottom: 0.35rem !important;
+}
+.host-name.display {
+  font-size: 1.05rem !important;
+  line-height: 1.2 !important;
+  margin-bottom: 0.2rem !important;
+}
+.host-headline {
+  font-size: 0.78rem !important;
+  margin-bottom: 0.15rem !important;
+}
+.host-tz {
+  font-size: 0.68rem !important;
+  margin-bottom: 0.65rem !important;
+}
+.host-meeting-title {
+  font-size: 0.88rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.015em;
+  margin: 0.35rem 0 0.15rem !important;
+  color: #121416;
+}
+.duration-card-row {
+  gap: 0.4rem !important;
+  margin-top: 0.65rem !important;
+}
+.duration-card {
+  padding: 0.55rem 0.5rem 0.6rem !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  border: 1px solid #d4d7db !important;
+  background: #fff !important;
+  transition: border-color 140ms ease, background 140ms ease;
+}
+.duration-card:hover { border-color: #121416 !important; }
+.duration-card.is-active {
+  border-color: #121416 !important;
+  box-shadow: none !important;
+  background: #f4f5f4 !important;
+}
+.duration-card-dur { font-size: 1.15rem !important; }
+.duration-card.is-active .duration-card-dur { color: #c41e3a !important; }
+button.surface-card:hover:not(:disabled),
+a.surface-card:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+.week-slot,
+.slot-card {
+  box-shadow: none !important;
+  background-image: none !important;
+}
+
+
+/* ===== craft3: typography elevation — weight/color not size ladder ===== */
+.book-job-label {
+  font-family: var(--font-sans), "IBM Plex Sans", system-ui, sans-serif !important;
+  font-size: 1.02rem !important;
+  font-weight: 650 !important;
+  letter-spacing: -0.025em !important;
+  color: #121416 !important;
+}
+.card-meeting-chip {
+  font-size: 0.7rem !important;
+  font-weight: 500 !important;
+  color: #6a727a !important;
+  letter-spacing: 0.01em !important;
+}
+.week-range {
+  font-weight: 500 !important;
+  font-size: 0.74rem !important;
+  color: #5c636a !important;
+}
+.week-day-wd {
+  font-size: 0.62rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+}
+.week-day-num {
+  font-size: 1.05rem !important;
+  font-weight: 650 !important;
+  font-variant-numeric: tabular-nums;
+}
+.week-slot {
+  font-family: var(--font-mono), "IBM Plex Mono", ui-monospace, monospace !important;
+  font-size: 0.66rem !important;
+  font-weight: 500 !important;
+}
+.host-name.display {
+  font-family: var(--font-display), "Source Serif 4", Georgia, serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.03em !important;
+}
+.home-shell-levels .home-job {
+  font-family: var(--font-display), "Source Serif 4", Georgia, serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.03em !important;
+  line-height: 1.12 !important;
+}
+.home-shell-levels .home-lede {
+  font-size: 1.02rem !important;
+  font-weight: 450 !important;
+  color: #3a4148 !important;
+  max-width: 36ch;
+}
+.home-shell-levels .home-body {
+  font-size: 0.92rem !important;
+  color: #5c636a !important;
+  max-width: 40ch;
+}
+.confirm-flow .panel-title {
+  font-size: 1.05rem !important;
+  font-weight: 650 !important;
+  letter-spacing: -0.02em !important;
+}
+.confirm-summary strong {
+  font-weight: 650 !important;
+  letter-spacing: -0.015em;
+}
+
+
+/* ===== craft4: purposeful button transitions (≤240ms) ===== */
+.btn {
+  transition:
+    background-color 160ms ease-out,
+    border-color 160ms ease-out,
+    color 160ms ease-out,
+    opacity 160ms ease-out !important;
+}
+.btn.primary {
+  background: #121416 !important;
+  border-color: #121416 !important;
+  color: #f7f8f6 !important;
+}
+.btn.primary:hover:not(:disabled) {
+  background: #000 !important;
+  border-color: #000 !important;
+}
+.btn.primary:active:not(:disabled) {
+  opacity: 0.88;
+}
+.btn.ghost {
+  transition:
+    border-color 140ms ease-out,
+    background-color 140ms ease-out,
+    color 140ms ease-out !important;
+}
+.week-slot,
+.slot-card,
+.duration-card,
+.mode-chip,
+.week-col-head {
+  transition:
+    background-color 140ms ease-out,
+    border-color 140ms ease-out,
+    color 140ms ease-out !important;
+}
+.week-slot:active:not(:disabled) {
+  background: #121416 !important;
+  color: #f7f8f6 !important;
+}
+.confirm-cta.btn.primary {
+  transition:
+    background-color 180ms ease-out,
+    border-color 180ms ease-out,
+    opacity 180ms ease-out !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .week-slot,
+  .slot-card,
+  .duration-card,
+  .mode-chip,
+  .week-col-head,
+  .confirm-cta.btn.primary {
+    transition: none !important;
+  }
+}
+
+
+/* ===== craft5: slots-as-hero density polish ===== */
+.week-density {
+  gap: 0.28rem !important;
+  min-height: 17.5rem !important;
+}
+.week-col {
+  border-radius: 8px !important;
+}
+.week-col-head {
+  padding: 0.4rem 0.15rem 0.35rem !important;
+}
+.week-col-slots {
+  gap: 0.22rem !important;
+  padding: 0.32rem 0.22rem 0.38rem !important;
+  min-height: 12.5rem !important;
+}
+.week-slot {
+  padding: 0.32rem 0.1rem !important;
+  border-radius: 6px !important;
+  font-size: 0.64rem !important;
+  border-width: 1px !important;
+  border-color: #c8ced4 !important;
+}
+.week-col.is-open:not(.is-active) .week-slot {
+  background: #fff;
+}
+.week-col.is-active .week-slot:hover {
+  border-color: #c41e3a !important;
+}
+.week-day-count {
+  font-size: 0.58rem !important;
+  font-weight: 600 !important;
+  color: #c41e3a !important;
+}
+.week-col.is-disabled .week-day-count { color: #b0b6bc !important; }
+/* Duration stack — Cal.com list restraint, no truncated 3-up cheese */
+.duration-card-row {
+  grid-template-columns: 1fr !important;
+  gap: 0.35rem !important;
+}
+.duration-card {
+  flex-direction: row !important;
+  align-items: baseline !important;
+  gap: 0.35rem 0.55rem !important;
+  padding: 0.45rem 0.55rem !important;
+  flex-wrap: wrap;
+}
+.duration-card-dur {
+  font-size: 0.95rem !important;
+  min-width: 1.6rem;
+}
+.duration-card-unit {
+  margin: 0 !important;
+  font-size: 0.65rem !important;
+}
+.duration-card-title {
+  flex: 1 1 auto;
+  font-size: 0.8rem !important;
+  color: #121416 !important;
+}
+@media (max-width: 640px) {
+  .duration-card-row { grid-template-columns: 1fr !important; }
+}
+
+
+/* ===== craft6: home live mini week-columns + cut cheese ===== */
+.home-live-density { padding: 0.95rem 0.9rem 1rem !important; }
+.home-live-photo {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 999px !important;
+}
+.home-live-durs { display: none !important; }
+.home-live-week { display: none !important; }
+.home-live-slots { display: none !important; }
+.home-live-week-cols {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.22rem;
+  margin-bottom: 0.85rem;
+  min-height: 7.5rem;
+}
+.home-live-col {
+  border: 1px solid #e2e5e8;
+  border-radius: 7px;
+  background: #f7f8f9;
+  overflow: hidden;
+  min-width: 0;
+}
+.home-live-col.is-open { background: #fff; border-color: #d4d7db; }
+.home-live-col.is-active {
+  border-color: #121416;
+  box-shadow: inset 0 0 0 1px #c41e3a;
+}
+.home-live-col-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.05rem;
+  padding: 0.28rem 0.1rem 0.22rem;
+  border-bottom: 1px solid #e8eaed;
+  font-size: 0.58rem;
+}
+.home-live-col.is-active .home-live-col-head {
+  background: #121416;
+  color: #f7f8f6;
+  border-bottom-color: #121416;
+}
+.home-live-col-head em {
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #7a828c;
+}
+.home-live-col.is-active .home-live-col-head em { color: #c8ced4; }
+.home-live-col-head strong {
+  font-size: 0.82rem;
+  font-weight: 650;
+  color: inherit;
+}
+.home-live-col-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.25rem 0.15rem 0.3rem;
+  min-height: 4.6rem;
+}
+.home-live-col .home-live-slot {
+  padding: 0.22rem 0.05rem !important;
+  font-size: 0.58rem !important;
+  border-radius: 4px !important;
+  border-color: #d4d7db !important;
+}
+.home-live-col-empty {
+  display: block;
+  text-align: center;
+  color: #c0c5ca;
+  font-size: 0.75rem;
+  padding-top: 1.1rem;
+}
+.home-live-foot { letter-spacing: 0.01em; }
+.home-shell-levels .eyebrow {
+  font-size: 0.62rem !important;
+  letter-spacing: 0.14em !important;
+  color: #6a727a !important;
+}
+
+
+/* ===== craft7: one-confirm Cal.com restraint ===== */
+.confirm-flow {
+  max-width: 26rem;
+  display: grid;
+  gap: 0.75rem;
+}
+.confirm-flow .panel-title {
+  margin: 0.15rem 0 0 !important;
+}
+.confirm-summary {
+  display: grid;
+  gap: 0.2rem;
+  background: #f4f5f4 !important;
+  border: 1px solid #d4d7db !important;
+  border-radius: 8px !important;
+  padding: 0.8rem 0.9rem !important;
+  box-shadow: none !important;
+}
+.confirm-summary strong {
+  font-size: 0.98rem;
+  color: #121416;
+}
+.confirm-summary span {
+  font-size: 0.88rem;
+  color: #3a4148;
+}
+.confirm-summary .muted {
+  font-size: 0.75rem !important;
+  color: #6a727a !important;
+}
+.confirm-cta.btn.primary {
+  width: 100%;
+  min-height: 2.85rem !important;
+  font-size: 0.98rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.015em;
+  border-radius: 8px !important;
+  margin-top: 0.15rem;
+}
+.confirm-flow .grid-2 {
+  gap: 0.65rem !important;
+}
+.confirm-flow .t-input {
+  border-radius: 8px !important;
+  border: 1px solid #c8ced4 !important;
+  background: #fff !important;
+  box-shadow: none !important;
+}
+.back-link {
+  justify-self: start;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.82rem !important;
+  font-weight: 500 !important;
+  color: #5c636a !important;
+}
+.back-link:hover { color: #121416 !important; }
+
+
+/* ===== craft8: critic polish — editorial cut + flat lock ===== */
+.book-stage,
+.book-card,
+.book-host,
+.home-live,
+.week-col,
+.week-slot,
+.duration-card,
+.slot-card,
+.confirm-summary,
+.btn {
+  box-shadow: none !important;
+  filter: none !important;
+  background-image: none !important;
+}
+.book-brand-rail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+  padding: 0 0.15rem;
+}
+.book-desk-link {
+  font-size: 0.82rem;
+  color: #5c636a;
+  text-decoration: none;
+  font-weight: 500;
+}
+.book-desk-link:hover { color: #121416; }
+.home-live-cta {
+  margin-top: 0.15rem !important;
+  position: relative;
+  z-index: 1;
+}
+.home-live-week-cols {
+  margin-bottom: 0.75rem !important;
+}
+.home-live-density {
+  display: flex;
+  flex-direction: column;
+}
+.cal-mode-toggle.is-quiet {
+  border-color: #e2e5e8 !important;
+}
+.mode-chip {
+  font-size: 0.72rem !important;
+  padding: 0.3rem 0.6rem !important;
+}
+.pick-toolbar {
+  align-items: center !important;
+  margin-bottom: 0.55rem !important;
+}
+.week-strip-head { margin-bottom: 0.45rem !important; }
+/* Kill leftover soft hover lift anywhere on booker */
+.book-shell button.surface-card:hover:not(:disabled),
+.book-shell a.surface-card:hover,
+.home-shell button.surface-card:hover:not(:disabled) {
+  transform: none !important;
+  box-shadow: none !important;
+}
