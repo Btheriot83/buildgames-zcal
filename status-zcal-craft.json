@@ -31,14 +31,14 @@
     "ee8132f"
   ],
   "deltas": [
-    "craft1: SavvyCal week-of-columns — slots under each day",
+    "craft1: SavvyCal week-of-columns \u2014 slots under each day",
     "craft2: host card hairline + flat Cal.com restraint",
-    "craft3: typography elevation — serif host + weight hierarchy",
-    "craft4: purposeful button transitions ≤240ms",
+    "craft3: typography elevation \u2014 serif host + weight hierarchy",
+    "craft4: purposeful button transitions \u2264240ms",
     "craft5: denser week slots hero + duration stack",
     "craft6: home live week-columns mini + tighter copy",
     "craft7: one-confirm Cal.com black CTA restraint",
-    "craft8: critic polish — flat lock + week-scan onboard"
+    "craft8: critic polish \u2014 flat lock + week-scan onboard"
   ],
   "critic": {
     "mode": "screenshot-only",
@@ -51,5 +51,27 @@
     "note": "Week-of-columns closes elevate 7.5 shortfall; still short of surpassing Cal.com/SavvyCal."
   },
   "branch": "craft/zcal-clearline-contest",
-  "repo": "https://github.com/Btheriot83/buildgames-zcal"
+  "repo": "https://github.com/Btheriot83/buildgames-zcal",
+  "mainSha": "b4bf19d",
+  "pr": "https://github.com/Btheriot83/buildgames-zcal/pull/16",
+  "prState": "MERGED",
+  "finishedAtPt": "2026-09-15 12:39 PM PT",
+  "finishedAtUtc": "2026-09-15T19:39:00Z",
+  "deploy": {
+    "url": "https://buildgames-zcal.vercel.app",
+    "deploymentId": "dpl_4NwwNCquQWYTNrYC8C17x4yAGkoa",
+    "readyState": "READY",
+    "aliased": true,
+    "inspectorUrl": "https://vercel.com/brandon-theriots-projects/buildgames-zcal/4NwwNCquQWYTNrYC8C17x4yAGkoa"
+  },
+  "liveSmoke": {
+    "ok": true,
+    "atPt": "2026-09-15 12:39 PM PT",
+    "checks": [
+      "GET /b/maya 200 \u2014 week-of-columns live",
+      "GET / 200 \u2014 live mini week columns",
+      "Prod shot live-prod-book.png shows week density",
+      "Friend walkthrough retained (clearline.onboarded.v1)"
+    ]
+  }
 }
