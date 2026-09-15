@@ -3227,3 +3227,119 @@ html, body {
   .slots-hero .slot-chip { animation: none !important; }
   .week-day { transition: none !important; }
 }
+
+/* elevate2: cut-elements — booker-as-product, no full site chrome */
+.book-shell-product .book-brand-rail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+  max-width: 980px;
+  margin-inline: auto;
+}
+.book-desk-link {
+  font-size: 0.82rem;
+  color: #6a727a;
+  text-decoration: none;
+}
+.book-desk-link:hover { color: #121416; }
+.assist-deferred {
+  opacity: 0.85;
+  border-top: 1px dashed #e2e5e8 !important;
+}
+.assist-deferred .assist-summary {
+  font-size: 0.72rem !important;
+}
+
+/* elevate4: hairline host — even quieter rail */
+.book-stage {
+  grid-template-columns: minmax(10.5rem, 12.5rem) minmax(0, 1fr) !important;
+}
+.host-portrait {
+  width: 3rem !important;
+  height: 3rem !important;
+  max-width: 3rem !important;
+}
+.meet-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+.meet-chip {
+  appearance: none;
+  border: 1px solid #d0d4d8;
+  background: #fff;
+  border-radius: 999px;
+  padding: 0.28rem 0.65rem;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: #121416;
+}
+.meet-chip.is-active {
+  background: #121416;
+  color: #f7f8f6;
+  border-color: #121416;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+/* elevate6: confirm one-screen Cal.com restraint */
+.confirm-flow {
+  max-width: 26rem;
+}
+.confirm-flow .panel-title {
+  font-size: 1.35rem;
+  letter-spacing: -0.03em;
+  margin: 0.35rem 0 0.75rem;
+}
+.confirm-summary {
+  background: #f4f5f4 !important;
+  border: 1px solid #d4d7db !important;
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-bottom: 1rem;
+}
+.confirm-cta.btn.primary {
+  width: 100%;
+  min-height: 3.1rem !important;
+  font-size: 0.98rem !important;
+  font-weight: 650 !important;
+  letter-spacing: -0.01em;
+}
+.back-link {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: #6a727a;
+  font: inherit;
+  font-size: 0.82rem;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 0.35rem;
+}
+.back-link:hover { color: #121416; }
+
+/* elevate7: remove-ai-tells retention */
+.book-stage, .week-day, .slot-chip, .meet-chip, .mode-chip, .confirm-summary {
+  background-image: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+}
+.week-day.is-active {
+  box-shadow: inset 0 0 0 2px #c41e3a !important;
+}

@@ -233,8 +233,14 @@ export function BookingPage({ slug }: { slug: string }) {
   }
 
   return (
-    <div className="shell book-shell">
-      <SiteHeader slug={slug} />
+    <div className="shell book-shell book-shell-product">
+      <div className="book-brand-rail" aria-label="Sundial">
+        <a className="brand" href="/">
+          <span className="brand-mark" aria-hidden />
+          <span className="brand-name">Sundial</span>
+        </a>
+        <a className="book-desk-link" href="/desk">Host desk</a>
+      </div>
       <Toast message={api.toast} />
 
       <div className="book-stage t-texts-reveal" data-reveal="in">
@@ -279,8 +285,8 @@ export function BookingPage({ slug }: { slug: string }) {
             ))}
           </div>
 
-          <details className="assist-box">
-            <summary className="assist-summary">Need a suggested hour?</summary>
+          <details className="assist-box assist-deferred">
+            <summary className="assist-summary">Suggest an hour</summary>
             <label className="assist-label">
               Anything I should know?
               <input
@@ -383,7 +389,7 @@ export function BookingPage({ slug }: { slug: string }) {
                 disabled={!name.trim() || !email.includes("@")}
                 onClick={submit}
               >
-                Confirm booking
+                Confirm time
               </button>
             </div>
           ) : (
@@ -558,10 +564,10 @@ export function BookingPage({ slug }: { slug: string }) {
                 </h3>
                 {!dateKey ? (
                   <div className="slot-empty">
-                    <p className="muted">Tap an open day to load hours.</p>
+                    <p className="muted">Choose an open day.</p>
                   </div>
                 ) : slots.length === 0 ? (
-                  <p className="muted">No open hours left this day — try another.</p>
+                  <p className="muted">No hours left — pick another day.</p>
                 ) : (
                   <div className="slot-groups slot-groups-flat">
                     <div className="slot-grid slot-grid-hero">
