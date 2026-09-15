@@ -4568,3 +4568,66 @@ a.surface-card:hover {
   letter-spacing: 0.14em !important;
   color: #6a727a !important;
 }
+
+
+/* ===== craft7: one-confirm Cal.com restraint ===== */
+.confirm-flow {
+  max-width: 26rem;
+  display: grid;
+  gap: 0.75rem;
+}
+.confirm-flow .panel-title {
+  margin: 0.15rem 0 0 !important;
+}
+.confirm-summary {
+  display: grid;
+  gap: 0.2rem;
+  background: #f4f5f4 !important;
+  border: 1px solid #d4d7db !important;
+  border-radius: 8px !important;
+  padding: 0.8rem 0.9rem !important;
+  box-shadow: none !important;
+}
+.confirm-summary strong {
+  font-size: 0.98rem;
+  color: #121416;
+}
+.confirm-summary span {
+  font-size: 0.88rem;
+  color: #3a4148;
+}
+.confirm-summary .muted {
+  font-size: 0.75rem !important;
+  color: #6a727a !important;
+}
+.confirm-cta.btn.primary {
+  width: 100%;
+  min-height: 2.85rem !important;
+  font-size: 0.98rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.015em;
+  border-radius: 8px !important;
+  margin-top: 0.15rem;
+}
+.confirm-flow .grid-2 {
+  gap: 0.65rem !important;
+}
+.confirm-flow .t-input {
+  border-radius: 8px !important;
+  border: 1px solid #c8ced4 !important;
+  background: #fff !important;
+  box-shadow: none !important;
+}
+.back-link {
+  justify-self: start;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.82rem !important;
+  font-weight: 500 !important;
+  color: #5c636a !important;
+}
+.back-link:hover { color: #121416 !important; }

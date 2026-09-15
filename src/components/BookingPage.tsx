@@ -253,7 +253,7 @@ export function BookingPage({ slug }: { slug: string }) {
               >
                 ← Back to times
               </button>
-              <h2 className="panel-title">Confirm</h2>
+              <h2 className="panel-title">Confirm this time</h2>
               <p className="confirm-summary">
                 <strong>{meeting.title}</strong>
                 <span>
