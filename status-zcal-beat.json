@@ -65,6 +65,26 @@
   "shotsDir": "gauntlet/shots-beat",
   "branch": "beat/zcal-clearline",
   "repo": "https://github.com/Btheriot83/buildgames-zcal",
-  "finishedAtPt": "2026-09-15 12:41 AM PT",
-  "finishedAtUtc": "2026-09-15T07:41:30Z"
+  "finishedAtPt": "2026-09-15 12:43 AM PT",
+  "finishedAtUtc": "2026-09-15T07:43:00Z",
+  "pr": "https://github.com/Btheriot83/buildgames-zcal/pull/11",
+  "prState": "MERGED",
+  "mainSha": "863722b",
+  "deploy": {
+    "url": "https://buildgames-zcal.vercel.app",
+    "deploymentId": "dpl_7BbKjBxmb9g4K8v5kjFEjafikGtT",
+    "readyState": "READY",
+    "aliased": true,
+    "inspectorUrl": "https://vercel.com/brandon-theriots-projects/buildgames-zcal/7BbKjBxmb9g4K8v5kjFEjafikGtT"
+  },
+  "liveSmoke": {
+    "ok": true,
+    "atPt": "2026-09-15 12:43 AM PT",
+    "checks": [
+      "GET / 200 \u2014 Clearline + Open days copy",
+      "GET /b/maya 200",
+      "No Courtyard cheese on home",
+      "Prod redeploy aliased"
+    ]
+  }
 }
