@@ -183,7 +183,7 @@ export function BookingPage({ slug }: { slug: string }) {
         <Toast message={api.toast} />
         <section className="success-pane t-texts-reveal" data-reveal="in">
           <SuccessCheck show />
-          <h1 className="display">You&apos;re on the sundial</h1>
+          <h1 className="display">You&apos;re booked</h1>
           <p className="lede">
             {meeting?.title} with {state.profile.displayName}
             {slot ? ` · ${slot.label}` : ""}
