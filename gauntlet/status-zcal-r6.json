@@ -43,7 +43,13 @@
     "d0fb825",
     "66a95b7"
   ],
-  "shotCount": 20,
+  "criticFix": {
+    "issue": "empty grey avatar slab on public book (5.8 runner-up undercut)",
+    "cause": "legacy .host-photo { opacity:0 } under prefers-reduced-motion: no-preference with no host video",
+    "commit": "f04a774",
+    "shot": "gauntlet/shots-r6/r11-host-photo-fix.png"
+  },
+  "shotCount": 21,
   "barShotRounds": [
     5,
     10
@@ -52,7 +58,7 @@
     "Clearline LOCKED \u2014 no Courtyard reseed; anti-cheesy craft vs zcal.",
     "10 separate rN commits with shots + workbench verdicts (no batch dump).",
     "Killed pink sage-open residual, Sage days copy, emoji globe chrome.",
-    "Slot chips single-column; month title-case; meet cards duration-forward.",
+    "Critic fix: host photo forced visible \u2014 empty grey slab was Courtyard video-hide leftover.",
     "Original zcal still wins SaaS blue polish + OAuth/media; Clearline closer on materials honesty."
   ],
   "transitions": {
@@ -71,15 +77,31 @@
   "shotsDir": "apps/zcal/gauntlet/shots-r6",
   "repo": "https://github.com/Btheriot83/buildgames-zcal",
   "doNotMessageBrandon": true,
-  "finishedAtUtc": "2026-09-15T07:15:23Z",
-  "finishedAtPt": "2026-09-15 12:15 AM PT",
+  "finishedAtUtc": "2026-09-15T07:18:35Z",
+  "finishedAtPt": "2026-09-15 12:18 AM PT",
   "branch": "gauntlet/zcal-r6",
-  "featureSha": "66a95b7",
-  "prs": [],
-  "mainSha": null,
-  "deploy": {},
+  "featureSha": "f04a774",
+  "prs": [
+    "https://github.com/Btheriot83/buildgames-zcal/pull/9"
+  ],
+  "mainSha": "0abed24",
+  "deploy": {
+    "url": "https://buildgames-zcal.vercel.app",
+    "deploymentId": "dpl_EThiqqtdsrWXx8NwVKWASSdz4iz4",
+    "readyState": "READY",
+    "aliased": true,
+    "note": "pre-host-photo-fix; redeploy after critic fix"
+  },
   "liveSmoke": {
-    "ok": false,
-    "checks": []
+    "ok": true,
+    "atPt": "2026-09-15 12:17 AM PT",
+    "checks": [
+      "GET / 200 \u2014 Clearline + Set availability",
+      "GET /desk 200",
+      "GET /b/maya 200 \u2014 Select date and time + Maya Ortega",
+      "Confirm booking \u2192 You're booked",
+      "No Sage days / no emoji globe cheese",
+      "Host photo fix pending redeploy (opacity forced)"
+    ]
   }
 }

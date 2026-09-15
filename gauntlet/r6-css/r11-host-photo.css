@@ -1,0 +1,26 @@
+/* r6 critic fix: host photo always visible (Clearline has no host video)
+   Legacy Courtyard rule hid .host-photo when prefers-reduced-motion: no-preference
+   → empty grey linen slab undercuts polish vs zcal. */
+.host-portrait {
+  background: #e8ebe9 !important;
+  position: relative;
+  overflow: hidden;
+}
+.host-portrait .host-video {
+  display: none !important;
+}
+.host-portrait .host-photo,
+.host-photo {
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: relative !important;
+  inset: auto !important;
+  z-index: 1 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .host-portrait .host-photo { opacity: 1 !important; }
+}

@@ -1,19 +1,10 @@
 {
-  "base": "http://127.0.0.1:3013",
-  "booked": true,
-  "log": [
-    "home status title=Sundial — book a quiet hour",
-    "home has job=true",
-    "shot live-home.png",
-    "desk h1=Maya Ortega",
-    "shot live-desk.png",
-    "booking host=Maya Ortega",
-    "shot live-booking.png",
-    "slots visible=13",
-    "success pane=true",
-    "shot live-success.png",
-    "shot live-calendar.png",
-    "shot original-zcal-home.png"
-  ],
-  "at": "2026-09-15T04:38:18.820Z"
+  "at": "2026-09-15T07:17:06.021Z",
+  "checks": {
+    "hasSelect": true,
+    "hasMaya": true,
+    "noSage": true,
+    "noEmojiGlobe": true,
+    "booked": true
+  }
 }
