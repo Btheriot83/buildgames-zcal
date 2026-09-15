@@ -388,7 +388,7 @@ export function BookingPage({ slug }: { slug: string }) {
             </div>
           ) : (
             <div className="pick-flow">
-              <h2 className="book-job-label">Select a day and time</h2>
+              <h2 className="book-job-label">Select date and time</h2>
               {meeting ? (
                 <p className="card-meeting-chip mono">
                   {meeting.title} · {meeting.durationMin} min · {state.profile.timezone.replace(/_/g, " ")}

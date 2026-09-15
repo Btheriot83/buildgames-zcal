@@ -61,3 +61,10 @@ Bar comps: `shots-r4/bar-zcal-*.png` · Baseline: `shots-r4/r0-*-baseline.png`
 - verdict: Duration sits right of title like target (and nearer zcal 30/60 chip row); cards still taller than bar duration-only UI.
 - commit: 9ff5799
 - dream-loop: close meet-card composition to target
+
+## r9 — bar gap: Select date and time copy
+- files: src/components/BookingPage.tsx, src/app/globals.css
+- shot: gauntlet/shots-r4/r9-bar-gap-job-label.png
+- verdict: Job label now matches zcal/target wording; bar still wins on single-card simplicity.
+- commit: 32bc705
+- dream-loop: job label matches target H2

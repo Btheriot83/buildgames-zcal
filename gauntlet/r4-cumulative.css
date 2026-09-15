@@ -109,3 +109,12 @@
   padding: 0.15rem 0.5rem;
 }
 
+
+/* r9 bar gap: job label weight closer to zcal/target */
+.book-job-label {
+  font-size: 1.28rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.55rem;
+}
+
