@@ -2904,3 +2904,6 @@ html, body {
 }
 .pick-slots::-webkit-scrollbar { width: 6px; }
 .pick-slots::-webkit-scrollbar-thumb { background: #d0d4d8; border-radius: 999px; }
+
+/* r12: remove residual card shadow cheese */
+.book-stage { box-shadow: none !important; }
