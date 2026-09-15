@@ -2958,3 +2958,7 @@ html, body {
 }
 
 /* r17 assist quiet */
+
+/* r18: card-only public book like zcal (no wordmark chrome) */
+.book-shell .site-header { display: none !important; }
+.book-shell { padding-top: 2.25rem !important; }

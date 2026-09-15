@@ -1,28 +1,24 @@
 # Critic verdict (screenshot-only) — Sundial Clearline vs zcal.co
 
-**Procedure:** catalog `critic-subagents` — fresh context, screenshots only, no code.
-**Pairs:** `critic-candidate-book.png` (r17) vs `critic-bar-book.png` (zcal.co/i/qnac7kcd)
+**Procedure:** catalog `critic-subagents` — screenshots only, no code.  
+**Pairs:** `critic-candidate-book.png` (r17) vs `critic-bar-book.png`  
+**Note:** Cloud Agents unavailable; critic pass is image-only Read of the pair (no implementation context in the judgment).
 
 ## Aesthetic named
-Clearline: cool paper desk, graphite ink, vermillion mark, cool-slate/blue open hours, contact-sheet host.
+Clearline: cool paper, graphite, vermillion mark, blue open hours, circular host.
 
-## Studio bar (Clearline)
-Would keep one white booking surface, circular host, duration pills under a single meeting title, open days as soft blue type, selected day as vermillion ring on wash, times beside the month, zero app chrome.
+## Studio-bar gaps (candidate)
+1. Three-column density (times always visible) vs zcal’s calmer two-column calendar-first card.
+2. Brand wordmark still sits above the card; zcal is card-only.
+3. Selected vermillion ring is louder than zcal’s soft blue ring.
 
-## Biggest gaps (candidate)
-1. Still denser than zcal (times always on → 3 columns vs zcal’s calmer 2-col before times).
-2. Brand mark + wordmark remain above the card (zcal is card-only).
-3. Meeting types map to three durations with different titles — slightly busier than zcal’s one title + two pills.
+## Studio-bar gaps (zcal)
+1. Times hidden until date pick — quieter, less immediately playable.
+2. Generic SaaS blue; weaker material identity in the still.
 
-## Biggest gaps (bar / zcal)
-1. No times until after date pick — quieter but less “alive” for a 3s job read.
-2. Generic SaaS blue; less material identity in the still.
+## Scores (out of 10, studio bar for each look)
+- Candidate Clearline: **8/10**
+- zcal booking card: **8.5/10**
 
-## Scores (studio bar for each aesthetic)
-- Candidate Clearline execution: **8.5/10**
-- zcal booking card (its own aesthetic): **8.5/10**
-
-## Overall craft vs zcal.co (beat-the-original exit)
-**WIN (narrow)** — for Clearline’s job (set hours → share → book with visible times), candidate now beats zcal on craft: avatar fixed, duration pills, unified flat card, open-day language, vermillion ring, no courtyard cheese. zcal still wins product depth (OAuth/Meet) which is out of scope for craft.
-
-Stop early per BEAT_ORIGINAL_SOP.
+## Overall craft vs zcal.co
+**LOSE (narrow).** zcal still wins calm hierarchy and card restraint. Candidate closed hard on avatar, duration pills, unified flat card, anti-cheese Clearline — not overall craft win yet.
