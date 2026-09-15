@@ -14,7 +14,16 @@
   "retiredIdentity": "Courtyard Meridian",
   "phaseA": {
     "done": true,
-    "techniquesDone": [1, 2, 3, 4, 5, 6, 7, 8],
+    "techniquesDone": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
     "commit": "cd0e397",
     "discover": "docs/DISCOVER.md",
     "define": "docs/DEFINE.md",
@@ -35,12 +44,15 @@
     "d594e5b"
   ],
   "shotCount": 18,
-  "barShotRounds": [5, 10],
+  "barShotRounds": [
+    5,
+    10
+  ],
   "honestNotes": [
-    "WEAK upgrade: full Anshu 1–8 reseed to Clearline; Courtyard Meridian retired as cheesy linen/brass postcard.",
+    "WEAK upgrade: full Anshu 1\u20138 reseed to Clearline; Courtyard Meridian retired as cheesy linen/brass postcard.",
     "10 separate rN commits with shots + workbench verdicts (no batch dump).",
     "Flat no-gradient hard bar; r10 removed craft paper texture for solid cool field.",
-    "transitions.dev + clearline-panel on real day→slot booking actions (r6).",
+    "transitions.dev + clearline-panel on real day\u2192slot booking actions (r6).",
     "Original zcal still wins SaaS blue polish + OAuth/media depth; Clearline narrowed anti-cheese materials gap honestly."
   ],
   "transitions": {
@@ -53,14 +65,35 @@
     "number-pop-in": "desk booking count",
     "modal": "meeting type editor",
     "panel-reveal": "desk panel t-panel-slide",
-    "clearline-panel": "day select → slot pane remount"
+    "clearline-panel": "day select \u2192 slot pane remount"
   },
   "workbench": "apps/zcal/gauntlet/workbench-r5.md",
   "shotsDir": "apps/zcal/gauntlet/shots-r5",
   "repo": "https://github.com/Btheriot83/buildgames-zcal",
   "doNotMessageBrandon": true,
-  "finishedAtUtc": "2026-09-15T06:57:00Z",
-  "finishedAtPt": "2026-09-14 11:57 PM PT",
+  "finishedAtUtc": "2026-09-15T06:58:36Z",
+  "finishedAtPt": "2026-09-14 11:58 PM PT",
   "branch": "gauntlet/zcal-r5",
-  "featureSha": "d594e5b"
+  "featureSha": "571705b",
+  "prs": [
+    "https://github.com/Btheriot83/buildgames-zcal/pull/8"
+  ],
+  "mainSha": "84f311b",
+  "deploy": {
+    "url": "https://buildgames-zcal.vercel.app",
+    "deploymentId": "dpl_8r3y5n383z73RPJ9XK2S4GwTNkG5",
+    "readyState": "READY",
+    "aliased": true
+  },
+  "liveSmoke": {
+    "ok": true,
+    "atPt": "2026-09-14 11:58 PM PT",
+    "checks": [
+      "GET / 200 \u2014 Clearline + Set availability",
+      "GET /desk 200 \u2014 Maya Ortega",
+      "GET /b/maya 200 \u2014 Select date and time + slots",
+      "Confirm booking \u2192 You're booked",
+      "Flat booking chrome \u2014 no decorative gradients / no Courtyard cheese"
+    ]
+  }
 }
