@@ -190,7 +190,7 @@ export function BookingPage({ slug }: { slug: string }) {
         <SiteHeader slug={slug} />
         <Toast message={api.toast} />
         <section className="success-pane t-texts-reveal" data-reveal="in">
-          <SuccessCheck show />
+          <SuccessCheck show />{/* recipe: success-check on book done */}
           <h1 className="display">You&apos;re booked</h1>
           <p className="lede">
             {meeting?.title} with {state.profile.displayName}
@@ -323,7 +323,7 @@ export function BookingPage({ slug }: { slug: string }) {
 
         <section className="book-card">
           {step === "confirm" && slot && meeting && dateKey ? (
-            <div className={`confirm-flow ${api.errorShake ? "is-shaking" : ""}`}>
+            <div className={`confirm-flow ${api.errorShake ? "is-shaking" : ""}`} data-transition="error-state-shake">
               <button
                 type="button"
                 className="back-link"
@@ -348,7 +348,7 @@ export function BookingPage({ slug }: { slug: string }) {
                 <label>
                   Your name
                   <input
-                    className={`t-input ${err ? "is-error" : ""}`}
+                    className={`t-input ${err ? "is-error is-shaking" : ""}`}
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     autoComplete="name"
@@ -357,7 +357,7 @@ export function BookingPage({ slug }: { slug: string }) {
                 <label>
                   Email
                   <input
-                    className={`t-input ${err ? "is-error" : ""}`}
+                    className={`t-input ${err ? "is-error is-shaking" : ""}`}
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}

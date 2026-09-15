@@ -1575,3 +1575,17 @@ textarea.t-input {
   font-weight: 600;
 }
 
+
+/* r6 buttons: confirm CTA + shake surface — transitions fire on real book/error */
+.confirm-cta.btn.primary {
+  min-height: 3rem;
+  letter-spacing: -0.015em;
+}
+.confirm-flow.is-shaking .t-input,
+.t-input.is-shaking {
+  animation: t-input-shake calc(var(--shake-dur, 420ms) * 1) var(--shake-ease, ease-in-out);
+}
+.success-pane .t-success-check[data-state="in"] {
+  color: var(--copper-deep);
+}
+

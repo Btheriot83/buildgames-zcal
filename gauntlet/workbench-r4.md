@@ -40,3 +40,10 @@ Bar comps: `shots-r4/bar-zcal-*.png` · Baseline: `shots-r4/r0-*-baseline.png`
 - verdict: Open days darker sage vs cream — closer to zcal’s light-blue open circles; bar still cleaner white field + blue brand.
 - commit: afdda81
 - bar A/B: yes (every 5th)
+
+## r6 — buttons: confirm CTA + transitions on real actions
+- files: src/components/BookingPage.tsx, DeskApp.tsx, Toast.tsx, SuccessCheck.tsx, src/app/globals.css, docs/TRANSITIONS.md
+- shot: gauntlet/shots-r4/r6-buttons-transitions.png
+- verdict: Confirm CTA taller; shake/success-check/toast/panel-slide now bound to book/error/desk actions (see TRANSITIONS.md). Motion still subtler than zcal’s product chrome.
+- commit: b6edcc5
+- transitions map: success-check→book done; toast→api.toast; error-state-shake→confirm err; skeleton-reveal→cold load; texts-reveal→page enter; tabs-sliding→desk tabs; number-pop-in→booking count; modal→meeting editor; panel-reveal→desk panel

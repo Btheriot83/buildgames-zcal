@@ -2,7 +2,7 @@
 
 export function SuccessCheck({ show }: { show: boolean }) {
   return (
-    <span className="t-success-check" data-state={show ? "in" : "out"} aria-hidden="true">
+    <span className="t-success-check" data-recipe="success-check" data-state={show ? "in" : "out"} aria-hidden="true">
       <svg viewBox="0 0 48 48" width="48" height="48" fill="none">
         <circle cx="24" cy="24" r="22" stroke="currentColor" strokeWidth="2" opacity="0.35" />
         <path
