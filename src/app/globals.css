@@ -2907,3 +2907,24 @@ html, body {
 
 /* r12: remove residual card shadow cheese */
 .book-stage { box-shadow: none !important; }
+
+/* r13: book page — brand only, hide Desk/Public chrome (zcal card is the page) */
+.book-shell .site-nav { display: none !important; }
+.book-shell .site-header { margin-bottom: 1.1rem !important; }
+
+/* r14: month chevrons quiet gray like zcal (not blue shout) */
+.cal-nav .btn.ghost.sm {
+  color: #9aa1a9 !important;
+  font-size: 1.1rem !important;
+}
+.cal-nav .btn.ghost.sm:hover { color: #121416 !important; background: transparent !important; }
+
+/* r15: more card air + center like zcal */
+.book-stage {
+  max-width: 860px !important;
+  border-radius: 18px !important;
+}
+.book-host { padding: 1.5rem 1.25rem 1.6rem !important; }
+.book-card { padding: 1.5rem 1.5rem 1.6rem !important; }
+.book-job-label { font-size: 1.25rem !important; font-weight: 600 !important; }
+.host-meeting-title { font-size: 1.05rem !important; }
