@@ -1,0 +1,40 @@
+{
+  "product": "Sundial",
+  "slug": "zcal",
+  "phase": "onboard-friend-walkthrough-levels",
+  "identity": "Clearline",
+  "identityLocked": true,
+  "demoUrl": "https://buildgames-zcal.vercel.app",
+  "skills": [
+    "friend-walkthrough-onboarding",
+    "builder-guides/06-levelsio"
+  ],
+  "designCatalog": [
+    "cut-elements",
+    "remove-ai-tells",
+    "hand-rewrite-copy",
+    "specify-the-look",
+    "make-it-alive"
+  ],
+  "activationEvent": "A bookable Clearline link the user can open and complete week \u2192 slot \u2192 confirm (or host page ready to share)",
+  "cardCount": 5,
+  "persistKey": "clearline.onboarded.v1",
+  "smoke": {
+    "path": "gauntlet/shots-onboard/smoke-log.json",
+    "firstVisitComplete": true,
+    "skip": true,
+    "returnNoReplay": true,
+    "hostCard": true,
+    "durationCards": 3,
+    "slotCards": 8,
+    "emptyCoach": true
+  },
+  "visibleDeltas": "gauntlet/shots-onboard/VISIBLE_DELTAS.md",
+  "shotsDir": "gauntlet/shots-onboard",
+  "branch": "onboard/zcal-friend-walkthrough",
+  "repo": "https://github.com/Btheriot83/buildgames-zcal",
+  "tests": "6 passed (vitest)",
+  "build": "ok",
+  "finishedAtPt": "2026-09-15 11:12 AM PT",
+  "finishedAtUtc": "2026-09-15T18:12:02Z"
+}

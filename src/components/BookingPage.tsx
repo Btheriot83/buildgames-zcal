@@ -198,7 +198,7 @@ export function BookingPage({ slug }: { slug: string }) {
       <Toast message={api.toast} />
 
       <div className="book-stage t-texts-reveal" data-reveal="in">
-        <aside className="book-host">
+        <aside className="book-host host-card surface-card">
           <div className="host-portrait" aria-hidden>
             <img
               src="/assets/host-maya.jpg"
@@ -218,22 +218,23 @@ export function BookingPage({ slug }: { slug: string }) {
           {meeting ? (
             <h2 className="host-meeting-title">{meeting.title}</h2>
           ) : null}
-          <div className="meet-chip-row" role="listbox" aria-label="Meeting type">
+          <div className="duration-card-row" role="listbox" aria-label="Meeting type">
             {state.meetingTypes.map((m) => (
               <button
                 key={m.id}
                 type="button"
                 role="option"
                 aria-selected={activeMeetingId === m.id}
-                className={`meet-chip ${activeMeetingId === m.id ? "is-active" : ""}`}
+                className={`duration-card surface-card ${activeMeetingId === m.id ? "is-active" : ""}`}
                 onClick={() => {
                   setMeetingId(m.id);
                   setSlot(null);
                   setStep("pick");
                 }}
               >
-                <span className="meet-chip-dur mono">{m.durationMin} min</span>
-                <span className="meet-chip-label sr-only">{m.title}</span>
+                <span className="duration-card-dur mono">{m.durationMin}</span>
+                <span className="duration-card-unit">min</span>
+                <span className="duration-card-title">{m.title}</span>
               </button>
             ))}
           </div>
@@ -242,7 +243,7 @@ export function BookingPage({ slug }: { slug: string }) {
 
         </aside>
 
-        <section className="book-card">
+        <section className="book-card surface-card">
           {step === "confirm" && slot && meeting && dateKey ? (
             <div className={`confirm-flow ${api.errorShake ? "is-shaking" : ""}`} data-transition="error-state-shake">
               <button
@@ -493,12 +494,12 @@ export function BookingPage({ slug }: { slug: string }) {
                   <p className="muted">No hours left — pick another day.</p>
                 ) : (
                   <div className="slot-groups slot-groups-flat">
-                    <div className="slot-grid slot-grid-hero">
+                    <div className="slot-grid slot-grid-hero slot-card-grid">
                       {slots.map((s, i) => (
                         <button
                           key={s.startIso}
                           type="button"
-                          className={`slot-chip mono ${slot?.startIso === s.startIso ? "is-active" : ""}`}
+                          className={`slot-card surface-card mono ${slot?.startIso === s.startIso ? "is-active" : ""}`}
                           style={{ animationDelay: `${i * 16}ms` }}
                           onClick={() => {
                             setSlot(s);
