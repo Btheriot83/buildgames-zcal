@@ -1,0 +1,70 @@
+{
+  "product": "Sundial",
+  "slug": "zcal",
+  "phase": "beat-the-original",
+  "identity": "Clearline",
+  "identityLocked": true,
+  "retiredIdentity": "Courtyard Meridian",
+  "demoUrl": "https://buildgames-zcal.vercel.app",
+  "barUrl": "https://zcal.co/",
+  "barBookingExample": "https://zcal.co/i/qnac7kcd",
+  "sop": "narrow/BEAT_ORIGINAL_SOP.md",
+  "designCatalog": {
+    "promptsJson": "https://design-catalog-three.vercel.app/data/prompts.json",
+    "guide": "narrow/DESIGN_CATALOG_GUIDE.md",
+    "techniquesUsed": [
+      "critic-subagents",
+      "cut-elements",
+      "remove-ai-tells",
+      "hand-rewrite-copy",
+      "specify-the-look",
+      "make-it-alive"
+    ]
+  },
+  "constraints": {
+    "clearlineLocked": true,
+    "fixedEmptyAvatar": true,
+    "noCourtyardCheese": true,
+    "doNotMessageBrandon": true,
+    "maxLoops": 25
+  },
+  "loopsCounted": 20,
+  "roundCommits": [
+    "9055c6e",
+    "3f0ce3c",
+    "7bfa32d",
+    "be8870b",
+    "5dec716",
+    "a0114f8",
+    "18c3537",
+    "40f67c0",
+    "cad21e1",
+    "13a82d0",
+    "1a7d87b",
+    "ee12bcf",
+    "46e696f",
+    "51b7a78",
+    "789a315",
+    "eef565a",
+    "8c52f29",
+    "e61f73b",
+    "189f474",
+    "885ac0e"
+  ],
+  "critic": {
+    "mode": "screenshot-only",
+    "verdictPath": "gauntlet/shots-beat/CRITIC_VERDICT.md",
+    "candidateShot": "gauntlet/shots-beat/r20-book.png",
+    "barShot": "gauntlet/shots-beat/critic-bar-book.png",
+    "overallVsZcal": "WIN",
+    "candidateScore": 9,
+    "barScore": 8.5,
+    "stoppedEarly": true,
+    "note": "Cloud Agents unavailable; critic via image-only Read of candidate vs bar pair"
+  },
+  "shotsDir": "gauntlet/shots-beat",
+  "branch": "beat/zcal-clearline",
+  "repo": "https://github.com/Btheriot83/buildgames-zcal",
+  "finishedAtPt": "2026-09-15 12:41 AM PT",
+  "finishedAtUtc": "2026-09-15T07:41:30Z"
+}
