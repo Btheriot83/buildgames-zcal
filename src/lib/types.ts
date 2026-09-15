@@ -41,7 +41,7 @@ export interface Booking {
 }
 
 export interface SundialState {
-  version: 1;
+  version: 2;
   profile: Profile;
   availability: DayAvailability[];
   meetingTypes: MeetingType[];

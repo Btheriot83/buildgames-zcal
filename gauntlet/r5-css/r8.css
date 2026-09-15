@@ -1,0 +1,9 @@
+/* r8 contrast: host secondary + assist */
+.host-headline { color: #3a4149 !important; }
+.host-tz { color: #5c636a !important; font-weight: 500 !important; }
+.assist-label { color: #2a2e33 !important; font-weight: 600 !important; }
+.assist-box {
+  border-top: 1px solid var(--stroke-strong);
+  padding-top: 0.85rem;
+  margin-top: 0.5rem;
+}

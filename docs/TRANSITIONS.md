@@ -1,4 +1,4 @@
-# transitions.dev wiring — Sundial (B4 hardened)
+# transitions.dev wiring — Sundial (Clearline)
 
 Recipes under `/transitions`; CSS in `src/app/transitions.css` (+ extras).  
 **Hard rule:** classes fire on real product actions — not CSS-only demos.
@@ -14,3 +14,4 @@ Recipes under `/transitions`; CSS in `src/app/transitions.css` (+ extras).
 | number-pop-in | Desk booking count changes | `.t-number-pop` keyed by count |
 | modal | Meeting type editor open | `.t-modal.is-open` |
 | panel-reveal | Desk content panel mount | `.t-panel-slide[data-open=true]` |
+| clearline-panel | Day selected → slot pane remount | `.slot-pane` keyframe on booking day pick |

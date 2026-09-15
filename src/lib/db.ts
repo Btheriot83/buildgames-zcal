@@ -27,15 +27,13 @@ export async function loadState(): Promise<SundialState> {
   try {
     const db = await getDb();
     const existing = (await db.get(STORE, KEY)) as SundialState | undefined;
-    if (existing?.version === 1) {
-      // Phase B2: retire Brandon smoke / placeholder meeting titles
-      if (isSmokeHost(existing)) {
-        const fresh = seedState();
-        await db.put(STORE, fresh, KEY);
-        return fresh;
-      }
+    if (existing?.version === 2 && !isSmokeHost(existing)) {
       return existing;
     }
+    // Clearline reseed (v2) or cheesy/smoke leftovers
+    const fresh = seedState();
+    await db.put(STORE, fresh, KEY);
+    return fresh;
   } catch {
     // IndexedDB unavailable (private mode quirks) — fall back to seed in memory
   }
@@ -63,7 +61,7 @@ export function exportJson(state: SundialState): string {
 
 export function importJson(raw: string): SundialState {
   const parsed = JSON.parse(raw) as SundialState;
-  if (parsed?.version !== 1 || !parsed.profile?.slug) {
+  if (parsed?.version !== 2 || !parsed.profile?.slug) {
     throw new Error("Invalid Sundial export");
   }
   return parsed;

@@ -1761,3 +1761,457 @@ textarea.t-input {
   letter-spacing: -0.03em;
 }
 
+
+
+/* ===== Phase A RESEED — Clearline (retire Courtyard Meridian) ===== */
+:root {
+  --linen: #eef0ed;
+  --linen-deep: #e2e5e1;
+  --ink: #121416;
+  --ink-soft: #2a2e33;
+  --muted: #5c636a;
+  --copper: #c41e3a;
+  --copper-deep: #9e1830;
+  --sage: #6b7570;
+  --sage-soft: #d9ddd9;
+  --olive: #4a5560;
+  --card: #ffffff;
+  --book-card: #ffffff;
+  --stroke: #d4d7db;
+  --stroke-strong: #b8bec6;
+  --danger: #9b3b2e;
+  --sage-open: #f0c9cf;
+  --sage-open-text: #5c1524;
+  --shadow: none;
+  --background: var(--linen);
+  --foreground: var(--ink);
+  --tabs-bar-bg: var(--linen-deep);
+  --tabs-pill-bg: var(--card);
+  --tabs-text-active: var(--ink);
+  --tabs-text-muted: var(--muted);
+}
+
+html,
+body {
+  background-color: var(--linen);
+  background-image: url("/assets/cool-paper.jpg");
+  background-size: 640px 640px;
+  background-repeat: repeat;
+  color: var(--ink);
+}
+
+.brand-mark {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background: var(--copper);
+  border: 1.5px solid var(--ink);
+  box-shadow: none;
+}
+
+.brand-name {
+  font-family: var(--font-sans), "IBM Plex Sans", system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.eyebrow {
+  color: var(--olive);
+  letter-spacing: 0.16em;
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.display {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.title-rule {
+  background: var(--ink) !important;
+  background-image: none !important;
+  height: 2px;
+  width: 3.5rem;
+  display: block;
+  margin-top: 0.65rem;
+  border-radius: 0;
+}
+
+.btn {
+  border-radius: 8px;
+  border: 1.5px solid var(--stroke-strong);
+  background: var(--card);
+  color: var(--ink);
+  font-weight: 600;
+  box-shadow: none !important;
+  background-image: none !important;
+  transition: background 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+.btn:hover { transform: none; border-color: var(--ink); background: #fff; }
+.btn.primary {
+  background: var(--ink);
+  color: #f7f8f6;
+  border-color: var(--ink);
+}
+.btn.primary:hover {
+  background: var(--copper-deep);
+  border-color: var(--copper-deep);
+  color: #fff;
+}
+.btn.secondary {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.btn.ghost {
+  background: transparent;
+  border-color: var(--stroke-strong);
+  color: var(--ink-soft);
+}
+
+.home-visual-frame {
+  border-radius: 12px;
+  border: 1.5px solid var(--stroke-strong);
+  overflow: hidden;
+  background: #fff;
+  position: relative;
+  box-shadow: none !important;
+}
+.home-visual-frame video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.home-visual-frame .home-still {
+  display: none;
+  width: 100%;
+  height: auto;
+}
+.home-visual-frame:not(:has(video[src])) .home-still,
+.home-visual-frame video:not([src]) + .home-still {
+  display: block;
+}
+/* show still until video loads; always prefer video when present */
+@supports selector(:has(*)) {
+  .home-visual-frame:has(video source) .home-still { display: none; }
+}
+.visual-caption {
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.book-card,
+.book-host,
+.panel,
+.meet-card,
+.slot-chip,
+.confirm-summary,
+.job-strip li,
+.assist-chip {
+  box-shadow: none !important;
+  background-image: none !important;
+  border-color: var(--stroke-strong);
+}
+
+.book-card,
+.book-host {
+  background: #fff;
+  border: 1.5px solid var(--stroke-strong);
+  border-radius: 12px;
+}
+
+.host-portrait {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--stroke-strong);
+  aspect-ratio: 1;
+  background: var(--linen-deep);
+}
+.host-portrait .host-video { display: none !important; }
+.host-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+  border: none;
+}
+
+.host-name.display {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(1.75rem, 3vw, 2.2rem);
+  letter-spacing: -0.03em;
+}
+
+.cal-day.in-month.is-open:not(.is-active) {
+  background: var(--sage-open);
+  color: var(--sage-open-text);
+  font-weight: 600;
+  box-shadow: none;
+}
+.cal-day.is-active,
+.cal-day.in-month.is-active {
+  background: #121416 !important;
+  color: #f7f8f6 !important;
+}
+.cal-day.in-month.is-open:not(:disabled):hover {
+  background: color-mix(in srgb, var(--copper) 22%, #fff);
+  color: var(--ink);
+}
+.cal-day:disabled,
+.cal-day.out-month {
+  color: #9aa1a8 !important;
+}
+
+.meet-card {
+  border-radius: 8px;
+  border: 1.5px solid var(--stroke);
+  background: #fff;
+  padding: 0.7rem 0.85rem;
+}
+.meet-card.is-active {
+  border-color: var(--ink);
+  background: color-mix(in srgb, var(--sage-open) 55%, #fff);
+}
+.meet-card .meet-title {
+  font-family: var(--font-sans), "IBM Plex Sans", system-ui, sans-serif;
+  font-weight: 600;
+}
+.meet-card .meet-meta {
+  border-color: var(--stroke-strong);
+  background: #fff;
+  color: var(--ink-soft);
+}
+
+.slot-chip {
+  border-radius: 8px;
+  border: 1.5px solid var(--stroke-strong);
+  background: #fff;
+  font-family: var(--font-sans), "IBM Plex Sans", system-ui, sans-serif;
+}
+.slot-chip.is-active {
+  background: #121416;
+  color: #f7f8f6;
+  border-color: #121416;
+}
+
+.confirm-cta.btn.primary {
+  border-radius: 8px;
+  min-height: 3rem;
+}
+
+.confirm-summary {
+  background: color-mix(in srgb, var(--sage-open) 40%, #fff);
+  border: 1.5px solid var(--stroke-strong);
+}
+
+.job-strip li {
+  background: #fff;
+  border: 1px solid var(--stroke-strong);
+  border-radius: 10px;
+}
+.job-n {
+  background: var(--ink) !important;
+  color: #f7f8f6 !important;
+  box-shadow: none !important;
+}
+
+/* Clearline motion beat — hairline progress on real slot/day select */
+.cal-day.is-active,
+.slot-chip.is-active {
+  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+.slot-pane {
+  animation: clearline-panel 220ms ease;
+}
+@keyframes clearline-panel {
+  from { opacity: 0.35; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .slot-pane { animation: none; }
+  @keyframes clearline-panel { from { opacity: 1; } to { opacity: 1; } }
+}
+
+/* Hard flat bar */
+.btn, .slot-chip, .meet-card, .cal-day, .book-card, .book-host, .panel, .home-visual-frame {
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+.home-visual-frame .home-still {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.home-visual-frame .home-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: transparent;
+}
+
+/* Phase A critic pass — kill residual cheese vs zcal bar */
+:root {
+  --linen: #f4f5f4;
+  --linen-deep: #e8ebe9;
+  --sage-open: #d5dbe2;
+  --sage-open-text: #1a222c;
+}
+
+html, body {
+  background-color: #f4f5f4;
+  /* faint cool grain only — not craft linen */
+  background-image: url("/assets/cool-paper.jpg");
+  background-size: 960px 960px;
+  background-blend-mode: soft-light;
+  background-color: #f4f5f4;
+}
+
+.book-job-label,
+.book-card .panel-title,
+.slot-heading,
+.cal-month-label,
+.host-headline {
+  font-family: var(--font-sans), "IBM Plex Sans", system-ui, sans-serif !important;
+  font-weight: 600;
+}
+
+.book-job-label {
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.host-headline {
+  font-size: 0.95rem !important;
+  font-weight: 500 !important;
+  color: var(--ink-soft) !important;
+}
+
+.book-card, .book-host, .meet-card, .panel, .job-strip li {
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+.cal-day.in-month.is-open:not(.is-active) {
+  background: #d5dbe2;
+  color: #1a222c;
+}
+.cal-day.in-month.is-open.is-today:not(.is-active) {
+  box-shadow: inset 0 0 0 2px var(--copper-deep);
+}
+
+.home-points li::before,
+.home-points li {
+  color: var(--ink-soft);
+}
+/* r1 fonts: quieter month like zcal */
+.cal-month-label {
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase;
+  color: var(--ink-soft) !important;
+}
+/* r2 contrast: weekday letters quieter like zcal */
+.cal-weekdays span {
+  color: #7a828c !important;
+  font-weight: 600 !important;
+  font-size: 0.65rem !important;
+  letter-spacing: 0.06em;
+}
+/* r3 buttons: denser time chips like zcal */
+.slot-chip {
+  min-height: 2.35rem !important;
+  padding: 0.5rem 0.75rem !important;
+  font-size: 0.84rem !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+}
+.slot-grid { gap: 0.4rem !important; }
+/* r4 fonts: meet title + duration chip scan */
+.meet-card .meet-title {
+  font-size: 0.92rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em;
+}
+.meet-card .meet-meta {
+  font-family: var(--font-sans), "IBM Plex Sans", system-ui, sans-serif !important;
+  font-size: 0.7rem !important;
+  font-weight: 600 !important;
+}
+/* r5 contrast: open-day slate closer to zcal light-blue cue */
+:root {
+  --sage-open: #c9d5e3;
+  --sage-open-text: #152033;
+}
+.cal-day.in-month.is-open:not(.is-active) {
+  background: var(--sage-open) !important;
+  color: var(--sage-open-text) !important;
+}
+/* r6 buttons: confirm CTA weight + real-action transitions */
+.confirm-cta.btn.primary {
+  min-height: 3.1rem !important;
+  font-size: 1.02rem !important;
+  border-radius: 8px !important;
+  letter-spacing: -0.015em;
+}
+.slot-chip, .cal-day, .meet-card {
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease !important;
+}
+.confirm-flow.is-shaking {
+  animation: t-input-shake 420ms ease-in-out;
+}
+/* r7 fonts: job label hierarchy vs zcal */
+.book-job-label {
+  font-size: 1.15rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+  margin-bottom: 0.4rem !important;
+}
+.card-meeting-chip {
+  font-size: 0.75rem !important;
+  color: #5c636a !important;
+}
+/* r8 contrast: host secondary + assist */
+.host-headline { color: #3a4149 !important; }
+.host-tz { color: #5c636a !important; font-weight: 500 !important; }
+.assist-label { color: #2a2e33 !important; font-weight: 600 !important; }
+.assist-box {
+  border-top: 1px solid var(--stroke-strong);
+  padding-top: 0.85rem;
+  margin-top: 0.5rem;
+}
+/* r9 buttons: denser meet cards flat */
+.meet-card {
+  padding: 0.6rem 0.75rem !important;
+  gap: 0.3rem !important;
+  border-radius: 8px !important;
+}
+.meet-list { gap: 0.45rem !important; }
+.meet-card .meet-desc {
+  font-size: 0.8rem !important;
+  line-height: 1.3 !important;
+  color: #3a4149 !important;
+}
+/* r10 flat coherence — hard no-gradient bar */
+.book-stage, .book-card, .book-host, .meet-card, .slot-chip, .btn, .panel,
+.confirm-summary, .home-visual-frame, .job-strip li, .cal-day {
+  box-shadow: none !important;
+  background-image: none !important;
+  filter: none !important;
+}
+html, body {
+  background-image: none !important;
+  background-color: #f4f5f4 !important;
+}
+.home-shell {
+  background: transparent;
+}

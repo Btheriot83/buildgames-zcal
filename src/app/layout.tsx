@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Newsreader, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Source_Serif_4, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import "./transitions.css";
 
-const display = Newsreader({
+const display = Source_Serif_4({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600", "700"],
 });
 
 const sans = IBM_Plex_Sans({
@@ -22,9 +22,9 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sundial — book a quiet hour",
+  title: "Sundial — set hours, book a slot",
   description:
-    "Share a beautiful booking page. Guests pick a day and an hour. Bookings land in a local calendar — a Build Games take on zcal.",
+    "Mark open hours. Share one page. Guests pick a day and time. Local calendar — a Build Games take on zcal.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
