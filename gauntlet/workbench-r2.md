@@ -105,3 +105,20 @@ Mobbin: still paywalled — comps = live zcal.co + Calendly/Cal.com booking patt
 - `public/assets/sundial-hero.jpg`
 - `public/assets/empty-book.jpg`
 - `public/assets/gnomon-drift.webm` / `.mp4`
+
+---
+
+## Hard bar amplify (Inkwell → all apps, mid-B2 carry)
+**Brandon 2026-09-14:** Gradients = AI slop. Flat materials + real photos only. Kill glass blur + glow.
+
+Applied on Courtyard Meridian (no reseed):
+- Brand mark → flat copper disc (no conic)
+- Title rule → solid copper (no fade gradient)
+- Desk SundialMark → real `sundial-hero.jpg` photo (no radial/conic CSS dial)
+- Skeleton → flat opacity pulse (no shimmer gradient)
+- Reveal/number motion → no blur
+- transitions.dev blur tokens forced to `0` / `filter: none`
+- Soft paper shadow only (no glow)
+
+Shots after flat pass: rebuild + redeploy; identity materials unchanged.
+

@@ -42,7 +42,14 @@
       "displayName": "Maya Ortega",
       "timezone": "America/Phoenix"
     },
-    "shotsDir": "apps/zcal/gauntlet/shots-r2"
+    "shotsDir": "apps/zcal/gauntlet/shots-r2",
+    "hardBar": {
+      "gradientsStripped": true,
+      "glassBlurKilled": true,
+      "glowKilled": true,
+      "materials": "flat + real photos (sundial-hero)",
+      "note": "Inkwell review carry-forward \u2014 applied without reseed"
+    }
   },
   "ai": {
     "feature": "Meridian /api/assist",
@@ -50,8 +57,8 @@
   },
   "repo": "https://github.com/Btheriot83/buildgames-zcal",
   "doNotMessageBrandon": true,
-  "finishedAtUtc": "2026-09-15T04:19:14Z",
-  "finishedAtPt": "2026-09-14 9:19 PM PT",
+  "finishedAtUtc": "2026-09-15T04:22:05Z",
+  "finishedAtPt": "2026-09-14 9:22 PM PT",
   "liveSmoke": {
     "ok": true,
     "atPt": "2026-09-14 9:19 PM PT",
@@ -63,5 +70,6 @@
       "confirm \u2192 You're booked (Elena Vargas)",
       "GET /api/health 200"
     ]
-  }
+  },
+  "mainShaPending": true
 }

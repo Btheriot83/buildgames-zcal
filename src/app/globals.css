@@ -15,7 +15,7 @@
   --card: #faf7f0;
   --stroke: #d9d0c0;
   --danger: #9b3b2e;
-  --shadow: 0 18px 40px rgba(28, 26, 22, 0.08);
+  --shadow: 0 1px 0 rgba(28, 26, 22, 0.04), 0 8px 20px rgba(28, 26, 22, 0.06);
 
   --background: var(--linen);
   --foreground: var(--ink);
@@ -86,8 +86,9 @@ code,
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: conic-gradient(from 210deg, var(--copper), var(--sage), var(--linen-deep), var(--copper));
-  box-shadow: inset 0 0 0 2px rgba(28, 26, 22, 0.15);
+  background: var(--copper);
+  border: 2px solid var(--ink);
+  box-shadow: none;
 }
 
 .brand-name {
@@ -235,7 +236,7 @@ code,
   width: 4.5rem;
   height: 3px;
   margin-top: 0.7rem;
-  background: linear-gradient(90deg, var(--copper), transparent);
+  background: var(--copper);
 }
 
 .home-body {
@@ -273,20 +274,31 @@ code,
   text-transform: uppercase;
 }
 
-/* Sundial mark */
+/* Sundial mark — flat materials + real photo (no CSS gradients / glow) */
 .sundial-mark {
   position: relative;
   border-radius: 50%;
-  filter: drop-shadow(0 12px 24px rgba(28, 26, 22, 0.12));
+  overflow: hidden;
+  border: 1px solid var(--stroke);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  filter: none;
+}
+
+.sundial-mark-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .sundial-face {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background:
-    radial-gradient(circle at 50% 55%, rgba(250, 247, 240, 0.95) 0%, rgba(231, 223, 208, 0.9) 55%, rgba(181, 106, 58, 0.22) 100%),
-    conic-gradient(from 0deg, transparent 0 8deg, rgba(28, 26, 22, 0.08) 8deg 9deg);
+  background: var(--linen-deep);
   border: 1px solid var(--stroke);
 }
 
@@ -296,11 +308,12 @@ code,
   top: 50%;
   width: 3px;
   height: 42%;
-  background: linear-gradient(180deg, var(--copper-deep), var(--copper));
+  background: var(--copper-deep);
   transform-origin: 50% 0;
   transform: translate(-50%, 0) rotate(18deg);
   border-radius: 2px;
   animation: gnomon-drift 18s ease-in-out infinite alternate;
+  z-index: 2;
 }
 
 .sundial-tick {
@@ -613,9 +626,8 @@ textarea.t-input {
 .t-skeleton .skel-block {
   height: 1.1rem;
   border-radius: 8px;
-  background: linear-gradient(90deg, var(--linen-deep), #fff8ec, var(--linen-deep));
-  background-size: 200% 100%;
-  animation: skel 1.2s ease-in-out infinite;
+  background: var(--linen-deep);
+  animation: skel-flat 1.2s ease-in-out infinite;
   margin: 0.6rem 0;
 }
 
@@ -624,6 +636,10 @@ textarea.t-input {
 @keyframes skel {
   0% { background-position: 100% 0; }
   100% { background-position: -100% 0; }
+}
+@keyframes skel-flat {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
 }
 
 .file-btn { display: inline-flex; align-items: center; }
@@ -645,16 +661,16 @@ textarea.t-input {
 .t-texts-reveal[data-reveal="in"] .hero-actions { animation-delay: 120ms; }
 
 @keyframes sundial-reveal {
-  from { opacity: 0; transform: translateY(12px); filter: blur(3px); }
-  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .t-number-pop[data-pop="in"] {
   animation: number-pop 480ms cubic-bezier(0.34, 1.35, 0.64, 1) both;
 }
 @keyframes number-pop {
-  from { opacity: 0; transform: translateY(12px) scale(0.85); filter: blur(4px); }
-  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  from { opacity: 0; transform: translateY(10px) scale(0.92); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -687,7 +703,8 @@ textarea.t-input {
   border-radius: 20px;
   padding: 1.15rem 1.2rem 1.35rem;
   box-shadow: var(--shadow);
-  backdrop-filter: none; /* anti glassmorphism */
+  backdrop-filter: none !important; /* Brandon hard bar: no glass */
+  -webkit-backdrop-filter: none !important;
 }
 .host-portrait {
   position: relative;
@@ -918,9 +935,8 @@ textarea.t-input {
 .book-skel .skel-card {
   height: 420px;
   border-radius: 18px;
-  background: linear-gradient(90deg, var(--linen-deep), #fff8ec, var(--linen-deep));
-  background-size: 200% 100%;
-  animation: skel 1.2s ease-in-out infinite;
+  background: var(--linen-deep);
+  animation: skel-flat 1.2s ease-in-out infinite;
 }
 
 /* Home — Courtyard focus (subtract marketing soup) */
@@ -1076,4 +1092,24 @@ textarea.t-input {
     min-width: 0;
     flex: 1 1 6rem;
   }
+}
+
+
+/* ===== Brandon hard bar (Inkwell → all apps): no decorative gradients / glass / glow ===== */
+:root {
+  --panel-blur: 0px;
+  --digit-blur: 0px;
+  --badge-blur: 0px;
+  --reveal-blur: 0px;
+  --check-blur-from: 0px;
+  --stagger-blur: 0px;
+  --toast-blur: 0px;
+}
+.brand-mark,
+.title-rule,
+.sundial-face,
+.sundial-gnomon,
+.skel-block,
+.book-skel .skel-card {
+  background-image: none !important;
 }
