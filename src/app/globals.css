@@ -2127,3 +2127,12 @@ html, body {
   font-size: 0.65rem !important;
   letter-spacing: 0.06em;
 }
+/* r3 buttons: denser time chips like zcal */
+.slot-chip {
+  min-height: 2.35rem !important;
+  padding: 0.5rem 0.75rem !important;
+  font-size: 0.84rem !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+}
+.slot-grid { gap: 0.4rem !important; }
