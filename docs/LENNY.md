@@ -19,3 +19,8 @@
 - Cut: teams, round-robin, polls, OAuth calendars, email, billing.
 - transitions.dev (free, real UX): success-check, toast, error-state-shake, skeleton-reveal, texts-reveal, tabs-sliding, number-pop-in, modal, panel-reveal.
 - Live demo + App Desk smoke required before Brandon ping.
+
+## Live evidence
+- Demo: https://buildgames-zcal.vercel.app
+- Smoke log: docs/live-smoke-log.json (booked=true, calendar events=1)
+- Critic: docs/CRITIC_VS_ORIGINAL.md (8.9 vs https://zcal.co/)
