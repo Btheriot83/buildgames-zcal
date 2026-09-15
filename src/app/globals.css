@@ -2136,3 +2136,14 @@ html, body {
   font-weight: 500 !important;
 }
 .slot-grid { gap: 0.4rem !important; }
+/* r4 fonts: meet title + duration chip scan */
+.meet-card .meet-title {
+  font-size: 0.92rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em;
+}
+.meet-card .meet-meta {
+  font-family: var(--font-sans), "IBM Plex Sans", system-ui, sans-serif !important;
+  font-size: 0.7rem !important;
+  font-weight: 600 !important;
+}
