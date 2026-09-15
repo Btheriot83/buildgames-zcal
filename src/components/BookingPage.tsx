@@ -20,7 +20,6 @@ import { SuccessCheck } from "./SuccessCheck";
 import { SiteHeader } from "./SiteHeader";
 import type { SlotOption } from "@/lib/slots";
 import type { MeetingType as MT } from "@/lib/types";
-import type { AssistResponse } from "@/lib/assist";
 
 type Step = "pick" | "confirm" | "done";
 
@@ -43,9 +42,6 @@ export function BookingPage({ slug }: { slug: string }) {
   const [email, setEmail] = useState("");
   const [note, setNote] = useState("");
   const [err, setErr] = useState<string | null>(null);
-  const [intent, setIntent] = useState("");
-  const [assist, setAssist] = useState<AssistResponse | null>(null);
-  const [assistLoading, setAssistLoading] = useState(false);
 
   const daysAhead = useMemo(() => nextDays(21), []);
 
@@ -128,51 +124,7 @@ export function BookingPage({ slug }: { slug: string }) {
     return availableSlots(state, meeting, key).length > 0;
   };
 
-  const runAssist = async () => {
-    if (!meeting) return;
-    setAssistLoading(true);
-    try {
-      const candidates = daysAhead.map((dk) => ({
-        dateKey: dk,
-        slots: availableSlots(state, meeting, dk),
-      })).filter((c) => c.slots.length > 0);
-      const res = await fetch("/api/assist", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          hostName: state.profile.displayName,
-          guestIntent: intent,
-          meeting,
-          availability: state.availability,
-          candidates: candidates.slice(0, 10),
-        }),
-      });
-      if (!res.ok) throw new Error("assist failed");
-      const data = (await res.json()) as AssistResponse;
-      setAssist(data);
-    } catch {
-      setAssist(null);
-      api.flash("Assist unavailable — browse the calendar");
-    } finally {
-      setAssistLoading(false);
-    }
-  };
 
-  const applySuggestion = (s: AssistResponse["suggestions"][0]) => {
-    const [y, m] = s.dateKey.split("-").map(Number);
-    setMonth({ y, m0: m - 1 });
-    setWeekStart(startOfWeekMonday(s.dateKey));
-    setDateKey(s.dateKey);
-    if (meeting) {
-      const found = availableSlots(state, meeting, s.dateKey).find(
-        (x) => x.startIso === s.startIso
-      );
-      if (found) {
-        setSlot(found);
-        setStep("confirm");
-      }
-    }
-  };
 
   const submit = async () => {
     if (!meeting || !slot) return;
@@ -235,11 +187,13 @@ export function BookingPage({ slug }: { slug: string }) {
   return (
     <div className="shell book-shell book-shell-product">
       <div className="book-brand-rail" aria-label="Sundial">
-        <a className="brand" href="/">
+        <Link className="brand" href="/">
           <span className="brand-mark" aria-hidden />
           <span className="brand-name">Sundial</span>
-        </a>
-        <a className="book-desk-link" href="/desk">Host desk</a>
+        </Link>
+        <Link className="book-desk-link" href="/desk">
+          Host desk
+        </Link>
       </div>
       <Toast message={api.toast} />
 
@@ -276,7 +230,6 @@ export function BookingPage({ slug }: { slug: string }) {
                   setMeetingId(m.id);
                   setSlot(null);
                   setStep("pick");
-                  setAssist(null);
                 }}
               >
                 <span className="meet-chip-dur mono">{m.durationMin} min</span>
