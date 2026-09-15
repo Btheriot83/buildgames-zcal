@@ -1,0 +1,96 @@
+{
+  "product": "Sundial",
+  "slug": "zcal",
+  "phase": "elevate-pro-bars",
+  "identity": "Clearline",
+  "identityLocked": true,
+  "demoUrl": "https://buildgames-zcal.vercel.app",
+  "professionalBars": {
+    "savvycal": "https://savvycal.com/",
+    "calcom": "https://cal.com/",
+    "cloneOriginal": "https://zcal.co/"
+  },
+  "sop": "narrow/ELEVATE_PRO_BARS.md",
+  "designCatalog": {
+    "promptsJson": "https://design-catalog-three.vercel.app/data/prompts.json",
+    "guide": "narrow/DESIGN_CATALOG_GUIDE.md",
+    "techniquesUsed": [
+      "specify-the-look",
+      "critic-subagents",
+      "cut-elements",
+      "remove-ai-tells",
+      "hand-rewrite-copy",
+      "make-it-alive",
+      "design-system-from-assets",
+      "thinking-before-prompt"
+    ]
+  },
+  "constraints": {
+    "clearlineLocked": true,
+    "noCourtyardCheese": true,
+    "noEmptyAvatarOpacity0": true,
+    "flatMaterials": true,
+    "doNotMessageBrandon": true,
+    "criticVsProfessionalBars": true
+  },
+  "loopsCounted": 12,
+  "roundCommits": [
+    "1f6c4c6",
+    "4624e38",
+    "ecca6f1",
+    "217611c",
+    "bc1dd6b",
+    "e66d685",
+    "bfe0f8d",
+    "96c1d7d",
+    "cd44365",
+    "59e1770",
+    "1f6667f",
+    "d5eb04d"
+  ],
+  "extraCommits": [
+    "fe8e9d0",
+    "c7c86f4",
+    "f7b95e8"
+  ],
+  "critic": {
+    "mode": "screenshot-only",
+    "verdictPath": "gauntlet/shots-elevate/CRITIC_VERDICT.md",
+    "candidateBook": "gauntlet/shots-elevate/critic-candidate-book.png",
+    "candidateHome": "gauntlet/shots-elevate/critic-candidate-home.png",
+    "barCalcom": "gauntlet/shots-elevate/critic-bar-calcom.png",
+    "barSavvycal": "gauntlet/shots-elevate/critic-bar-savvycal.png",
+    "overallVsProBars": "NOT_A_WIN",
+    "candidateScore": 7.5,
+    "calcomScore": 8.5,
+    "savvycalScore": 8.5,
+    "stoppedEarlyForWin": false,
+    "note": "Honest Read of paired PNGs; SavvyCal live booker URLs 404'd \u2014 Cal.com homepage widget + SavvyCal marketing used as bars. No invented 9/10."
+  },
+  "shotsDir": "gauntlet/shots-elevate",
+  "branch": "elevate/zcal-clearline-pro-bars",
+  "repo": "https://github.com/Btheriot83/buildgames-zcal",
+  "pr": "https://github.com/Btheriot83/buildgames-zcal/pull/13",
+  "prState": "MERGED",
+  "mainSha": "f48cbf0",
+  "finishedAtPt": "2026-09-15 6:40 AM PT",
+  "finishedAtUtc": "2026-09-15T13:40:20Z",
+  "deploy": {
+    "url": "https://buildgames-zcal.vercel.app",
+    "deploymentId": "dpl_8fUn3S4LpMVqN8Rsd6x2MJc1j1AH",
+    "readyState": "READY",
+    "aliased": true,
+    "inspectorUrl": "https://vercel.com/brandon-theriots-projects/buildgames-zcal/8fUn3S4LpMVqN8Rsd6x2MJc1j1AH",
+    "ghStatus": "success"
+  },
+  "liveSmoke": {
+    "ok": true,
+    "atPt": "2026-09-15 6:40 AM PT",
+    "checks": [
+      "GET / 200 \u2014 Clearline home white canvas",
+      "GET /b/maya 200 \u2014 week strip + slots hero live",
+      "Prod shot live-prod-book.png shows Pick a time / Week / hour counts",
+      "No Courtyard cheese; host photo visible"
+    ]
+  }
+}
