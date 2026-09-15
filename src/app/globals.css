@@ -2120,3 +2120,10 @@ html, body {
   text-transform: uppercase;
   color: var(--ink-soft) !important;
 }
+/* r2 contrast: weekday letters quieter like zcal */
+.cal-weekdays span {
+  color: #7a828c !important;
+  font-weight: 600 !important;
+  font-size: 0.65rem !important;
+  letter-spacing: 0.06em;
+}
