@@ -1562,3 +1562,16 @@ textarea.t-input {
 .book-tz-globe { font-size: 0.95rem; line-height: 1; }
 .book-tz-label { letter-spacing: 0.01em; }
 
+
+/* r5 contrast: stronger sage-open vs cream (zcal blue-tint cue) */
+:root {
+  --sage-open: #a8bea2;
+  --sage-open-text: #1f2a1c;
+}
+.cal-day.in-month.is-open:not(.is-active) {
+  background: var(--sage-open);
+  color: var(--sage-open-text);
+  font-weight: 650;
+  font-weight: 600;
+}
+

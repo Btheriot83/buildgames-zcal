@@ -33,3 +33,10 @@ Bar comps: `shots-r4/bar-zcal-*.png` · Baseline: `shots-r4/r0-*-baseline.png`
 - shot: gauntlet/shots-r4/r4-bar-gap-tz.png
 - verdict: Globe + America/Phoenix row appears under the month like zcal; bar still wins with live clock + am/pm toggle we omit on purpose.
 - commit: db7aa34
+
+## r5 — contrast: sage-open day fill (bar A/B)
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r5-contrast-sage.png · bar: gauntlet/shots-r4/bar-r5-zcal-booking.png
+- verdict: Open days darker sage vs cream — closer to zcal’s light-blue open circles; bar still cleaner white field + blue brand.
+- commit: afdda81
+- bar A/B: yes (every 5th)
