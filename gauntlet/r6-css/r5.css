@@ -1,0 +1,26 @@
+/* r5 contrast: open-day wash closer to zcal soft cue (bar A/B) */
+:root {
+  --sage-open: #c8d6e8 !important;
+  --sage-open-text: #142033 !important;
+}
+.cal-day {
+  border-radius: 999px !important;
+  aspect-ratio: 1;
+  width: 100%;
+  max-width: 2.65rem;
+  margin-inline: auto;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+.cal-day.in-month.is-open:not(.is-active) {
+  background: #c8d6e8 !important;
+  color: #142033 !important;
+}
+.cal-day.in-month.is-open.is-today:not(.is-active) {
+  box-shadow: inset 0 0 0 1.5px #9e1830 !important;
+}
+.cal-grid {
+  gap: 0.35rem 0.25rem !important;
+  justify-items: center;
+}
