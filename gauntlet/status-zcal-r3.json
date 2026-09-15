@@ -65,11 +65,11 @@
   },
   "repo": "https://github.com/Btheriot83/buildgames-zcal",
   "doNotMessageBrandon": true,
-  "finishedAtUtc": "2026-09-15T04:39:56Z",
-  "finishedAtPt": "2026-09-14 9:39 PM PT",
+  "finishedAtUtc": "2026-09-15T04:41:31Z",
+  "finishedAtPt": "2026-09-14 9:41 PM PT",
   "liveSmoke": {
     "ok": true,
-    "atPt": "2026-09-14 9:39 PM PT",
+    "atPt": "2026-09-14 9:41 PM PT",
     "checks": [
       "GET / 200 \u2014 Set availability + Book with Maya secondary",
       "GET /desk 200 \u2014 Maya Ortega",
@@ -78,6 +78,15 @@
       "Flat booking chrome \u2014 no decorative gradients"
     ]
   },
-  "mainSha": "pending",
-  "prs": []
+  "mainSha": "6123347",
+  "prs": [
+    "https://github.com/Btheriot83/buildgames-zcal/pull/3",
+    "https://github.com/Btheriot83/buildgames-zcal/pull/4",
+    "https://github.com/Btheriot83/buildgames-zcal/pull/5"
+  ],
+  "deploy": {
+    "url": "https://buildgames-zcal.vercel.app",
+    "deploymentId": "dpl_HKTXthPZ5i6xH9ZPm78XC1PpDX2R",
+    "readyState": "READY"
+  }
 }
