@@ -50,4 +50,6 @@ Sundial covers personal availability → public page → book → local calendar
 
 ## License
 
+**Demo:** https://buildgames-zcal.vercel.app  
+
 Built for Brandon Theriot / Build Games contest window.
