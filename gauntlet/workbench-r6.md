@@ -72,3 +72,10 @@ Bar comps: `shots-r6/bar-zcal-*.png` · baselines: `shots-r6/r0-baseline-*.png`
 - verdict: Hard flat field; pink/sage/emoji cheese gone; original zcal still wins SaaS blue polish + OAuth/media depth — Clearline honest closer on anti-cheese materials, not a beat.
 - commit: 66a95b7
 - bar A/B: yes (every 5th)
+
+
+## critic fix — host photo visible (empty grey slab)
+- files: src/app/globals.css, gauntlet/r6-css/r11-host-photo.css, src/components/BookingPage.tsx
+- shot: gauntlet/shots-r6/r11-host-photo-fix.png (no reduced-motion — critic path)
+- verdict: Photo opacity forced to 1; Maya contact-sheet returns; grey linen slab gone. Legacy Courtyard video-hide rule was the cause.
+- commit: f04a774
