@@ -2251,3 +2251,26 @@ html, body {
   background: #c5d0dc !important;
   color: #121416 !important;
 }
+/* r3 buttons: slot chips full-width denser like zcal column */
+.slot-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 0.35rem !important;
+  max-width: 11.5rem;
+}
+.slot-chip {
+  min-height: 2.55rem !important;
+  width: 100% !important;
+  justify-content: center;
+  padding: 0.55rem 0.9rem !important;
+  font-size: 0.9rem !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.01em;
+}
+.slot-groups {
+  display: flex !important;
+  flex-direction: column;
+  gap: 0.65rem !important;
+  align-items: flex-start;
+}
