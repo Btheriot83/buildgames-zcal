@@ -2973,3 +2973,563 @@ html, body {
 
 /* r20: cut assist from left rail first screen */
 .book-host .assist-box { display: none !important; }
+
+/* ===== ELEVATE vs SavvyCal + Cal.com — Clearline locked ===== */
+
+/* elevate1: specify-the-look — Cal.com white canvas, black CTA, cool field */
+.book-shell.shell {
+  max-width: 1040px !important;
+  padding-top: 1.25rem !important;
+  padding-bottom: 3rem !important;
+}
+.book-shell .site-header {
+  margin-bottom: 1rem !important;
+}
+.book-stage {
+  max-width: 980px !important;
+  border: 1px solid #d8dce0 !important;
+  border-radius: 14px !important;
+  background: #ffffff !important;
+}
+.confirm-cta.btn.primary,
+.book-shell .btn.primary {
+  background: #121416 !important;
+  color: #f7f8f6 !important;
+  border-color: #121416 !important;
+  border-radius: 8px !important;
+}
+.confirm-cta.btn.primary:hover,
+.book-shell .btn.primary:hover {
+  background: #000 !important;
+  border-color: #000 !important;
+}
+
+/* elevate2: SavvyCal week-strip density */
+.pick-toolbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+}
+.pick-toolbar-left { min-width: 0; }
+.cal-mode-toggle {
+  display: inline-flex;
+  gap: 0;
+  border: 1px solid #d4d7db;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.mode-chip {
+  appearance: none;
+  border: 0;
+  background: #fff;
+  color: #5c636a;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+}
+.mode-chip + .mode-chip { border-left: 1px solid #d4d7db; }
+.mode-chip.is-active {
+  background: #121416;
+  color: #f7f8f6;
+}
+.week-strip-wrap {
+  margin-bottom: 1rem;
+}
+.week-strip-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.55rem;
+}
+.week-range {
+  margin: 0;
+  font-size: 0.78rem;
+  color: #5c636a;
+  letter-spacing: 0.02em;
+}
+.week-nav {
+  min-width: 2rem !important;
+  font-size: 1.15rem !important;
+  color: #121416 !important;
+  border: 0 !important;
+}
+.week-strip {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.4rem;
+}
+.week-day {
+  appearance: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.55rem 0.25rem 0.45rem;
+  border: 1px solid #d4d7db;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  font: inherit;
+  color: #121416;
+  min-height: 4.25rem;
+  transition: background 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+.week-day:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+  background: #f6f7f8;
+}
+.week-day-wd {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #7a828c;
+}
+.week-day-num {
+  font-size: 1.15rem;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.week-day-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #c41e3a;
+  margin-top: 0.1rem;
+}
+.week-day.is-open:not(.is-active):not(:disabled) {
+  background: #d5dbe2;
+  border-color: #c5ccd4;
+  color: #152033;
+}
+.week-day.is-open:not(.is-active):not(:disabled) .week-day-wd { color: #3a4654; }
+.week-day.is-active {
+  background: #121416 !important;
+  border-color: #121416 !important;
+  color: #f7f8f6 !important;
+  box-shadow: inset 0 0 0 2px #c41e3a;
+}
+.week-day.is-active .week-day-wd { color: #c8ced4 !important; }
+.week-day.is-active .week-day-dot { background: #f7f8f6; }
+.week-day.is-today:not(.is-active) .week-day-num {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* elevate3: slots as the hero */
+.elevate-split[data-mode="week"] {
+  grid-template-columns: 1fr !important;
+  gap: 0 !important;
+}
+.elevate-split[data-mode="week"] .pick-cal { display: none !important; }
+.elevate-split[data-mode="week"] .pick-slots.slot-pane {
+  border-left: 0 !important;
+  padding-left: 0 !important;
+  min-height: 14rem;
+}
+.elevate-split[data-mode="month"] {
+  grid-template-columns: minmax(0, 1fr) minmax(11rem, 14rem) !important;
+}
+.slots-hero .slot-heading {
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.65rem !important;
+}
+.slot-grid-hero {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(7.25rem, 1fr)) !important;
+  gap: 0.45rem !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+.slots-hero .slot-chip {
+  min-height: 2.55rem !important;
+  font-size: 0.92rem !important;
+  font-weight: 550 !important;
+  border-radius: 8px !important;
+  border: 1.5px solid #c5cad0 !important;
+  background: #fff !important;
+}
+.slots-hero .slot-chip:hover {
+  border-color: #121416 !important;
+  background: #f4f5f4 !important;
+}
+.slots-hero .slot-chip.is-active {
+  background: #121416 !important;
+  color: #f7f8f6 !important;
+  border-color: #121416 !important;
+}
+.slot-groups-flat { gap: 0 !important; }
+
+/* elevate4: hairline host card */
+.book-stage {
+  grid-template-columns: minmax(11.5rem, 13.75rem) minmax(0, 1fr) !important;
+}
+.book-host {
+  padding: 1.15rem 1rem 1.25rem !important;
+}
+.host-portrait {
+  width: 3.5rem !important;
+  height: 3.5rem !important;
+  max-width: 3.5rem !important;
+  border: 1px solid #d0d4d8 !important;
+  margin-bottom: 0.65rem !important;
+}
+.host-name.display {
+  font-family: var(--font-display), Georgia, serif !important;
+  font-size: 1.12rem !important;
+  letter-spacing: -0.02em !important;
+}
+.host-headline {
+  font-size: 0.82rem !important;
+  color: #5c636a !important;
+}
+.host-tz {
+  font-size: 0.72rem !important;
+  color: #8a929a !important;
+  margin-bottom: 0.75rem !important;
+}
+.host-meeting-title {
+  font-size: 0.95rem !important;
+  margin: 0 0 0.45rem !important;
+}
+.book-job-label {
+  font-size: 1.25rem !important;
+  font-weight: 650 !important;
+  letter-spacing: -0.03em !important;
+}
+
+/* elevate5: cut chrome */
+.book-shell .site-nav a[href="/"] { display: none; }
+.assist-box { margin-top: 0.75rem !important; }
+.card-meeting-chip {
+  font-size: 0.75rem !important;
+  color: #6a727a !important;
+}
+
+/* elevate6: make-it-alive — week/slot enter */
+@keyframes elevate-slot-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.slots-hero .slot-chip {
+  animation: elevate-slot-in 220ms ease both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .slots-hero .slot-chip { animation: none !important; }
+  .week-day { transition: none !important; }
+}
+
+/* elevate2: cut-elements — booker-as-product, no full site chrome */
+.book-shell-product .book-brand-rail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+  max-width: 980px;
+  margin-inline: auto;
+}
+.book-desk-link {
+  font-size: 0.82rem;
+  color: #6a727a;
+  text-decoration: none;
+}
+.book-desk-link:hover { color: #121416; }
+.assist-deferred {
+  opacity: 0.85;
+  border-top: 1px dashed #e2e5e8 !important;
+}
+.assist-deferred .assist-summary {
+  font-size: 0.72rem !important;
+}
+
+/* elevate4: hairline host — even quieter rail */
+.book-stage {
+  grid-template-columns: minmax(10.5rem, 12.5rem) minmax(0, 1fr) !important;
+}
+.host-portrait {
+  width: 3rem !important;
+  height: 3rem !important;
+  max-width: 3rem !important;
+}
+.meet-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+.meet-chip {
+  appearance: none;
+  border: 1px solid #d0d4d8;
+  background: #fff;
+  border-radius: 999px;
+  padding: 0.28rem 0.65rem;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: #121416;
+}
+.meet-chip.is-active {
+  background: #121416;
+  color: #f7f8f6;
+  border-color: #121416;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+/* elevate6: confirm one-screen Cal.com restraint */
+.confirm-flow {
+  max-width: 26rem;
+}
+.confirm-flow .panel-title {
+  font-size: 1.35rem;
+  letter-spacing: -0.03em;
+  margin: 0.35rem 0 0.75rem;
+}
+.confirm-summary {
+  background: #f4f5f4 !important;
+  border: 1px solid #d4d7db !important;
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-bottom: 1rem;
+}
+.confirm-cta.btn.primary {
+  width: 100%;
+  min-height: 3.1rem !important;
+  font-size: 0.98rem !important;
+  font-weight: 650 !important;
+  letter-spacing: -0.01em;
+}
+.back-link {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: #6a727a;
+  font: inherit;
+  font-size: 0.82rem;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 0.35rem;
+}
+.back-link:hover { color: #121416; }
+
+/* elevate7: remove-ai-tells retention */
+.book-stage, .week-day, .slot-chip, .meet-chip, .mode-chip, .confirm-summary {
+  background-image: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+}
+.week-day.is-active {
+  box-shadow: inset 0 0 0 2px #c41e3a !important;
+}
+
+/* elevate3: home Cal.com white-canvas product framing */
+.home-shell.shell {
+  max-width: 1040px;
+}
+.home-main {
+  background: #fff;
+  border: 1px solid #d4d7db;
+  border-radius: 14px;
+  padding: 1.75rem 1.5rem 1.6rem;
+  gap: 1.5rem;
+}
+.home-shell .site-header { margin-bottom: 1rem !important; }
+.home-shell .btn.primary {
+  background: #121416 !important;
+  border-color: #121416 !important;
+  color: #f7f8f6 !important;
+  border-radius: 8px !important;
+}
+.home-shell .btn.secondary {
+  border-radius: 8px !important;
+  border-color: #121416 !important;
+  color: #121416 !important;
+  background: #fff !important;
+}
+.home-points li::before { color: #c41e3a !important; }
+.job-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+  padding: 0;
+  margin: 1rem 0 1.15rem;
+  list-style: none;
+}
+.job-strip li {
+  border: 1px solid #d4d7db !important;
+  border-radius: 10px !important;
+  background: #f4f5f4 !important;
+  padding: 0.65rem 0.7rem !important;
+  display: flex;
+  gap: 0.45rem;
+  align-items: flex-start;
+}
+.job-strip .job-n {
+  font-family: var(--font-mono), "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 650;
+  color: #c41e3a;
+}
+.job-strip strong { display: block; font-size: 0.84rem; color: #121416; }
+.job-strip em {
+  display: block;
+  font-style: normal;
+  font-size: 0.72rem;
+  color: #6a727a;
+  margin-top: 0.15rem;
+}
+
+/* elevate4: remove-ai-tells — cool slate open wash (not sky-blue AI default) */
+.week-day.is-open:not(.is-active):not(:disabled),
+.cal-day.in-month.is-open:not(.is-active) {
+  background: #d5dbe2 !important;
+  color: #152033 !important;
+  border-color: #c5ccd4 !important;
+}
+.cal-day.in-month.is-open.is-active,
+.cal-day.in-month.is-active,
+.week-day.is-active {
+  background: #121416 !important;
+  color: #f7f8f6 !important;
+  box-shadow: inset 0 0 0 2px #c41e3a !important;
+}
+.cal-nav .btn.ghost.sm { color: #121416 !important; }
+
+/* elevate7: make-it-alive — week strip + mode pill (transitions.dev tabs feel) */
+.week-strip {
+  animation: elevate-week-in 240ms ease both;
+}
+@keyframes elevate-week-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.mode-chip {
+  transition: background 140ms ease, color 140ms ease;
+}
+.week-day:not(:disabled):hover {
+  border-color: #121416;
+}
+@media (prefers-reduced-motion: reduce) {
+  .week-strip { animation: none !important; }
+}
+
+/* elevate8: denser slot hero (SavvyCal density) */
+.slot-grid-hero {
+  grid-template-columns: repeat(auto-fill, minmax(6.5rem, 1fr)) !important;
+  gap: 0.4rem !important;
+}
+.slots-hero .slot-chip {
+  min-height: 2.4rem !important;
+  font-size: 0.88rem !important;
+}
+.week-day {
+  min-height: 4.5rem;
+  padding-top: 0.6rem;
+}
+.week-day-num { font-size: 1.25rem; }
+
+/* elevate9: duration chips = black selected like Cal.com */
+.meet-chip.is-active {
+  background: #121416 !important;
+  color: #f7f8f6 !important;
+  border-color: #121416 !important;
+}
+.meet-chip {
+  border-radius: 999px !important;
+  border: 1px solid #c5cad0 !important;
+  background: #fff !important;
+}
+
+/* elevate10: specify-the-look — restore Source Serif host name (display lock) */
+.host-name.display {
+  font-family: var(--font-display), "Source Serif 4", Georgia, serif !important;
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.025em !important;
+  color: #121416 !important;
+}
+
+/* elevate8: open-day hour counts on week strip */
+.week-day-dot { display: none !important; }
+.week-day-count {
+  font-size: 0.62rem;
+  font-weight: 650;
+  color: #c41e3a;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  margin-top: 0.15rem;
+}
+.week-day.is-active .week-day-count { color: #f0c4cc; }
+.week-day-count.is-empty {
+  color: #c5cad0;
+  font-weight: 400;
+}
+
+/* elevate9: quieter mode toggle */
+.cal-mode-toggle.is-quiet {
+  border: 0;
+  background: transparent;
+  gap: 0.35rem;
+  overflow: visible;
+}
+.cal-mode-toggle.is-quiet .mode-chip {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: #6a727a;
+  padding: 0.3rem 0.65rem;
+}
+.cal-mode-toggle.is-quiet .mode-chip + .mode-chip { border-left: 0; }
+.cal-mode-toggle.is-quiet .mode-chip.is-active {
+  background: #121416;
+  color: #f7f8f6;
+  border-color: #121416;
+}
+
+/* elevate11: cut assist from public booker */
+.book-host .assist-box { display: none !important; }
+
+/* elevate11: confirm CTA stays ink even when disabled look is softer */
+.confirm-cta.btn.primary:disabled {
+  background: #9aa1a8 !important;
+  border-color: #9aa1a8 !important;
+  color: #f7f8f6 !important;
+  opacity: 1;
+}
+
+/* elevate12: critic gap — tighter open marks, quieter counts */
+.week-day-count {
+  font-size: 0.58rem;
+  opacity: 0.92;
+}
+.week-day {
+  border-radius: 8px;
+}
+.slots-hero .slot-heading {
+  letter-spacing: -0.02em;
+}
+.book-stage {
+  border-radius: 12px !important;
+}

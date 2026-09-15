@@ -6,17 +6,20 @@ import Link from "next/link";
 import { useSundial } from "@/lib/useSundial";
 import { availableSlots, nextDays } from "@/lib/slots";
 import {
+  addDaysKey,
   addMonths,
+  buildDayStrip,
   buildMonthGrid,
   monthLabel,
+  startOfWeekMonday,
   todayKeyLocal,
+  weekRangeLabel,
 } from "@/lib/calendar";
 import { Toast } from "./Toast";
 import { SuccessCheck } from "./SuccessCheck";
 import { SiteHeader } from "./SiteHeader";
 import type { SlotOption } from "@/lib/slots";
 import type { MeetingType as MT } from "@/lib/types";
-import type { AssistResponse } from "@/lib/assist";
 
 type Step = "pick" | "confirm" | "done";
 
@@ -30,6 +33,8 @@ export function BookingPage({ slug }: { slug: string }) {
 
   const [meetingId, setMeetingId] = useState<string | null>(null);
   const [month, setMonth] = useState(now);
+  const [weekStart, setWeekStart] = useState(() => startOfWeekMonday(todayKeyLocal()));
+  const [calMode, setCalMode] = useState<"week" | "month">("week");
   const [dateKey, setDateKey] = useState<string | null>(null);
   const [slot, setSlot] = useState<SlotOption | null>(null);
   const [step, setStep] = useState<Step>("pick");
@@ -37,9 +42,6 @@ export function BookingPage({ slug }: { slug: string }) {
   const [email, setEmail] = useState("");
   const [note, setNote] = useState("");
   const [err, setErr] = useState<string | null>(null);
-  const [intent, setIntent] = useState("");
-  const [assist, setAssist] = useState<AssistResponse | null>(null);
-  const [assistLoading, setAssistLoading] = useState(false);
 
   const daysAhead = useMemo(() => nextDays(21), []);
 
@@ -53,6 +55,7 @@ export function BookingPage({ slug }: { slug: string }) {
       if (availableSlots(api.state, mt, dk).length > 0) {
         const [y, m] = dk.split("-").map(Number);
         setMonth({ y, m0: m - 1 });
+        setWeekStart(startOfWeekMonday(dk));
         setDateKey(dk);
         return;
       }
@@ -121,50 +124,7 @@ export function BookingPage({ slug }: { slug: string }) {
     return availableSlots(state, meeting, key).length > 0;
   };
 
-  const runAssist = async () => {
-    if (!meeting) return;
-    setAssistLoading(true);
-    try {
-      const candidates = daysAhead.map((dk) => ({
-        dateKey: dk,
-        slots: availableSlots(state, meeting, dk),
-      })).filter((c) => c.slots.length > 0);
-      const res = await fetch("/api/assist", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          hostName: state.profile.displayName,
-          guestIntent: intent,
-          meeting,
-          availability: state.availability,
-          candidates: candidates.slice(0, 10),
-        }),
-      });
-      if (!res.ok) throw new Error("assist failed");
-      const data = (await res.json()) as AssistResponse;
-      setAssist(data);
-    } catch {
-      setAssist(null);
-      api.flash("Assist unavailable — browse the calendar");
-    } finally {
-      setAssistLoading(false);
-    }
-  };
 
-  const applySuggestion = (s: AssistResponse["suggestions"][0]) => {
-    const [y, m] = s.dateKey.split("-").map(Number);
-    setMonth({ y, m0: m - 1 });
-    setDateKey(s.dateKey);
-    if (meeting) {
-      const found = availableSlots(state, meeting, s.dateKey).find(
-        (x) => x.startIso === s.startIso
-      );
-      if (found) {
-        setSlot(found);
-        setStep("confirm");
-      }
-    }
-  };
 
   const submit = async () => {
     if (!meeting || !slot) return;
@@ -225,8 +185,16 @@ export function BookingPage({ slug }: { slug: string }) {
   }
 
   return (
-    <div className="shell book-shell">
-      <SiteHeader slug={slug} />
+    <div className="shell book-shell book-shell-product">
+      <div className="book-brand-rail" aria-label="Sundial">
+        <Link className="brand" href="/">
+          <span className="brand-mark" aria-hidden />
+          <span className="brand-name">Sundial</span>
+        </Link>
+        <Link className="book-desk-link" href="/desk">
+          Host desk
+        </Link>
+      </div>
       <Toast message={api.toast} />
 
       <div className="book-stage t-texts-reveal" data-reveal="in">
@@ -262,7 +230,6 @@ export function BookingPage({ slug }: { slug: string }) {
                   setMeetingId(m.id);
                   setSlot(null);
                   setStep("pick");
-                  setAssist(null);
                 }}
               >
                 <span className="meet-chip-dur mono">{m.durationMin} min</span>
@@ -271,48 +238,8 @@ export function BookingPage({ slug }: { slug: string }) {
             ))}
           </div>
 
-          <details className="assist-box">
-            <summary className="assist-summary">Need a suggested hour?</summary>
-            <label className="assist-label">
-              Anything I should know?
-              <input
-                className="t-input"
-                placeholder="e.g. intro before noon, short check-in…"
-                value={intent}
-                onChange={(e) => setIntent(e.target.value)}
-              />
-            </label>
-            <button
-              type="button"
-              className="btn secondary sm assist-btn"
-              disabled={assistLoading || !meeting}
-              onClick={runAssist}
-            >
-              {assistLoading ? "Checking open hours…" : "Find a good hour"}
-            </button>
-            {assist ? (
-              <div className="assist-result">
-                <p className="assist-copy">{assist.copy}</p>
-                <ul className="assist-suggestions">
-                  {assist.suggestions.map((s) => (
-                    <li key={s.startIso}>
-                      <button
-                        type="button"
-                        className="assist-chip"
-                        onClick={() => applySuggestion(s)}
-                      >
-                        <strong>
-                          {s.dateKey} · {s.label}
-                        </strong>
-                        <span>{s.reason}</span>
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-                <p className="assist-note mono">{assist.mode === "local" ? "Local ranking" : "Live model"} · {assist.note}</p>
-              </div>
-            ) : null}
-          </details>
+          {/* assist deferred to desk — cut from public booker */}
+
         </aside>
 
         <section className="book-card">
@@ -375,19 +302,111 @@ export function BookingPage({ slug }: { slug: string }) {
                 disabled={!name.trim() || !email.includes("@")}
                 onClick={submit}
               >
-                Confirm booking
+                Confirm time
               </button>
             </div>
           ) : (
-            <div className="pick-flow">
-              <h2 className="book-job-label">Select date and time</h2>
-              {meeting ? (
-                <p className="card-meeting-chip mono">
-                  {meeting.title} · {meeting.durationMin} min · {state.profile.timezone.replace(/_/g, " ")}
-                </p>
-              ) : null}
-              <div className="pick-split">
-              <div className="pick-cal">
+            <div className="pick-flow elevate-pick">
+              <div className="pick-toolbar">
+                <div className="pick-toolbar-left">
+                  <h2 className="book-job-label">Pick a time</h2>
+                  {meeting ? (
+                    <p className="card-meeting-chip mono">
+                      {meeting.durationMin} min · {state.profile.timezone.replace(/_/g, " ")}
+                    </p>
+                  ) : null}
+                </div>
+                <div className="cal-mode-toggle is-quiet" role="tablist" aria-label="Calendar density">
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={calMode === "week"}
+                    className={`mode-chip ${calMode === "week" ? "is-active" : ""}`}
+                    onClick={() => setCalMode("week")}
+                  >
+                    Week
+                  </button>
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={calMode === "month"}
+                    className={`mode-chip ${calMode === "month" ? "is-active" : ""}`}
+                    onClick={() => setCalMode("month")}
+                  >
+                    Full month
+                  </button>
+                </div>
+              </div>
+
+              <div className="week-strip-wrap" hidden={calMode !== "week"}>
+                <div className="week-strip-head">
+                  <button
+                    type="button"
+                    className="btn ghost sm week-nav"
+                    aria-label="Previous week"
+                    onClick={() => setWeekStart((w) => addDaysKey(w, -7))}
+                  >
+                    ‹
+                  </button>
+                  <p className="week-range mono">
+                    {weekRangeLabel(weekStart, addDaysKey(weekStart, 6))}
+                  </p>
+                  <button
+                    type="button"
+                    className="btn ghost sm week-nav"
+                    aria-label="Next week"
+                    onClick={() => setWeekStart((w) => addDaysKey(w, 7))}
+                  >
+                    ›
+                  </button>
+                </div>
+                <div className="week-strip" role="listbox" aria-label="Choose a day this week">
+                  {buildDayStrip(weekStart, 7, today).map((d) => {
+                    const open = !d.isPast && dayHasSlots(d.key);
+                    const disabled = d.isPast || !dayHasSlots(d.key);
+                    const count =
+                      meeting && open
+                        ? availableSlots(state, meeting, d.key).length
+                        : 0;
+                    return (
+                      <button
+                        key={d.key}
+                        type="button"
+                        role="option"
+                        aria-selected={dateKey === d.key}
+                        disabled={disabled}
+                        className={[
+                          "week-day",
+                          d.isToday ? "is-today" : "",
+                          dateKey === d.key ? "is-active" : "",
+                          open ? "is-open" : "",
+                        ]
+                          .filter(Boolean)
+                          .join(" ")}
+                        onClick={() => {
+                          setDateKey(d.key);
+                          setSlot(null);
+                          const [y, m] = d.key.split("-").map(Number);
+                          setMonth({ y, m0: m - 1 });
+                        }}
+                      >
+                        <span className="week-day-wd">{d.weekdayShort}</span>
+                        <span className="week-day-num">{d.day}</span>
+                        {open ? (
+                          <span className="week-day-count mono">{count}</span>
+                        ) : (
+                          <span className="week-day-count is-empty" aria-hidden>
+                            ·
+                          </span>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="pick-split elevate-split" data-mode={calMode}>
+              <div className="pick-cal" hidden={calMode !== "month"}>
               <div className="cal-head">
                 <h3 className="panel-title cal-month-label">{monthLabel(month.y, month.m0)}</h3>
                 <div className="cal-nav">
@@ -437,6 +456,7 @@ export function BookingPage({ slug }: { slug: string }) {
                         .join(" ")}
                       onClick={() => {
                         setDateKey(cell.key);
+                        setWeekStart(startOfWeekMonday(cell.key));
                         setSlot(null);
                       }}
                     >
@@ -451,69 +471,44 @@ export function BookingPage({ slug }: { slug: string }) {
               </div>
               </div>
 
-              <div className="slot-pane pick-slots" key={dateKey || "none"} data-transition="clearline-panel">
+              <div className="slot-pane pick-slots slots-hero" key={dateKey || "none"} data-transition="clearline-panel">
                 <h3 className="slot-heading">
                   {dateKey ? (
-                    <>
-                      <span>
-                        {new Date(dateKey + "T12:00:00").toLocaleDateString(undefined, {
-                          weekday: "long",
-                          month: "short",
-                          day: "numeric",
-                        })}
-                      </span>
-                    </>
+                    <span>
+                      {new Date(dateKey + "T12:00:00").toLocaleDateString(undefined, {
+                        weekday: "long",
+                        month: "short",
+                        day: "numeric",
+                      })}
+                    </span>
                   ) : (
-                    "Pick an open day"
+                    "Open hours"
                   )}
                 </h3>
-                {dateKey ? (
-                  <div className="slot-tz-select" aria-label="Timezone">
-                    <span className="mono">{state.profile.timezone.replace(/_/g, " ")} (local)</span>
-                  </div>
-                ) : null}
                 {!dateKey ? (
                   <div className="slot-empty">
-                    <Image
-                      src="/assets/empty-book.jpg"
-                      alt=""
-                      width={220}
-                      height={165}
-                      className="slot-empty-art"
-                    />
-                    <p className="muted">Open days show available hours — tap one to see times.</p>
+                    <p className="muted">Choose an open day.</p>
                   </div>
                 ) : slots.length === 0 ? (
-                  <p className="muted">No open hours left this day — try another open day.</p>
+                  <p className="muted">No hours left — pick another day.</p>
                 ) : (
-                  <div className="slot-groups">
-                    {[
-                      { title: "Morning", items: slots.filter((s) => s.startMin < 12 * 60) },
-                      { title: "Afternoon", items: slots.filter((s) => s.startMin >= 12 * 60 && s.startMin < 17 * 60) },
-                      { title: "Evening", items: slots.filter((s) => s.startMin >= 17 * 60) },
-                    ]
-                      .filter((g) => g.items.length)
-                      .map((g) => (
-                        <div key={g.title} className="slot-group">
-                          <p className="slot-group-label">{g.title}</p>
-                          <div className="slot-grid">
-                            {g.items.map((s, i) => (
-                              <button
-                                key={s.startIso}
-                                type="button"
-                                className={`slot-chip mono ${slot?.startIso === s.startIso ? "is-active" : ""}`}
-                                style={{ animationDelay: `${i * 18}ms` }}
-                                onClick={() => {
-                                  setSlot(s);
-                                  setStep("confirm");
-                                }}
-                              >
-                                {s.label}
-                              </button>
-                            ))}
-                          </div>
-                        </div>
+                  <div className="slot-groups slot-groups-flat">
+                    <div className="slot-grid slot-grid-hero">
+                      {slots.map((s, i) => (
+                        <button
+                          key={s.startIso}
+                          type="button"
+                          className={`slot-chip mono ${slot?.startIso === s.startIso ? "is-active" : ""}`}
+                          style={{ animationDelay: `${i * 16}ms` }}
+                          onClick={() => {
+                            setSlot(s);
+                            setStep("confirm");
+                          }}
+                        >
+                          {s.label}
+                        </button>
                       ))}
+                    </div>
                   </div>
                 )}
               </div>

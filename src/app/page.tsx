@@ -15,8 +15,7 @@ export default function Home() {
           </h1>
           <p className="lede home-lede">{PRODUCT.tagline}</p>
           <p className="home-body">
-            Mark open windows on the desk. Share one page. Guests pick a day and take an hour —
-            written to a local calendar. No accounts, no billing fog.
+            Open the week. Guests take a slot. One confirm — local calendar, no account fog.
           </p>
 
           <ol className="job-strip" aria-label="How Sundial works">
@@ -38,7 +37,7 @@ export default function Home() {
               <span className="job-n">3</span>
               <span>
                 <strong>Guest books a slot</strong>
-                <em>Day → hour → confirm</em>
+                <em>Day → slot → confirm</em>
               </span>
             </li>
           </ol>
@@ -52,8 +51,8 @@ export default function Home() {
             </Link>
           </div>
           <ul className="home-points">
-            <li>Open days light up on the month card</li>
-            <li>Clearline ranks hours from your windows</li>
+            <li>Week strip shows open days first</li>
+            <li>Slots stay the hero — not the chrome</li>
             <li>Local calendar — export anytime</li>
           </ul>
         </div>
@@ -78,7 +77,7 @@ export default function Home() {
               <source src="/assets/clearline-drift.webm" type="video/webm" />
             </video>
           </div>
-          <p className="visual-caption mono">Graphite desk · cool paper · open hours</p>
+          <p className="visual-caption mono">Cool paper · week density · black confirm</p>
         </div>
       </main>
     </div>
