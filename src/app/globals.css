@@ -4293,3 +4293,70 @@ a.surface-card:hover {
   box-shadow: none !important;
   background-image: none !important;
 }
+
+
+/* ===== craft3: typography elevation — weight/color not size ladder ===== */
+.book-job-label {
+  font-family: var(--font-sans), "IBM Plex Sans", system-ui, sans-serif !important;
+  font-size: 1.02rem !important;
+  font-weight: 650 !important;
+  letter-spacing: -0.025em !important;
+  color: #121416 !important;
+}
+.card-meeting-chip {
+  font-size: 0.7rem !important;
+  font-weight: 500 !important;
+  color: #6a727a !important;
+  letter-spacing: 0.01em !important;
+}
+.week-range {
+  font-weight: 500 !important;
+  font-size: 0.74rem !important;
+  color: #5c636a !important;
+}
+.week-day-wd {
+  font-size: 0.62rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+}
+.week-day-num {
+  font-size: 1.05rem !important;
+  font-weight: 650 !important;
+  font-variant-numeric: tabular-nums;
+}
+.week-slot {
+  font-family: var(--font-mono), "IBM Plex Mono", ui-monospace, monospace !important;
+  font-size: 0.66rem !important;
+  font-weight: 500 !important;
+}
+.host-name.display {
+  font-family: var(--font-display), "Source Serif 4", Georgia, serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.03em !important;
+}
+.home-shell-levels .home-job {
+  font-family: var(--font-display), "Source Serif 4", Georgia, serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.03em !important;
+  line-height: 1.12 !important;
+}
+.home-shell-levels .home-lede {
+  font-size: 1.02rem !important;
+  font-weight: 450 !important;
+  color: #3a4148 !important;
+  max-width: 36ch;
+}
+.home-shell-levels .home-body {
+  font-size: 0.92rem !important;
+  color: #5c636a !important;
+  max-width: 40ch;
+}
+.confirm-flow .panel-title {
+  font-size: 1.05rem !important;
+  font-weight: 650 !important;
+  letter-spacing: -0.02em !important;
+}
+.confirm-summary strong {
+  font-weight: 650 !important;
+  letter-spacing: -0.015em;
+}
