@@ -271,7 +271,8 @@ export function BookingPage({ slug }: { slug: string }) {
             ))}
           </div>
 
-          <div className="assist-box">
+          <details className="assist-box">
+            <summary className="assist-summary">Need a suggested hour?</summary>
             <label className="assist-label">
               Anything I should know?
               <input
@@ -311,7 +312,7 @@ export function BookingPage({ slug }: { slug: string }) {
                 <p className="assist-note mono">{assist.mode === "local" ? "Local ranking" : "Live model"} · {assist.note}</p>
               </div>
             ) : null}
-          </div>
+          </details>
         </aside>
 
         <section className="book-card">
@@ -385,6 +386,8 @@ export function BookingPage({ slug }: { slug: string }) {
                   {meeting.title} · {meeting.durationMin} min · {state.profile.timezone.replace(/_/g, " ")}
                 </p>
               ) : null}
+              <div className="pick-split">
+              <div className="pick-cal">
               <div className="cal-head">
                 <h3 className="panel-title cal-month-label">{monthLabel(month.y, month.m0)}</h3>
                 <div className="cal-nav">
@@ -446,8 +449,9 @@ export function BookingPage({ slug }: { slug: string }) {
               <div className="book-tz-foot" aria-label="Timezone">
                 <span className="book-tz-label mono">{state.profile.timezone.replace(/_/g, " ")}</span>
               </div>
+              </div>
 
-              <div className="slot-pane" key={dateKey || "none"} data-transition="clearline-panel">
+              <div className="slot-pane pick-slots" key={dateKey || "none"} data-transition="clearline-panel">
                 <h3 className="slot-heading">
                   {dateKey ? (
                     <>
@@ -512,6 +516,7 @@ export function BookingPage({ slug }: { slug: string }) {
                       ))}
                   </div>
                 )}
+              </div>
               </div>
             </div>
           )}
