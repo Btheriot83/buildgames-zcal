@@ -1,0 +1,83 @@
+{
+  "product": "Sundial",
+  "slug": "zcal",
+  "phase": "B3",
+  "demoUrl": "https://buildgames-zcal.vercel.app",
+  "barUrl": "https://zcal.co/",
+  "barBookingExample": "https://zcal.co/i/qnac7kcd",
+  "identity": "Courtyard Meridian",
+  "identityLocked": true,
+  "reseed": false,
+  "phaseA": {
+    "done": true,
+    "techniquesDone": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "phaseB": {
+    "roundsCompleted": 5,
+    "roundsTarget": 5,
+    "workbench": "apps/zcal/gauntlet/workbench.md",
+    "latestHonestScore": 7.1
+  },
+  "phaseB2": {
+    "roundsCompleted": 10,
+    "roundsTarget": 10,
+    "workbench": "apps/zcal/gauntlet/workbench-r2.md",
+    "latestHonestScore": 8.0
+  },
+  "phaseB3": {
+    "roundsCompleted": 20,
+    "roundsTarget": 20,
+    "workbench": "apps/zcal/gauntlet/workbench-r3.md",
+    "latestHonestScore": 8.75,
+    "focus": [
+      "fonts: Newsreader host-only; IBM Plex Sans calendar chrome",
+      "contrast: deeper ink/muted; sage-open dark text; strong card strokes",
+      "buttons: 10px radius; primary ink / secondary outline / slot ink-fill active",
+      "close A/B vs live zcal booking UI (Select a day and time, open-day circles, time chips)",
+      "flat no-gradient hard bar retained"
+    ],
+    "demoHost": {
+      "slug": "maya",
+      "displayName": "Maya Ortega",
+      "timezone": "America/Phoenix"
+    },
+    "shotsDir": "apps/zcal/gauntlet/shots-r3",
+    "hardBar": {
+      "gradientsStripped": true,
+      "glassBlurKilled": true,
+      "glowKilled": true,
+      "materials": "flat + real photos",
+      "note": "B3 craft pass \u2014 no reseed"
+    }
+  },
+  "ai": {
+    "feature": "Meridian /api/assist",
+    "env": "BUILD_GAMES_LLM_API_KEY on Vercel"
+  },
+  "repo": "https://github.com/Btheriot83/buildgames-zcal",
+  "doNotMessageBrandon": true,
+  "finishedAtUtc": "2026-09-15T04:39:56Z",
+  "finishedAtPt": "2026-09-14 9:39 PM PT",
+  "liveSmoke": {
+    "ok": true,
+    "atPt": "2026-09-14 9:39 PM PT",
+    "checks": [
+      "GET / 200 \u2014 Set availability + Book with Maya secondary",
+      "GET /desk 200 \u2014 Maya Ortega",
+      "GET /b/maya 200 \u2014 Select a day and time + slots",
+      "Confirm booking \u2192 You're booked (Elena Vargas)",
+      "Flat booking chrome \u2014 no decorative gradients"
+    ]
+  },
+  "mainSha": "pending",
+  "prs": []
+}

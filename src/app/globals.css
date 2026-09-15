@@ -1113,3 +1113,395 @@ textarea.t-input {
 .book-skel .skel-card {
   background-image: none !important;
 }
+
+
+/* ===== Phase B3 — fonts / contrast / buttons vs live zcal booking (Courtyard locked) ===== */
+:root {
+  /* R2: deepen washed pairs so linen field holds contrast */
+  --ink: #16140f;
+  --ink-soft: #2e2a22;
+  --muted: #534c42;
+  --stroke: #c9beab;
+  --stroke-strong: #a89880;
+  --card: #fffdf8;
+  --book-card: #fffdf8;
+  --sage-open: #b7c9b2;
+  --sage-open-text: #243022;
+  --shadow: 0 1px 0 rgba(22, 20, 15, 0.05), 0 10px 28px rgba(22, 20, 15, 0.07);
+}
+
+/* R1: display serif ONLY for product/host titles — calendar chrome = sans */
+.book-card .panel-title,
+.slot-heading,
+.cal-head .panel-title {
+  font-family: var(--font-sans), "IBM Plex Sans", system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.book-card .panel-title {
+  font-size: 1.35rem;
+  color: var(--ink);
+  margin: 0;
+}
+.slot-heading {
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+/* R3: stronger card edge like zcal cream/white booking card */
+.book-card {
+  background: var(--book-card);
+  border: 1px solid var(--stroke-strong);
+  border-radius: 16px;
+  padding: 1.35rem 1.4rem 1.55rem;
+  box-shadow: none;
+  min-height: 540px;
+}
+.book-host {
+  background: var(--card);
+  border: 1px solid var(--stroke-strong);
+  border-radius: 16px;
+  box-shadow: none;
+  backdrop-filter: none !important;
+}
+
+/* R4–R5 + R13: button weight system — primary earns ink; secondary outlined; not all pills */
+.btn {
+  border-radius: 10px;
+  border: 1.5px solid var(--stroke-strong);
+  background: var(--card);
+  color: var(--ink);
+  padding: 0.7rem 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  box-shadow: none;
+  transition: background 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+.btn:hover {
+  transform: none;
+  border-color: var(--copper-deep);
+  background: #fff;
+}
+.btn.primary {
+  background: var(--ink);
+  color: var(--linen);
+  border-color: var(--ink);
+}
+.btn.primary:hover {
+  background: var(--copper-deep);
+  border-color: var(--copper-deep);
+  color: #fffdf8;
+}
+.btn.secondary {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.btn.secondary:hover {
+  background: color-mix(in srgb, var(--sage-soft) 35%, white);
+  border-color: var(--copper-deep);
+  color: var(--copper-deep);
+}
+.btn.ghost {
+  background: transparent;
+  border-color: var(--stroke-strong);
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+.btn.ghost:hover {
+  border-color: var(--copper);
+  color: var(--copper-deep);
+  background: color-mix(in srgb, var(--card) 80%, white);
+}
+.btn.sm {
+  padding: 0.42rem 0.7rem;
+  font-size: 0.82rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* R11: assist earns secondary weight (was washed ghost) */
+.assist-btn.btn {
+  border-color: var(--ink);
+  color: var(--ink);
+  background: transparent;
+  font-weight: 600;
+}
+.assist-btn.btn:hover:not(:disabled) {
+  background: var(--ink);
+  color: var(--linen);
+  border-color: var(--ink);
+}
+
+/* R12: confirm CTA full-width, tall, primary weight */
+.confirm-cta.btn.primary {
+  width: 100%;
+  margin-top: 0.65rem;
+  padding: 0.85rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 10px;
+}
+
+/* R6: meet cards — sans titles, decisive active border */
+.meet-card {
+  border-radius: 10px;
+  border: 1.5px solid var(--stroke);
+  background: #fff;
+  box-shadow: none;
+}
+.meet-card .meet-title {
+  font-family: var(--font-sans), "IBM Plex Sans", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: var(--ink);
+}
+.meet-card .meet-meta {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+.meet-card .meet-desc {
+  color: var(--ink-soft);
+  font-size: 0.86rem;
+}
+.meet-card.is-active {
+  border-color: var(--ink);
+  background: color-mix(in srgb, var(--sage-soft) 48%, #fff);
+  box-shadow: none;
+}
+.meet-card:hover {
+  transform: none;
+  border-color: var(--copper-deep);
+}
+
+/* R7: open-day circles — sage fill + dark ink text (zcal blue-on-tint pattern in Courtyard) */
+.cal-day {
+  font-family: var(--font-sans), "IBM Plex Sans", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-radius: 999px;
+}
+.cal-day.in-month.is-open:not(.is-active) {
+  background: var(--sage-open);
+  color: var(--sage-open-text);
+  font-weight: 600;
+  box-shadow: none;
+}
+.cal-day.in-month.is-open.is-today:not(.is-active) {
+  box-shadow: inset 0 0 0 2px var(--copper-deep);
+}
+.cal-day.is-active {
+  background: var(--ink);
+  color: #fffdf8;
+  font-weight: 600;
+  transform: none;
+  box-shadow: none;
+}
+.cal-day.in-month.is-open:not(:disabled):hover {
+  background: color-mix(in srgb, var(--copper) 28%, var(--sage-open));
+  color: var(--ink);
+}
+.cal-day:disabled,
+.cal-day.out-month {
+  color: #9a9184;
+  opacity: 1;
+}
+
+/* R8: month nav — chevron weight without pill chrome */
+.cal-nav .btn.ghost.sm {
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 8px;
+  border-color: transparent;
+  color: var(--copper-deep);
+  font-size: 1.15rem;
+  line-height: 1;
+  background: transparent;
+}
+.cal-nav .btn.ghost.sm:hover {
+  background: color-mix(in srgb, var(--sage-soft) 40%, white);
+  border-color: var(--stroke);
+  color: var(--ink);
+}
+
+/* R9: booking card job label (zcal "Select date and time") */
+.book-job-label {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-sans), "IBM Plex Sans", system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+.card-meeting-chip {
+  margin: 0 0 0.35rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
+/* R10 already in slot-heading sans above */
+
+/* R14: inputs — darker stroke, clearer labels */
+label {
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+.t-input,
+input.t-input,
+textarea.t-input {
+  border: 1.5px solid var(--stroke-strong);
+  background: #fff;
+  border-radius: 10px;
+  padding: 0.7rem 0.8rem;
+  color: var(--ink);
+}
+.t-input:focus {
+  outline: 2px solid color-mix(in srgb, var(--copper) 55%, transparent);
+  outline-offset: 1px;
+  border-color: var(--copper-deep);
+}
+
+/* R15: weekday contrast */
+.cal-weekdays {
+  color: var(--ink-soft);
+  font-weight: 600;
+  font-size: 0.7rem;
+}
+
+/* R17: time chips — mono for times, larger scan size */
+.slot-chip {
+  font-family: var(--font-mono), "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 10px;
+  border: 1.5px solid var(--stroke-strong);
+  background: #fff;
+  padding: 0.65rem 0.95rem;
+  min-width: 5.6rem;
+  text-align: center;
+  color: var(--ink);
+  box-shadow: none;
+}
+.slot-chip:hover {
+  border-color: var(--copper-deep);
+  background: color-mix(in srgb, var(--sage-soft) 28%, white);
+}
+.slot-chip.is-active {
+  background: var(--ink);
+  color: #fffdf8;
+  border-color: var(--ink);
+  box-shadow: none;
+}
+
+/* R18: denser calendar closer to zcal */
+.cal-grid {
+  gap: 0.22rem;
+  margin-bottom: 1rem;
+}
+.cal-weekdays {
+  gap: 0.22rem;
+  margin-bottom: 0.25rem;
+}
+.slot-grid {
+  gap: 0.5rem;
+}
+.slot-group-label {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* R16 host rail already solid above; tighten portrait radius */
+.host-portrait {
+  border-radius: 12px;
+  border: 1px solid var(--stroke-strong);
+}
+.host-name {
+  font-family: var(--font-display), Georgia, serif;
+  color: var(--ink);
+}
+.host-headline {
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+}
+.host-tz {
+  color: var(--muted);
+  font-weight: 500;
+}
+.eyebrow {
+  color: var(--olive);
+  font-weight: 600;
+}
+
+/* R19: home CTA pair — primary ink / secondary outlined */
+.home-shell .btn.ghost,
+.desk-hero .btn.ghost {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+.home-shell .btn.ghost:hover,
+.desk-hero .btn.ghost:hover {
+  background: color-mix(in srgb, var(--sage-soft) 30%, white);
+  border-color: var(--copper-deep);
+  color: var(--copper-deep);
+}
+
+/* R20: panels / chips flat — kill residual washes that read soft */
+.panel,
+.confirm-panel,
+.confirm-summary,
+.event-card,
+.mt-card,
+.assist-chip,
+.job-strip li {
+  box-shadow: none;
+  background-image: none !important;
+}
+.confirm-summary {
+  background: color-mix(in srgb, var(--sage-soft) 42%, white);
+  border: 1.5px solid var(--stroke-strong);
+}
+.assist-chip {
+  border: 1.5px solid var(--stroke-strong);
+  border-radius: 10px;
+  background: #fff;
+}
+.assist-chip:hover {
+  border-color: var(--ink);
+}
+.job-strip li {
+  background: var(--card);
+  border: 1px solid var(--stroke-strong);
+}
+.panel {
+  border: 1px solid var(--stroke-strong);
+  box-shadow: none;
+}
+
+/* Keep hard bar: no decorative gradients */
+.btn,
+.slot-chip,
+.meet-card,
+.cal-day,
+.book-card,
+.book-host {
+  background-image: none !important;
+}
+
+/* B3 fix: selected day must read as ink (zcal solid selected) */
+.cal-day.in-month.is-active,
+.cal-day.is-active {
+  background: #16140f !important;
+  color: #fffdf8 !important;
+  font-weight: 600;
+  transform: none;
+  box-shadow: none;
+}
+.confirm-flow .panel-title {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.6rem;
+}
+
