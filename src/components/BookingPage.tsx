@@ -442,7 +442,6 @@ export function BookingPage({ slug }: { slug: string }) {
               </div>
 
               <div className="book-tz-foot" aria-label="Timezone">
-                <span className="book-tz-globe" aria-hidden>🌐</span>
                 <span className="book-tz-label mono">{state.profile.timezone.replace(/_/g, " ")}</span>
               </div>
 
@@ -450,7 +449,6 @@ export function BookingPage({ slug }: { slug: string }) {
                 <h3 className="slot-heading">
                   {dateKey ? (
                     <>
-                      <span className="slot-globe" aria-hidden>🌐</span>
                       <span>
                         {new Date(dateKey + "T12:00:00").toLocaleDateString(undefined, {
                           weekday: "long",
@@ -477,7 +475,7 @@ export function BookingPage({ slug }: { slug: string }) {
                       height={165}
                       className="slot-empty-art"
                     />
-                    <p className="muted">Sage days are open hours — tap one to see times.</p>
+                    <p className="muted">Open days show available hours — tap one to see times.</p>
                   </div>
                 ) : slots.length === 0 ? (
                   <p className="muted">No open hours left this day — try another open day.</p>

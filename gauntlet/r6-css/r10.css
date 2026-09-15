@@ -1,0 +1,26 @@
+/* r10 flat coherence — hard no-gradient anti-cheese bar */
+.book-stage, .book-card, .book-host, .meet-card, .slot-chip, .btn, .panel,
+.confirm-summary, .home-visual-frame, .job-strip li, .cal-day, .assist-chip {
+  box-shadow: none !important;
+  background-image: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+}
+html, body {
+  background-image: none !important;
+  background-color: #f4f5f4 !important;
+}
+.home-shell { background: transparent !important; }
+.brand-mark {
+  box-shadow: none !important;
+  background-image: none !important;
+}
+.title-rule {
+  background-image: none !important;
+  background: #121416 !important;
+}
+/* no copper hover wash cheese on open days */
+.cal-day.in-month.is-open:not(:disabled):hover {
+  background: #b8c8da !important;
+  color: #121416 !important;
+}

@@ -1,0 +1,44 @@
+/* r8 contrast: quieter secondary chrome / hairlines vs zcal minimalism */
+.book-card,
+.book-host,
+.meet-card,
+.slot-chip,
+.panel {
+  border-width: 1px !important;
+  border-color: #d0d4d8 !important;
+}
+.assist-box {
+  opacity: 0.92;
+  border-top-color: #d0d4d8 !important;
+  margin-top: 0.75rem !important;
+  padding-top: 0.7rem !important;
+}
+.assist-label {
+  font-size: 0.78rem !important;
+  color: #5c636a !important;
+  font-weight: 500 !important;
+}
+.assist-btn.btn {
+  min-height: 2.2rem !important;
+  font-size: 0.82rem !important;
+  font-weight: 500 !important;
+}
+.book-tz-foot {
+  border-top: 1px solid #e2e5e8 !important;
+  color: #7a828c !important;
+  font-size: 0.72rem !important;
+  padding-top: 0.55rem !important;
+  margin-top: 0.65rem !important;
+}
+.slot-tz-select {
+  color: #7a828c !important;
+  font-size: 0.72rem !important;
+  margin-bottom: 0.45rem !important;
+}
+.host-tz {
+  color: #7a828c !important;
+  font-size: 0.75rem !important;
+}
+.host-headline {
+  color: #4a5158 !important;
+}

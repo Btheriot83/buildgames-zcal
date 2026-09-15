@@ -1780,8 +1780,8 @@ textarea.t-input {
   --stroke: #d4d7db;
   --stroke-strong: #b8bec6;
   --danger: #9b3b2e;
-  --sage-open: #f0c9cf;
-  --sage-open-text: #5c1524;
+  --sage-open: #d0dae6;
+  --sage-open-text: #152033;
   --shadow: none;
   --background: var(--linen);
   --foreground: var(--ink);
@@ -2214,4 +2214,278 @@ html, body {
 }
 .home-shell {
   background: transparent;
+}
+
+/* ===== Phase B6 Clearline integrity ===== */
+/* r1 fonts: day numbers tabular quieter like zcal */
+.cal-day {
+  font-variant-numeric: tabular-nums !important;
+  font-size: 0.92rem !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.01em;
+}
+.cal-day.is-active,
+.cal-day.in-month.is-active {
+  font-weight: 600 !important;
+}
+.cal-day.in-month.is-open:not(.is-active) {
+  font-weight: 500 !important;
+}
+/* r2 contrast: kill pink residual — cool slate only (anti-cheese) */
+:root {
+  --sage-open: #d0dae6 !important;
+  --sage-open-text: #152033 !important;
+}
+.cal-day.in-month.is-open:not(.is-active) {
+  background: #d0dae6 !important;
+  color: #152033 !important;
+}
+.meet-card.is-active {
+  background: #eef2f6 !important;
+  border-color: #121416 !important;
+}
+.confirm-summary {
+  background: #eef2f6 !important;
+}
+.cal-day.in-month.is-open:not(:disabled):hover {
+  background: #c5d0dc !important;
+  color: #121416 !important;
+}
+/* r3 buttons: slot chips full-width denser like zcal column */
+.slot-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 0.35rem !important;
+  max-width: 11.5rem;
+}
+.slot-chip {
+  min-height: 2.55rem !important;
+  width: 100% !important;
+  justify-content: center;
+  padding: 0.55rem 0.9rem !important;
+  font-size: 0.9rem !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.01em;
+}
+.slot-groups {
+  display: flex !important;
+  flex-direction: column;
+  gap: 0.65rem !important;
+  align-items: flex-start;
+}
+/* r4 fonts: quieter eyebrow + period labels (anti-cheese hierarchy) */
+.book-host .eyebrow {
+  font-size: 0.62rem !important;
+  letter-spacing: 0.12em !important;
+  color: #6a727a !important;
+  font-weight: 600 !important;
+}
+.slot-group-label {
+  font-size: 0.68rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase;
+  color: #7a828c !important;
+  margin: 0 0 0.35rem !important;
+}
+.slot-heading {
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.015em;
+  color: #121416 !important;
+}
+/* r5 contrast: open-day wash closer to zcal soft cue (bar A/B) */
+:root {
+  --sage-open: #c8d6e8 !important;
+  --sage-open-text: #142033 !important;
+}
+.cal-day {
+  border-radius: 999px !important;
+  aspect-ratio: 1;
+  width: 100%;
+  max-width: 2.65rem;
+  margin-inline: auto;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+.cal-day.in-month.is-open:not(.is-active) {
+  background: #c8d6e8 !important;
+  color: #142033 !important;
+}
+.cal-day.in-month.is-open.is-today:not(.is-active) {
+  box-shadow: inset 0 0 0 1.5px #9e1830 !important;
+}
+.cal-grid {
+  gap: 0.35rem 0.25rem !important;
+  justify-items: center;
+}
+/* r6 buttons: confirm form density + CTA weight on real book path */
+.confirm-flow .t-input {
+  min-height: 2.6rem !important;
+  border-radius: 8px !important;
+  border: 1.5px solid var(--stroke-strong) !important;
+  font-size: 0.95rem !important;
+  padding: 0.55rem 0.75rem !important;
+}
+.confirm-flow label {
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  color: #3a4149 !important;
+  letter-spacing: 0.01em;
+}
+.confirm-cta.btn.primary {
+  min-height: 3.15rem !important;
+  font-size: 1.05rem !important;
+  border-radius: 8px !important;
+  margin-top: 0.35rem;
+}
+.confirm-summary {
+  border-radius: 8px !important;
+  padding: 0.85rem 1rem !important;
+  gap: 0.25rem;
+}
+.book-tz-globe,
+.slot-globe {
+  display: none !important;
+}
+.back-link {
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  color: #3a4149 !important;
+}
+/* r7 fonts: month title-case softer like zcal (drop shouty uppercase) */
+.cal-month-label {
+  font-size: 0.98rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.015em !important;
+  text-transform: none !important;
+  color: #121416 !important;
+}
+.book-job-label {
+  font-size: 1.12rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+}
+.card-meeting-chip {
+  font-size: 0.72rem !important;
+  font-weight: 500 !important;
+  color: #6a727a !important;
+  letter-spacing: 0.01em;
+}
+.host-name.display {
+  font-size: clamp(1.55rem, 2.6vw, 1.95rem) !important;
+  letter-spacing: -0.025em !important;
+}
+/* r8 contrast: quieter secondary chrome / hairlines vs zcal minimalism */
+.book-card,
+.book-host,
+.meet-card,
+.slot-chip,
+.panel {
+  border-width: 1px !important;
+  border-color: #d0d4d8 !important;
+}
+.assist-box {
+  opacity: 0.92;
+  border-top-color: #d0d4d8 !important;
+  margin-top: 0.75rem !important;
+  padding-top: 0.7rem !important;
+}
+.assist-label {
+  font-size: 0.78rem !important;
+  color: #5c636a !important;
+  font-weight: 500 !important;
+}
+.assist-btn.btn {
+  min-height: 2.2rem !important;
+  font-size: 0.82rem !important;
+  font-weight: 500 !important;
+}
+.book-tz-foot {
+  border-top: 1px solid #e2e5e8 !important;
+  color: #7a828c !important;
+  font-size: 0.72rem !important;
+  padding-top: 0.55rem !important;
+  margin-top: 0.65rem !important;
+}
+.slot-tz-select {
+  color: #7a828c !important;
+  font-size: 0.72rem !important;
+  margin-bottom: 0.45rem !important;
+}
+.host-tz {
+  color: #7a828c !important;
+  font-size: 0.75rem !important;
+}
+.host-headline {
+  color: #4a5158 !important;
+}
+/* r9 buttons: meet cards duration-forward flatter (anti-cheese cards) */
+.meet-list {
+  gap: 0.35rem !important;
+}
+.meet-card {
+  padding: 0.5rem 0.7rem !important;
+  border-radius: 8px !important;
+  gap: 0.15rem !important;
+}
+.meet-card .meet-row {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.meet-card .meet-title {
+  font-size: 0.88rem !important;
+  font-weight: 600 !important;
+}
+.meet-card .meet-meta {
+  font-size: 0.68rem !important;
+  font-weight: 600 !important;
+  padding: 0.15rem 0.45rem !important;
+  border-radius: 999px !important;
+  border: 1px solid #d0d4d8 !important;
+  background: #fff !important;
+}
+.meet-card.is-active .meet-meta {
+  border-color: #121416 !important;
+  background: #121416 !important;
+  color: #f7f8f6 !important;
+}
+.meet-card .meet-desc {
+  font-size: 0.72rem !important;
+  line-height: 1.25 !important;
+  color: #6a727a !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+/* r10 flat coherence — hard no-gradient anti-cheese bar */
+.book-stage, .book-card, .book-host, .meet-card, .slot-chip, .btn, .panel,
+.confirm-summary, .home-visual-frame, .job-strip li, .cal-day, .assist-chip {
+  box-shadow: none !important;
+  background-image: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+}
+html, body {
+  background-image: none !important;
+  background-color: #f4f5f4 !important;
+}
+.home-shell { background: transparent !important; }
+.brand-mark {
+  box-shadow: none !important;
+  background-image: none !important;
+}
+.title-rule {
+  background-image: none !important;
+  background: #121416 !important;
+}
+/* no copper hover wash cheese on open days */
+.cal-day.in-month.is-open:not(:disabled):hover {
+  background: #b8c8da !important;
+  color: #121416 !important;
 }
