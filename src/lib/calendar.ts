@@ -85,3 +85,63 @@ export function todayKeyLocal() {
   const d = new Date();
   return toDateKey(d.getFullYear(), d.getMonth(), d.getDate());
 }
+
+/** Rolling day strip for week-density booking (SavvyCal steal). */
+export type StripDay = {
+  key: string;
+  day: number;
+  weekday: string;
+  weekdayShort: string;
+  isToday: boolean;
+  isPast: boolean;
+};
+
+export function addDaysKey(key: string, delta: number): string {
+  const { y, m0, d } = parseDateKey(key);
+  const dt = new Date(y, m0, d + delta);
+  return toDateKey(dt.getFullYear(), dt.getMonth(), dt.getDate());
+}
+
+/** Build `count` consecutive days starting at `startKey` (inclusive). */
+export function buildDayStrip(startKey: string, count: number, todayKey: string): StripDay[] {
+  const out: StripDay[] = [];
+  for (let i = 0; i < count; i++) {
+    const key = addDaysKey(startKey, i);
+    const { y, m0, d } = parseDateKey(key);
+    const label = new Date(y, m0, d).toLocaleDateString(undefined, { weekday: "short" });
+    out.push({
+      key,
+      day: d,
+      weekday: label,
+      weekdayShort: label.slice(0, 2),
+      isToday: key === todayKey,
+      isPast: key < todayKey,
+    });
+  }
+  return out;
+}
+
+/** Monday of the week containing `key` (local). */
+export function startOfWeekMonday(key: string): string {
+  const { y, m0, d } = parseDateKey(key);
+  const dt = new Date(y, m0, d);
+  const dow = dt.getDay(); // 0 Sun
+  const delta = dow === 0 ? -6 : 1 - dow;
+  dt.setDate(dt.getDate() + delta);
+  return toDateKey(dt.getFullYear(), dt.getMonth(), dt.getDate());
+}
+
+export function weekRangeLabel(startKey: string, endKey: string): string {
+  const a = parseDateKey(startKey);
+  const b = parseDateKey(endKey);
+  const left = new Date(a.y, a.m0, a.d).toLocaleDateString(undefined, {
+    month: "short",
+    day: "numeric",
+  });
+  const right = new Date(b.y, b.m0, b.d).toLocaleDateString(undefined, {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+  return `${left} – ${right}`;
+}
