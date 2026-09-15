@@ -2932,3 +2932,27 @@ html, body {
 /* r14 applied: quiet chevrons */
 
 /* r15 applied: card air */
+
+/* r16: open-day blue type like zcal available days */
+.cal-day.in-month.is-open:not(.is-active) {
+  background: #e8f1fb !important;
+  color: #1a6dd4 !important;
+  font-weight: 600 !important;
+}
+.cal-day.in-month.is-open.is-active,
+.cal-day.in-month.is-active {
+  background: #e8f1fb !important;
+  color: #121416 !important;
+  box-shadow: inset 0 0 0 2px #c41e3a !important;
+}
+.cal-day.in-month.is-open:not(:disabled):hover {
+  background: #d7e8f8 !important;
+  color: #0f4f9e !important;
+}
+
+/* r17: assist summary less link-cheese */
+.assist-summary {
+  text-decoration: none !important;
+  color: #8a929a !important;
+  font-size: 0.72rem !important;
+}
