@@ -1659,3 +1659,16 @@ textarea.t-input {
 }
 .meet-list { gap: 0.55rem; }
 
+
+/* r13 fonts dream→target: host display scale */
+.host-name.display {
+  font-size: clamp(1.85rem, 3.2vw, 2.35rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 0.35rem;
+}
+.eyebrow {
+  letter-spacing: 0.16em;
+  font-size: 0.68rem;
+}
+

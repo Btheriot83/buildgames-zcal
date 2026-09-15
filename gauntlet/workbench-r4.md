@@ -90,3 +90,10 @@ Bar comps: `shots-r4/bar-zcal-*.png` · Baseline: `shots-r4/r0-*-baseline.png`
 - verdict: Meet list tighter like target; still three descriptive cards vs zcal’s two duration chips.
 - commit: 7e78a80
 - dream-loop: control density vs target
+
+## r13 — fonts: host name scale (dream→target)
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r13-fonts-host.png
+- verdict: Maya Ortega display closer to target serif weight; bar uses sans host name — we keep Courtyard Newsreader lock.
+- commit: 029269f
+- dream-loop: host type vs target
