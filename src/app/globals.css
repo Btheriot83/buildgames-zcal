@@ -4419,3 +4419,68 @@ a.surface-card:hover {
     transition: none !important;
   }
 }
+
+
+/* ===== craft5: slots-as-hero density polish ===== */
+.week-density {
+  gap: 0.28rem !important;
+  min-height: 17.5rem !important;
+}
+.week-col {
+  border-radius: 8px !important;
+}
+.week-col-head {
+  padding: 0.4rem 0.15rem 0.35rem !important;
+}
+.week-col-slots {
+  gap: 0.22rem !important;
+  padding: 0.32rem 0.22rem 0.38rem !important;
+  min-height: 12.5rem !important;
+}
+.week-slot {
+  padding: 0.32rem 0.1rem !important;
+  border-radius: 6px !important;
+  font-size: 0.64rem !important;
+  border-width: 1px !important;
+  border-color: #c8ced4 !important;
+}
+.week-col.is-open:not(.is-active) .week-slot {
+  background: #fff;
+}
+.week-col.is-active .week-slot:hover {
+  border-color: #c41e3a !important;
+}
+.week-day-count {
+  font-size: 0.58rem !important;
+  font-weight: 600 !important;
+  color: #c41e3a !important;
+}
+.week-col.is-disabled .week-day-count { color: #b0b6bc !important; }
+/* Duration stack — Cal.com list restraint, no truncated 3-up cheese */
+.duration-card-row {
+  grid-template-columns: 1fr !important;
+  gap: 0.35rem !important;
+}
+.duration-card {
+  flex-direction: row !important;
+  align-items: baseline !important;
+  gap: 0.35rem 0.55rem !important;
+  padding: 0.45rem 0.55rem !important;
+  flex-wrap: wrap;
+}
+.duration-card-dur {
+  font-size: 0.95rem !important;
+  min-width: 1.6rem;
+}
+.duration-card-unit {
+  margin: 0 !important;
+  font-size: 0.65rem !important;
+}
+.duration-card-title {
+  flex: 1 1 auto;
+  font-size: 0.8rem !important;
+  color: #121416 !important;
+}
+@media (max-width: 640px) {
+  .duration-card-row { grid-template-columns: 1fr !important; }
+}
