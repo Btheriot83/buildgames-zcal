@@ -116,3 +116,9 @@ Bar comps: `shots-r4/bar-zcal-*.png` · Baseline: `shots-r4/r0-*-baseline.png`
 - shot: gauntlet/shots-r4/r16-buttons-slots.png
 - verdict: Active ink fill matches target selected 9:00 AM; bar uses blue fill — Courtyard ink kept.
 - commit: 9a2c866
+
+## r17 — fonts: slot group labels
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r17-fonts-slot-groups.png
+- verdict: MORNING caps quieter; target omits group labels and shows a flat chip row — residual structure gap.
+- commit: 080b960
