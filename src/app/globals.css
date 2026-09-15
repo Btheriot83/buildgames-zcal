@@ -3518,3 +3518,18 @@ html, body {
   color: #f7f8f6 !important;
   opacity: 1;
 }
+
+/* elevate12: critic gap — tighter open marks, quieter counts */
+.week-day-count {
+  font-size: 0.58rem;
+  opacity: 0.92;
+}
+.week-day {
+  border-radius: 8px;
+}
+.slots-hero .slot-heading {
+  letter-spacing: -0.02em;
+}
+.book-stage {
+  border-radius: 12px !important;
+}
