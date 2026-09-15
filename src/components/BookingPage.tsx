@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSundial } from "@/lib/useSundial";
@@ -42,6 +42,23 @@ export function BookingPage({ slug }: { slug: string }) {
   const [assistLoading, setAssistLoading] = useState(false);
 
   const daysAhead = useMemo(() => nextDays(21), []);
+
+  // Auto-pick first open day (gauntlet density) — within Courtyard Meridian
+  useEffect(() => {
+    if (!api.ready || !api.state) return;
+    const mt = api.state.meetingTypes.find((m) => m.id === meetingId) ?? api.state.meetingTypes[0];
+    if (!mt) return;
+    if (dateKey && availableSlots(api.state, mt, dateKey).length > 0) return;
+    for (const dk of daysAhead) {
+      if (availableSlots(api.state, mt, dk).length > 0) {
+        const [y, m] = dk.split("-").map(Number);
+        setMonth({ y, m0: m - 1 });
+        setDateKey(dk);
+        return;
+      }
+    }
+  }, [api.ready, api.state, meetingId, daysAhead]); // eslint-disable-line react-hooks/exhaustive-deps
+
 
   if (!api.ready || !api.state) {
     return (
@@ -290,7 +307,7 @@ export function BookingPage({ slug }: { slug: string }) {
                     </li>
                   ))}
                 </ul>
-                <p className="assist-note mono">{assist.note}</p>
+                <p className="assist-note mono">{assist.mode === "local" ? "Local ranking" : "Live model"} · {assist.note}</p>
               </div>
             ) : null}
           </div>
@@ -304,7 +321,7 @@ export function BookingPage({ slug }: { slug: string }) {
                 className="back-link"
                 onClick={() => setStep("pick")}
               >
-                ← Change time
+                ← Back to times
               </button>
               <h2 className="panel-title">Confirm</h2>
               <p className="confirm-summary">
@@ -350,12 +367,22 @@ export function BookingPage({ slug }: { slug: string }) {
                 />
               </label>
               {err ? <p className="t-error-msg is-error">{err}</p> : null}
-              <button type="button" className="btn primary confirm-cta" onClick={submit}>
+              <button
+                type="button"
+                className="btn primary confirm-cta"
+                disabled={!name.trim() || !email.includes("@")}
+                onClick={submit}
+              >
                 Confirm time
               </button>
             </div>
           ) : (
             <div className="pick-flow">
+              {meeting ? (
+                <p className="card-meeting-chip mono">
+                  {meeting.title} · {meeting.durationMin} min · {state.profile.timezone.replace(/_/g, " ")}
+                </p>
+              ) : null}
               <div className="cal-head">
                 <h2 className="panel-title">{monthLabel(month.y, month.m0)}</h2>
                 <div className="cal-nav">
@@ -422,7 +449,7 @@ export function BookingPage({ slug }: { slug: string }) {
                         month: "short",
                         day: "numeric",
                       })
-                    : "Select a day"}
+                    : "Pick a sage day"}
                 </h3>
                 {!dateKey ? (
                   <div className="slot-empty">
@@ -433,26 +460,39 @@ export function BookingPage({ slug }: { slug: string }) {
                       height={165}
                       className="slot-empty-art"
                     />
-                    <p className="muted">Open days are marked on the calendar.</p>
+                    <p className="muted">Sage days are open — tap one.</p>
                   </div>
                 ) : slots.length === 0 ? (
-                  <p className="muted">No open slots this day.</p>
+                  <p className="muted">Nothing left this day — try another sage mark.</p>
                 ) : (
-                  <div className="slot-grid">
-                    {slots.map((s, i) => (
-                      <button
-                        key={s.startIso}
-                        type="button"
-                        className={`slot-chip mono ${slot?.startIso === s.startIso ? "is-active" : ""}`}
-                        style={{ animationDelay: `${i * 18}ms` }}
-                        onClick={() => {
-                          setSlot(s);
-                          setStep("confirm");
-                        }}
-                      >
-                        {s.label}
-                      </button>
-                    ))}
+                  <div className="slot-groups">
+                    {[
+                      { title: "Morning", items: slots.filter((s) => s.startMin < 12 * 60) },
+                      { title: "Afternoon", items: slots.filter((s) => s.startMin >= 12 * 60 && s.startMin < 17 * 60) },
+                      { title: "Evening", items: slots.filter((s) => s.startMin >= 17 * 60) },
+                    ]
+                      .filter((g) => g.items.length)
+                      .map((g) => (
+                        <div key={g.title} className="slot-group">
+                          <p className="slot-group-label">{g.title}</p>
+                          <div className="slot-grid">
+                            {g.items.map((s, i) => (
+                              <button
+                                key={s.startIso}
+                                type="button"
+                                className={`slot-chip mono ${slot?.startIso === s.startIso ? "is-active" : ""}`}
+                                style={{ animationDelay: `${i * 18}ms` }}
+                                onClick={() => {
+                                  setSlot(s);
+                                  setStep("confirm");
+                                }}
+                              >
+                                {s.label}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
                   </div>
                 )}
               </div>
