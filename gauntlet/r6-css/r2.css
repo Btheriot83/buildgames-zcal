@@ -1,0 +1,20 @@
+/* r2 contrast: kill pink residual — cool slate only (anti-cheese) */
+:root {
+  --sage-open: #d0dae6 !important;
+  --sage-open-text: #152033 !important;
+}
+.cal-day.in-month.is-open:not(.is-active) {
+  background: #d0dae6 !important;
+  color: #152033 !important;
+}
+.meet-card.is-active {
+  background: #eef2f6 !important;
+  border-color: #121416 !important;
+}
+.confirm-summary {
+  background: #eef2f6 !important;
+}
+.cal-day.in-month.is-open:not(:disabled):hover {
+  background: #c5d0dc !important;
+  color: #121416 !important;
+}

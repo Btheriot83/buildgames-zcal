@@ -1780,8 +1780,8 @@ textarea.t-input {
   --stroke: #d4d7db;
   --stroke-strong: #b8bec6;
   --danger: #9b3b2e;
-  --sage-open: #f0c9cf;
-  --sage-open-text: #5c1524;
+  --sage-open: #d0dae6;
+  --sage-open-text: #152033;
   --shadow: none;
   --background: var(--linen);
   --foreground: var(--ink);
@@ -2230,4 +2230,24 @@ html, body {
 }
 .cal-day.in-month.is-open:not(.is-active) {
   font-weight: 500 !important;
+}
+/* r2 contrast: kill pink residual — cool slate only (anti-cheese) */
+:root {
+  --sage-open: #d0dae6 !important;
+  --sage-open-text: #152033 !important;
+}
+.cal-day.in-month.is-open:not(.is-active) {
+  background: #d0dae6 !important;
+  color: #152033 !important;
+}
+.meet-card.is-active {
+  background: #eef2f6 !important;
+  border-color: #121416 !important;
+}
+.confirm-summary {
+  background: #eef2f6 !important;
+}
+.cal-day.in-month.is-open:not(:disabled):hover {
+  background: #c5d0dc !important;
+  color: #121416 !important;
 }
