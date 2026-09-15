@@ -3533,3 +3533,558 @@ html, body {
 .book-stage {
   border-radius: 12px !important;
 }
+
+/* ===== Friend walkthrough onboarding + surface cards (Clearline) ===== */
+/* specify-the-look: field/card/ink/vermillion · soft layered shadow · no glass/purple */
+
+.surface-card {
+  background: #ffffff;
+  border: 1px solid #d4d7db;
+  border-radius: 1rem;
+  box-shadow:
+    0 1px 0 rgba(18, 20, 22, 0.04),
+    0 8px 24px rgba(18, 20, 22, 0.06);
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    border-color 160ms ease;
+}
+
+button.surface-card:hover:not(:disabled),
+a.surface-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 0 rgba(18, 20, 22, 0.04),
+    0 12px 28px rgba(18, 20, 22, 0.1);
+}
+
+button.surface-card:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Host card */
+.book-host.host-card {
+  padding: 1.15rem 1.2rem 1.35rem !important;
+  background: #ffffff !important;
+  border: 1px solid #d4d7db !important;
+  border-radius: 1rem !important;
+  box-shadow:
+    0 1px 0 rgba(18, 20, 22, 0.04),
+    0 8px 24px rgba(18, 20, 22, 0.06) !important;
+}
+
+.book-card.surface-card {
+  border-radius: 1rem !important;
+  box-shadow:
+    0 1px 0 rgba(18, 20, 22, 0.04),
+    0 10px 28px rgba(18, 20, 22, 0.07) !important;
+}
+
+/* Duration cards (replace flat chips) */
+.duration-card-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin: 0.85rem 0 0.25rem;
+}
+
+.duration-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+  padding: 0.7rem 0.75rem 0.75rem;
+  text-align: left;
+  cursor: pointer;
+  color: #121416;
+  border-radius: 0.85rem !important;
+}
+
+.duration-card-dur {
+  font-size: 1.35rem;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.duration-card-unit {
+  font-size: 0.68rem;
+  color: #5c636a;
+  text-transform: lowercase;
+  margin-bottom: 0.35rem;
+}
+
+.duration-card-title {
+  font-size: 0.78rem;
+  font-weight: 550;
+  color: #3a4148;
+  line-height: 1.2;
+}
+
+.duration-card.is-active {
+  border-color: #121416 !important;
+  box-shadow:
+    0 0 0 1px #121416,
+    0 8px 22px rgba(18, 20, 22, 0.08) !important;
+}
+
+.duration-card.is-active .duration-card-dur {
+  color: #c41e3a;
+}
+
+/* Slot cards */
+.slot-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(5.5rem, 1fr));
+  gap: 0.5rem;
+}
+
+.slot-card {
+  appearance: none;
+  font: inherit;
+  padding: 0.7rem 0.55rem;
+  text-align: center;
+  cursor: pointer;
+  color: #121416;
+  border-radius: 0.75rem !important;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.92rem;
+  font-weight: 550;
+}
+
+.slot-card.is-active {
+  background: #121416 !important;
+  color: #f7f8f6 !important;
+  border-color: #121416 !important;
+}
+
+/* Keep legacy slot-chip selectors working for smoke until fully migrated */
+.slot-card.slot-chip,
+.slot-chip.slot-card {
+  /* noop bridge */
+}
+
+/* Empty-state coach */
+.empty-coach {
+  margin-top: 1rem;
+  padding: 1.1rem 1.2rem;
+  max-width: 28rem;
+}
+
+.empty-coach-line {
+  margin: 0 0 0.85rem;
+  color: #3a4148;
+  line-height: 1.4;
+}
+
+.empty-coach-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+/* Onboarding overlay */
+.ob-root {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 1.25rem;
+  pointer-events: none;
+}
+
+@media (min-width: 720px) {
+  .ob-root {
+    align-items: center;
+  }
+}
+
+.ob-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(18, 20, 22, 0.28);
+  pointer-events: auto;
+}
+
+.ob-card {
+  position: relative;
+  pointer-events: auto;
+  width: min(420px, 100%);
+  padding: 1.15rem 1.2rem 1.2rem;
+  z-index: 1;
+}
+
+.ob-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.85rem;
+}
+
+.ob-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #c5cad0;
+}
+
+.ob-dot.is-active {
+  background: #c41e3a;
+  transform: scale(1.15);
+}
+
+.ob-dot.is-done {
+  background: #5c636a;
+}
+
+.ob-progress-label {
+  margin-left: auto;
+  font-size: 0.72rem;
+  color: #5c636a;
+}
+
+.ob-title {
+  font-family: var(--font-display), "Source Serif 4", Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0.65rem 0 0.45rem;
+  color: #121416;
+}
+
+.ob-body {
+  margin: 0 0 1rem;
+  color: #3a4148;
+  line-height: 1.45;
+  font-size: 0.98rem;
+}
+
+.ob-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.ob-cta {
+  min-width: 9rem;
+}
+
+.ob-skip {
+  color: #5c636a !important;
+}
+
+.ob-mini {
+  border: 1px solid #e2e5e8;
+  background: #f4f5f4;
+  border-radius: 0.75rem;
+  padding: 0.65rem 0.7rem;
+  min-height: 3.2rem;
+}
+
+.ob-mini-desk {
+  display: grid;
+  grid-template-columns: 0.35fr 1fr;
+  gap: 0.45rem;
+  min-height: 4rem;
+}
+
+.ob-mini-rail {
+  background: #d5dbe2;
+  border-radius: 0.4rem;
+}
+
+.ob-mini-card {
+  background: #fff;
+  border: 1px solid #d4d7db;
+  border-radius: 0.4rem;
+}
+
+.ob-mini-hours {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+}
+
+.ob-mini-day {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  color: #5c636a;
+}
+
+.ob-mini-day em {
+  font-style: normal;
+  font-weight: 600;
+  color: #121416;
+  width: 2rem;
+}
+
+.ob-mini-durs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
+}
+
+.ob-mini-dur {
+  background: #fff;
+  border: 1px solid #d4d7db;
+  border-radius: 0.55rem;
+  padding: 0.45rem 0.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ob-mini-dur strong {
+  font-size: 1rem;
+  letter-spacing: -0.03em;
+  color: #121416;
+}
+
+.ob-mini-dur em {
+  font-style: normal;
+  font-size: 0.62rem;
+  color: #5c636a;
+}
+
+.ob-mini-dur span {
+  margin-top: 0.2rem;
+  font-size: 0.68rem;
+  color: #3a4148;
+}
+
+.ob-mini-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.ob-mini-link code {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #121416;
+  background: #fff;
+  border: 1px solid #d4d7db;
+  border-radius: 0.4rem;
+  padding: 0.35rem 0.55rem;
+  width: fit-content;
+}
+
+.ob-mini-path {
+  font-size: 0.75rem;
+  color: #5c636a;
+}
+
+.ob-mini-check {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.88rem;
+  color: #3a4148;
+}
+
+.ob-check-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 50%;
+  border: 1.5px solid #c41e3a;
+  color: #c41e3a;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+@media (max-width: 640px) {
+  .duration-card-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .surface-card,
+  button.surface-card:hover:not(:disabled) {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* ===== Levels homepage — job clarity + live mini ===== */
+.home-shell-levels .home-job {
+  font-size: clamp(1.85rem, 4.2vw, 2.75rem) !important;
+  max-width: 16ch;
+}
+
+.home-shell-levels .hero-actions-one {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.home-shell-levels .home-secondary-link {
+  font-size: 0.92rem;
+  padding-left: 0.15rem;
+}
+
+.home-visual-live {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.home-live {
+  padding: 1rem 1.05rem 1.1rem;
+  width: 100%;
+  max-width: 420px;
+}
+
+.home-live-host {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.home-live-photo {
+  width: 52px;
+  height: 52px;
+  border-radius: 0.65rem;
+  object-fit: cover;
+  border: 1px solid #d4d7db;
+}
+
+.home-live-name {
+  margin: 0;
+  font-family: var(--font-display), "Source Serif 4", Georgia, serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #121416;
+}
+
+.home-live-meta {
+  margin: 0.15rem 0 0;
+  font-size: 0.72rem;
+  color: #5c636a;
+}
+
+.home-live-durs {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.home-live-dur {
+  font-size: 0.75rem;
+  font-weight: 550;
+  padding: 0.3rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid #d4d7db;
+  background: #fff;
+  color: #3a4148;
+}
+
+.home-live-dur.is-active {
+  background: #121416;
+  border-color: #121416;
+  color: #f7f8f6;
+}
+
+.home-live-week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.28rem;
+  margin-bottom: 0.7rem;
+}
+
+.home-live-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.12rem;
+  padding: 0.35rem 0.1rem;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  font-size: 0.65rem;
+  color: #9aa1a8;
+}
+
+.home-live-day em {
+  font-style: normal;
+  font-weight: 500;
+}
+
+.home-live-day strong {
+  font-size: 0.92rem;
+  font-weight: 650;
+  color: inherit;
+}
+
+.home-live-day i {
+  font-style: normal;
+  font-size: 0.58rem;
+  font-family: var(--font-mono), monospace;
+}
+
+.home-live-day.is-open {
+  background: #d5dbe2;
+  color: #121416;
+}
+
+.home-live-day.is-active {
+  border-color: #c41e3a;
+  box-shadow: 0 0 0 1px #c41e3a;
+  background: #d5dbe2;
+}
+
+.home-live-day.is-active i {
+  color: #c41e3a;
+}
+
+.home-live-slots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
+  margin-bottom: 0.85rem;
+}
+
+.home-live-slot {
+  text-align: center;
+  padding: 0.55rem 0.3rem;
+  border-radius: 0.65rem;
+  border: 1px solid #d4d7db;
+  background: #fff;
+  font-size: 0.78rem;
+  font-weight: 550;
+  color: #121416;
+}
+
+.home-live-slot.is-active {
+  background: #121416;
+  border-color: #121416;
+  color: #f7f8f6;
+}
+
+.home-live-cta {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.home-live-foot {
+  margin: 0.55rem 0 0;
+  font-size: 0.7rem;
+  color: #5c636a;
+  text-align: center;
+}
+
+/* Hide heavy drift video on levels home — live mini is the product */
+.home-shell-levels .home-visual-frame {
+  display: none !important;
+}

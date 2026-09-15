@@ -1,0 +1,32 @@
+{
+  "base": "http://127.0.0.1:3210",
+  "ok": true,
+  "log": [
+    "firstVisit.obCard=true",
+    "shot 01-first-visit-card1.png (111837b)",
+    "card 1: Hey — let's get your booking page live.",
+    "shot 02-card.png (111837b)",
+    "card 2: Your hours are already on.",
+    "shot 03-card.png (112538b)",
+    "card 3: Guests pick a length.",
+    "shot 04-card.png (124618b)",
+    "card 4: This is your link.",
+    "shot 05-card-link.png (122692b)",
+    "shot 06-opened-booker.png (55912b)",
+    "card 5: You're set.",
+    "shot 06-card.png (107290b)",
+    "afterComplete.obCard=false",
+    "onboardedFlag=1",
+    "booker.hostCard=true durationCards=3 slotCards=8",
+    "shot 07-booker-cards.png (55923b)",
+    "skipPath.visible=true",
+    "afterSkip.obCard=false flag=1",
+    "shot 08-after-skip.png (95387b)",
+    "returnVisit.replay=false",
+    "shot 09-return-no-replay.png (95387b)",
+    "emptyCoach=true"
+  ],
+  "cardCount": 5,
+  "activationEvent": "A bookable Clearline link the user can open and complete week → slot → confirm",
+  "at": "2026-09-15T18:11:50.783Z"
+}

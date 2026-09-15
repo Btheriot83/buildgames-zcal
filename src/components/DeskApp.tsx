@@ -1,11 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import Link from "next/link";
 import { useSundial } from "@/lib/useSundial";
 import { Toast } from "./Toast";
 import { SiteHeader } from "./SiteHeader";
 import { SundialMark } from "./SundialMark";
+import { OnboardingWalkthrough } from "./OnboardingWalkthrough";
 import { formatMin, bookingTitle } from "@/lib/slots";
 import { newId, DEMO_HOST } from "@/lib/seed";
 import type { DayAvailability, MeetingType } from "@/lib/types";
@@ -17,6 +18,9 @@ type Tab = "calendar" | "availability" | "meetings" | "backup";
 export function DeskApp() {
   const api = useSundial();
   const [tab, setTab] = useState<Tab>("calendar");
+  const focusTab = useCallback((t: "availability" | "meetings" | "calendar") => {
+    setTab(t);
+  }, []);
 
   if (!api.ready || !api.state) {
     return (
@@ -40,6 +44,7 @@ export function DeskApp() {
     <div className="shell">
       <SiteHeader slug={state.profile.slug} />
       <Toast message={api.toast} />
+      <OnboardingWalkthrough slug={state.profile.slug} onFocusTab={focusTab} />
 
       <section className="desk-hero t-texts-reveal" data-reveal="in">
         <div>
@@ -129,11 +134,19 @@ function CalendarPane({ api }: { api: ReturnType<typeof useSundial> }) {
         documented.
       </p>
       {events.length === 0 ? (
-        <p className="empty">
-          No bookings yet. Save availability, then share{" "}
-          <Link href={`/b/${api.state.profile.slug}`}>/b/{api.state.profile.slug}</Link> — guests book
-          there.
-        </p>
+        <div className="empty-coach surface-card">
+          <p className="empty-coach-line">
+            No bookings yet — share your page and the first one lands here.
+          </p>
+          <div className="empty-coach-actions">
+            <Link className="btn primary" href={`/b/${api.state.profile.slug}`}>
+              Open public page
+            </Link>
+            <Link className="btn ghost" href={`/b/${DEMO_HOST.slug}`}>
+              Try with sample
+            </Link>
+          </div>
+        </div>
       ) : (
         <ul className="event-list">
           {events.map((b) => (
