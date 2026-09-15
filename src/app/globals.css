@@ -4631,3 +4631,65 @@ a.surface-card:hover {
   color: #5c636a !important;
 }
 .back-link:hover { color: #121416 !important; }
+
+
+/* ===== craft8: critic polish — editorial cut + flat lock ===== */
+.book-stage,
+.book-card,
+.book-host,
+.home-live,
+.week-col,
+.week-slot,
+.duration-card,
+.slot-card,
+.confirm-summary,
+.btn {
+  box-shadow: none !important;
+  filter: none !important;
+  background-image: none !important;
+}
+.book-brand-rail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+  padding: 0 0.15rem;
+}
+.book-desk-link {
+  font-size: 0.82rem;
+  color: #5c636a;
+  text-decoration: none;
+  font-weight: 500;
+}
+.book-desk-link:hover { color: #121416; }
+.home-live-cta {
+  margin-top: 0.15rem !important;
+  position: relative;
+  z-index: 1;
+}
+.home-live-week-cols {
+  margin-bottom: 0.75rem !important;
+}
+.home-live-density {
+  display: flex;
+  flex-direction: column;
+}
+.cal-mode-toggle.is-quiet {
+  border-color: #e2e5e8 !important;
+}
+.mode-chip {
+  font-size: 0.72rem !important;
+  padding: 0.3rem 0.6rem !important;
+}
+.pick-toolbar {
+  align-items: center !important;
+  margin-bottom: 0.55rem !important;
+}
+.week-strip-head { margin-bottom: 0.45rem !important; }
+/* Kill leftover soft hover lift anywhere on booker */
+.book-shell button.surface-card:hover:not(:disabled),
+.book-shell a.surface-card:hover,
+.home-shell button.surface-card:hover:not(:disabled) {
+  transform: none !important;
+  box-shadow: none !important;
+}
