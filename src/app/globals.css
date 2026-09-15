@@ -2833,3 +2833,57 @@ html, body {
 
 /* r8: quieter nav weight vs zcal chrome absence */
 .book-shell .site-nav a { font-size: 0.88rem !important; color: #6a727a !important; }
+
+/* r9: zcal-like duration chips under meeting title (cut stacked cards) */
+.host-meeting-title {
+  font-family: var(--font-sans), "IBM Plex Sans", system-ui, sans-serif !important;
+  font-size: 1.15rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+  margin: 0.35rem 0 0.65rem !important;
+  color: #121416 !important;
+  line-height: 1.25;
+}
+.meet-chip-row {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  gap: 0.4rem !important;
+  margin: 0 0 0.85rem !important;
+}
+.meet-chip {
+  appearance: none;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid #d0d4d8;
+  background: #fff;
+  border-radius: 999px;
+  padding: 0.35rem 0.65rem;
+  font: inherit;
+  cursor: pointer;
+  color: #3a4149;
+}
+.meet-chip.is-active {
+  background: #eef1f4 !important;
+  border-color: #121416 !important;
+  color: #121416 !important;
+}
+.meet-chip-dur {
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+}
+.meet-chip-label {
+  font-size: 0.78rem !important;
+  font-weight: 500 !important;
+  white-space: nowrap;
+}
+.meet-list, .meet-card { /* legacy hidden when chips used */ }
+
+/* r10: hide site chrome on public book — card is the product */
+.book-shell .site-header {
+  max-width: 920px;
+  margin-inline: auto;
+  opacity: 0.85;
+}
+.book-shell .site-nav { gap: 0.85rem !important; }

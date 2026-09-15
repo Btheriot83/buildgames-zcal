@@ -247,14 +247,17 @@ export function BookingPage({ slug }: { slug: string }) {
           <p className="host-headline">{state.profile.headline}</p>
           <p className="host-tz mono">{state.profile.timezone}</p>
 
-          <div className="meet-list" role="listbox" aria-label="Meeting type">
+          {meeting ? (
+            <h2 className="host-meeting-title">{meeting.title}</h2>
+          ) : null}
+          <div className="meet-chip-row" role="listbox" aria-label="Meeting type">
             {state.meetingTypes.map((m) => (
               <button
                 key={m.id}
                 type="button"
                 role="option"
                 aria-selected={activeMeetingId === m.id}
-                className={`meet-card ${activeMeetingId === m.id ? "is-active" : ""}`}
+                className={`meet-chip ${activeMeetingId === m.id ? "is-active" : ""}`}
                 onClick={() => {
                   setMeetingId(m.id);
                   setSlot(null);
@@ -262,11 +265,8 @@ export function BookingPage({ slug }: { slug: string }) {
                   setAssist(null);
                 }}
               >
-                <span className="meet-row">
-                  <span className="meet-title">{m.title}</span>
-                  <span className="meet-meta mono">{m.durationMin} min</span>
-                </span>
-                <span className="meet-desc">{m.description}</span>
+                <span className="meet-chip-dur mono">{m.durationMin} min</span>
+                <span className="meet-chip-label">{m.title}</span>
               </button>
             ))}
           </div>
