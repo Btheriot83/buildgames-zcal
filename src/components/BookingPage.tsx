@@ -403,7 +403,7 @@ export function BookingPage({ slug }: { slug: string }) {
                     </p>
                   ) : null}
                 </div>
-                <div className="cal-mode-toggle" role="tablist" aria-label="Calendar density">
+                <div className="cal-mode-toggle is-quiet" role="tablist" aria-label="Calendar density">
                   <button
                     type="button"
                     role="tab"
@@ -420,7 +420,7 @@ export function BookingPage({ slug }: { slug: string }) {
                     className={`mode-chip ${calMode === "month" ? "is-active" : ""}`}
                     onClick={() => setCalMode("month")}
                   >
-                    Month
+                    Full month
                   </button>
                 </div>
               </div>
@@ -451,6 +451,10 @@ export function BookingPage({ slug }: { slug: string }) {
                   {buildDayStrip(weekStart, 7, today).map((d) => {
                     const open = !d.isPast && dayHasSlots(d.key);
                     const disabled = d.isPast || !dayHasSlots(d.key);
+                    const count =
+                      meeting && open
+                        ? availableSlots(state, meeting, d.key).length
+                        : 0;
                     return (
                       <button
                         key={d.key}
@@ -475,7 +479,13 @@ export function BookingPage({ slug }: { slug: string }) {
                       >
                         <span className="week-day-wd">{d.weekdayShort}</span>
                         <span className="week-day-num">{d.day}</span>
-                        {open ? <span className="week-day-dot" aria-hidden /> : null}
+                        {open ? (
+                          <span className="week-day-count mono">{count}</span>
+                        ) : (
+                          <span className="week-day-count is-empty" aria-hidden>
+                            ·
+                          </span>
+                        )}
                       </button>
                     );
                   })}
