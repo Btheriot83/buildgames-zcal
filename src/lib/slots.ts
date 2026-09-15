@@ -34,7 +34,7 @@ export function weekdayInZone(date: Date, timeZone: string): number {
 
 /** Build a Date for Y-M-D + minutes in host timezone approximated as offset-fixed Phoenix (UTC-7). */
 export function wallToUtcIso(dateKey: string, startMin: number, timeZone: string): string {
-  // America/Phoenix is UTC-7 year-round — exact for Brandon demo.
+  // America/Phoenix is UTC-7 year-round — exact for Phoenix demo host.
   // For other zones we still treat as fixed offset from Intl when possible.
   const offsetMin = guessOffsetMinutes(dateKey, timeZone);
   const [y, m, d] = dateKey.split("-").map(Number);
@@ -95,7 +95,7 @@ export function availableSlots(
   }));
 
   const slots: SlotOption[] = [];
-  const step = 15;
+  const step = meeting.durationMin; // R5: one start per duration — denser scan, less chip soup
   for (const win of day.windows) {
     for (let t = win.startMin; t + meeting.durationMin <= win.endMin; t += step) {
       const end = t + meeting.durationMin;

@@ -52,7 +52,7 @@ export function useSundial() {
     async (availability: DayAvailability[]) => {
       if (!state) return;
       await persist({ ...state, availability });
-      flash("Availability updated");
+      flash("Availability saved — public page updated");
     },
     [state, persist, flash]
   );
@@ -147,7 +147,7 @@ export function useSundial() {
   const reset = useCallback(async () => {
     const fresh = await resetDb();
     setState(fresh);
-    flash("Reset to sample desk");
+    flash("Reset to Maya courtyard desk");
   }, [flash]);
 
   const doExport = useCallback(() => {

@@ -2,19 +2,21 @@
 
 Personal freeform scheduling — a Build Games replacement for [zcal](https://zcal.co/).
 
-**Aesthetic:** Sundial Atelier — linen desk, copper gnomon, sage availability, Newsreader + IBM Plex.
+**Aesthetic:** Courtyard Meridian — linen desk, copper gnomon, sage availability, Newsreader + IBM Plex.  
+**Demo host:** Maya Ortega (`/b/maya`) — Phoenix courtyard studio hours.
 
-## Core loop
+## Core loop (≤3s read)
 
-1. Open **Desk** → set weekday availability + meeting types  
-2. Share **public booking page** `/b/<slug>` (sample: `/b/brandon`)  
-3. Guest picks a slot → reserve → event writes into the **local calendar store** (IndexedDB)
+1. **Set availability** on the host desk (weekday AM/PM windows)  
+2. Share **public booking page** `/b/maya`  
+3. Guest picks a day → hour → confirm → event lands in the **local calendar** (IndexedDB)
 
 ## Stack
 
 - Next.js 15 · TypeScript · React 19  
 - **IndexedDB** via `idb` (Vercel-safe — no native SQLite)  
 - transitions.dev free recipes wired into real UX  
+- Meridian `/api/assist` for hour ranking  
 - No accounts, billing, or telemetry
 
 ## Setup
@@ -38,18 +40,12 @@ Open [http://localhost:3000](http://localhost:3000).
 - **No Google Calendar** (or any remote calendar). Bookings persist in this browser’s IndexedDB only.  
 - Cross-device sync is out of scope — use **Export JSON** / **Import JSON** on the Desk → Backup tab.  
 - No confirmation emails.  
-- Public booking pages read the host profile from the same browser store; open Desk once to seed the sample host (`brandon`).
-
-## Backup
-
-Desk → Backup → Download JSON. Store offline. Import to restore.
+- Public booking pages read the host profile from the same browser store; open Desk once to seed Maya.
 
 ## Limits vs zcal
 
 Sundial covers personal availability → public page → book → local calendar. It does **not** include collective/round-robin teams, welcome videos, polls, paid team pages, or live calendar OAuth.
 
-## License
-
 **Demo:** https://buildgames-zcal.vercel.app  
 
-Built for Brandon Theriot / Build Games contest window.
+Identity locked — Courtyard Meridian (Phase A). Phase B2 execution rounds under that lock only.

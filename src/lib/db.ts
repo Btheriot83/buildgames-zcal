@@ -1,7 +1,7 @@
 "use client";
 
 import { openDB, type IDBPDatabase } from "idb";
-import { seedState } from "./seed";
+import { isSmokeHost, seedState } from "./seed";
 import type { SundialState } from "./types";
 
 const DB_NAME = "sundial-atelier";
@@ -27,7 +27,15 @@ export async function loadState(): Promise<SundialState> {
   try {
     const db = await getDb();
     const existing = (await db.get(STORE, KEY)) as SundialState | undefined;
-    if (existing?.version === 1) return existing;
+    if (existing?.version === 1) {
+      // Phase B2: retire Brandon smoke / placeholder meeting titles
+      if (isSmokeHost(existing)) {
+        const fresh = seedState();
+        await db.put(STORE, fresh, KEY);
+        return fresh;
+      }
+      return existing;
+    }
   } catch {
     // IndexedDB unavailable (private mode quirks) — fall back to seed in memory
   }

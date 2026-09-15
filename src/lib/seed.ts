@@ -3,8 +3,17 @@ import type { DayAvailability, MeetingType, Profile, SundialState } from "./type
 
 export const PRODUCT = {
   name: "Sundial",
-  tagline: "One beautiful page. Pick a day. Take an hour.",
+  tagline: "Set your hours. Guests book a slot.",
   aesthetic: "Courtyard Meridian",
+} as const;
+
+/** Canonical demo host — never Brandon smoke. */
+export const DEMO_HOST = {
+  slug: "maya",
+  displayName: "Maya Ortega",
+  headline: "Courtyard studio hours — Phoenix",
+  timezone: "America/Phoenix",
+  accentNote: "Bookings stay in this browser until you export.",
 } as const;
 
 const week: DayAvailability[] = [0, 1, 2, 3, 4, 5, 6].map((weekday) => ({
@@ -21,35 +30,35 @@ const week: DayAvailability[] = [0, 1, 2, 3, 4, 5, 6].map((weekday) => ({
 
 const meetings: MeetingType[] = [
   {
-    id: "mt-intro",
-    title: "Intro call",
+    id: "mt-courtyard",
+    title: "Courtyard intro",
     durationMin: 30,
-    description: "A short hello — what you're building and how I can help.",
+    description: "First chat under the linen — what you're shipping and where you're stuck.",
     bufferMin: 10,
   },
   {
-    id: "mt-deep",
-    title: "Deep work review",
+    id: "mt-walkthrough",
+    title: "Draft walkthrough",
     durationMin: 60,
-    description: "Walk a draft, a deck, or a sticky product decision.",
+    description: "Walk a deck, prototype, or sticky product decision together.",
     bufferMin: 15,
   },
   {
-    id: "mt-coffee",
-    title: "Coffee chat",
+    id: "mt-shade",
+    title: "Shade coffee",
     durationMin: 20,
-    description: "No agenda. Just a warm slot on the sundial.",
+    description: "Short catch-up. No deck required — just a warm open hour.",
     bufferMin: 5,
   },
 ];
 
 export function seedState(): SundialState {
   const profile: Profile = {
-    slug: "brandon",
-    displayName: "Brandon Theriot",
-    headline: "Office hours under the linen shade",
-    timezone: "America/Phoenix",
-    accentNote: "Bookings stay in this browser until you export.",
+    slug: DEMO_HOST.slug,
+    displayName: DEMO_HOST.displayName,
+    headline: DEMO_HOST.headline,
+    timezone: DEMO_HOST.timezone,
+    accentNote: DEMO_HOST.accentNote,
   };
 
   return {
@@ -64,4 +73,18 @@ export function seedState(): SundialState {
 
 export function newId(prefix = "id") {
   return `${prefix}_${nanoid(10)}`;
+}
+
+/** True when stored state is leftover Brandon smoke / pre-R2 sample. */
+export function isSmokeHost(state: SundialState | null | undefined): boolean {
+  if (!state?.profile) return true;
+  const slug = state.profile.slug?.toLowerCase() ?? "";
+  const name = state.profile.displayName?.toLowerCase() ?? "";
+  return (
+    slug === "brandon" ||
+    slug === "sample" ||
+    name.includes("brandon") ||
+    name.includes("smoke") ||
+    state.meetingTypes.some((m) => /intro call|deep work review|coffee chat/i.test(m.title))
+  );
 }

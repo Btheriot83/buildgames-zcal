@@ -89,11 +89,19 @@ export function BookingPage({ slug }: { slug: string }) {
             className="empty-art"
             priority
           />
-          <h1 className="display">Unknown page</h1>
+          <h1 className="display">No host on this page</h1>
           <p className="lede">
-            No host for <code>/{slug}</code> in this browser. Open the{" "}
-            <Link href="/desk">desk</Link> once to seed the sample host, or import a backup.
+            Nothing seeded for <code>/b/{slug}</code> in this browser. Open the{" "}
+            <Link href="/desk">host desk</Link> to set Maya&apos;s availability, or import a backup.
           </p>
+          <div className="hero-actions">
+            <Link className="btn primary" href="/desk">
+              Set availability
+            </Link>
+            <Link className="btn ghost" href="/b/maya">
+              Try /b/maya
+            </Link>
+          </div>
         </section>
       </div>
     );
@@ -190,11 +198,11 @@ export function BookingPage({ slug }: { slug: string }) {
             {dateKey ? ` · ${dateKey}` : ""}.
           </p>
           <p className="muted success-note">
-            Saved to this browser&apos;s local calendar. No email is sent.
+            Written to this browser&apos;s local calendar for the host. No email is sent.
           </p>
           <div className="hero-actions">
             <Link className="btn primary" href="/desk">
-              View host desk
+              See it on the host desk
             </Link>
             <button
               type="button"
@@ -243,7 +251,7 @@ export function BookingPage({ slug }: { slug: string }) {
               height={280}
             />
           </div>
-          <p className="eyebrow">Book time</p>
+          <p className="eyebrow">Public booking · pick a slot</p>
           <h1 className="display host-name">{state.profile.displayName}</h1>
           <p className="host-headline">{state.profile.headline}</p>
           <p className="host-tz mono">{state.profile.timezone}</p>
@@ -275,7 +283,7 @@ export function BookingPage({ slug }: { slug: string }) {
               Anything I should know?
               <input
                 className="t-input"
-                placeholder="e.g. morning intro, quick coffee…"
+                placeholder="e.g. courtyard intro before noon, shade coffee…"
                 value={intent}
                 onChange={(e) => setIntent(e.target.value)}
               />
@@ -449,7 +457,7 @@ export function BookingPage({ slug }: { slug: string }) {
                         month: "short",
                         day: "numeric",
                       })
-                    : "Pick a sage day"}
+                    : "Pick an open day"}
                 </h3>
                 {!dateKey ? (
                   <div className="slot-empty">
@@ -460,10 +468,10 @@ export function BookingPage({ slug }: { slug: string }) {
                       height={165}
                       className="slot-empty-art"
                     />
-                    <p className="muted">Sage days are open — tap one.</p>
+                    <p className="muted">Sage days are open hours — tap one to see times.</p>
                   </div>
                 ) : slots.length === 0 ? (
-                  <p className="muted">Nothing left this day — try another sage mark.</p>
+                  <p className="muted">No open hours left this day — try another sage mark.</p>
                 ) : (
                   <div className="slot-groups">
                     {[

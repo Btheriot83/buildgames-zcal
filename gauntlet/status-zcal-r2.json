@@ -1,0 +1,67 @@
+{
+  "product": "Sundial",
+  "slug": "zcal",
+  "phase": "B2",
+  "demoUrl": "https://buildgames-zcal.vercel.app",
+  "barUrl": "https://zcal.co/",
+  "identity": "Courtyard Meridian",
+  "identityLocked": true,
+  "reseed": false,
+  "phaseA": {
+    "done": true,
+    "techniquesDone": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "phaseB": {
+    "roundsCompleted": 5,
+    "roundsTarget": 5,
+    "workbench": "apps/zcal/gauntlet/workbench.md",
+    "latestHonestScore": 7.1
+  },
+  "phaseB2": {
+    "roundsCompleted": 10,
+    "roundsTarget": 10,
+    "workbench": "apps/zcal/gauntlet/workbench-r2.md",
+    "latestHonestScore": 8.0,
+    "focus": [
+      "visible mistakes (dual-window availability collapse)",
+      "job clarity \u22643s: set availability \u2192 public book a slot",
+      "real host/event names: Maya Ortega / Courtyard intro / Draft walkthrough / Shade coffee (not Brandon smoke)",
+      "visibility gate per round"
+    ],
+    "demoHost": {
+      "slug": "maya",
+      "displayName": "Maya Ortega",
+      "timezone": "America/Phoenix"
+    },
+    "shotsDir": "apps/zcal/gauntlet/shots-r2"
+  },
+  "ai": {
+    "feature": "Meridian /api/assist",
+    "env": "BUILD_GAMES_LLM_API_KEY on Vercel"
+  },
+  "repo": "https://github.com/Btheriot83/buildgames-zcal",
+  "doNotMessageBrandon": true,
+  "finishedAtUtc": "2026-09-15T04:19:14Z",
+  "finishedAtPt": "2026-09-14 9:19 PM PT",
+  "liveSmoke": {
+    "ok": true,
+    "atPt": "2026-09-14 9:19 PM PT",
+    "checks": [
+      "GET / 200 \u2014 Set your hours job strip",
+      "GET /desk 200 \u2014 Maya Ortega",
+      "GET /b/maya 200 \u2014 slots auto-visible",
+      "GET /b/brandon \u2192 /b/maya",
+      "confirm \u2192 You're booked (Elena Vargas)",
+      "GET /api/health 200"
+    ]
+  }
+}
