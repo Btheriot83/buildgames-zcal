@@ -2169,3 +2169,14 @@ html, body {
 .confirm-flow.is-shaking {
   animation: t-input-shake 420ms ease-in-out;
 }
+/* r7 fonts: job label hierarchy vs zcal */
+.book-job-label {
+  font-size: 1.15rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+  margin-bottom: 0.4rem !important;
+}
+.card-meeting-chip {
+  font-size: 0.75rem !important;
+  color: #5c636a !important;
+}
