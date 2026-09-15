@@ -285,48 +285,8 @@ export function BookingPage({ slug }: { slug: string }) {
             ))}
           </div>
 
-          <details className="assist-box assist-deferred">
-            <summary className="assist-summary">Suggest an hour</summary>
-            <label className="assist-label">
-              Anything I should know?
-              <input
-                className="t-input"
-                placeholder="e.g. intro before noon, short check-in…"
-                value={intent}
-                onChange={(e) => setIntent(e.target.value)}
-              />
-            </label>
-            <button
-              type="button"
-              className="btn secondary sm assist-btn"
-              disabled={assistLoading || !meeting}
-              onClick={runAssist}
-            >
-              {assistLoading ? "Checking open hours…" : "Find a good hour"}
-            </button>
-            {assist ? (
-              <div className="assist-result">
-                <p className="assist-copy">{assist.copy}</p>
-                <ul className="assist-suggestions">
-                  {assist.suggestions.map((s) => (
-                    <li key={s.startIso}>
-                      <button
-                        type="button"
-                        className="assist-chip"
-                        onClick={() => applySuggestion(s)}
-                      >
-                        <strong>
-                          {s.dateKey} · {s.label}
-                        </strong>
-                        <span>{s.reason}</span>
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-                <p className="assist-note mono">{assist.mode === "local" ? "Local ranking" : "Live model"} · {assist.note}</p>
-              </div>
-            ) : null}
-          </details>
+          {/* assist deferred to desk — cut from public booker */}
+
         </aside>
 
         <section className="book-card">

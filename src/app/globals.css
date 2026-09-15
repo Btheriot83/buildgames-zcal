@@ -3507,3 +3507,14 @@ html, body {
   color: #f7f8f6;
   border-color: #121416;
 }
+
+/* elevate11: cut assist from public booker */
+.book-host .assist-box { display: none !important; }
+
+/* elevate11: confirm CTA stays ink even when disabled look is softer */
+.confirm-cta.btn.primary:disabled {
+  background: #9aa1a8 !important;
+  border-color: #9aa1a8 !important;
+  color: #f7f8f6 !important;
+  opacity: 1;
+}
