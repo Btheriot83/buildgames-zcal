@@ -442,7 +442,6 @@ export function BookingPage({ slug }: { slug: string }) {
               </div>
 
               <div className="book-tz-foot" aria-label="Timezone">
-                <span className="book-tz-globe" aria-hidden>🌐</span>
                 <span className="book-tz-label mono">{state.profile.timezone.replace(/_/g, " ")}</span>
               </div>
 
@@ -450,7 +449,6 @@ export function BookingPage({ slug }: { slug: string }) {
                 <h3 className="slot-heading">
                   {dateKey ? (
                     <>
-                      <span className="slot-globe" aria-hidden>🌐</span>
                       <span>
                         {new Date(dateKey + "T12:00:00").toLocaleDateString(undefined, {
                           weekday: "long",
