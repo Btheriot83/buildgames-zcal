@@ -13,3 +13,4 @@
 | 9 | quiet density toggle | cut-elements | e9-quiet-toggle.png | cd44365 |
 | 10 | Source Serif host | specify-the-look, design-system-from-assets | e10-serif-host.png | 59e1770 |
 | 11 | cut assist from booker | cut-elements, remove-ai-tells | e11-cut-assist.png | 1f6667f |
+| 12 | critic polish + verdict | critic-subagents | e12-critic-polish.png | d5eb04d |
