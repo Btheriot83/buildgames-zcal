@@ -1,23 +1,23 @@
-# Visible delta — Sundial (Courtyard Meridian)
+# Visible delta — Sundial Phase B2 (Courtyard Meridian locked)
 
 **Rule:** A pass fails if the previous live demo cannot be distinguished in ~3 seconds.  
 **Identity:** Still **Courtyard Meridian** (no reseed).  
-**Verdict:** **Already obvious** — no visible rewrite required.
+**Verdict:** **Pass** — B2 deltas are billboard-obvious vs Phase B closeout.
 
 ## Screenshots
 | | Path |
 | --- | --- |
-| **Before** (live home) | `gauntlet/screenshots/before-visible-home.png` |
-| **Before** (booking loop) | `gauntlet/screenshots/before-visible-loop.png` |
-| **After** (same live — already billboard) | `gauntlet/screenshots/after-visible-home.png` |
-| **After** (same booking loop) | `gauntlet/screenshots/after-visible-loop.png` |
+| **Before** (Phase B home) | `gauntlet/screenshots/before-visible-home.png` |
+| **After** (B2 home job strip) | `gauntlet/shots-r2/r2-home.png` |
+| **After** (Maya booking) | `gauntlet/shots-r2/r2-booking.png` |
+| **After** (dual-window avail) | `gauntlet/shots-r2/r2-availability.png` |
 
-## Five visible deltas already present (spot in <3s vs generic SaaS)
-1. **Linen paper field** — Full-bleed `linen-texture.jpg` fiber ground (not flat white).
-2. **Courtyard Meridian eyebrow** — Explicit identity label above Newsreader “Sundial”.
-3. **Brass gnomon hero** — Imagine still + `gnomon-drift` loop with material caption.
-4. **Booking stage** — Host rail + cream calendar card; sage open-day marks; copper accents.
-5. **Type pairing** — Newsreader display + IBM Plex Sans/Mono — no Inter/Geist SaaS default.
+## Five visible deltas (spot in <3s vs prior live)
+1. **Job strip** — Numbered 1–2–3: Set availability → Share `/b/maya` → Guest books.
+2. **CTA verbs** — Primary **Set availability** (not “Book a sample slot”).
+3. **Real host** — **Maya Ortega** / Courtyard intro · Draft walkthrough · Shade coffee (not Brandon Theriot / Intro call).
+4. **Dual AM/PM windows** on desk availability (collapse bug gone).
+5. **Cleaner slot grid** — starts every meeting duration; stronger sage open-day fill.
 
 ## Not counted
-No code amplify this pass — gate already met on live demo.
+Docs-only, IDENTITY rewrite, opacity-only tweaks.

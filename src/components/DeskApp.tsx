@@ -7,7 +7,7 @@ import { Toast } from "./Toast";
 import { SiteHeader } from "./SiteHeader";
 import { SundialMark } from "./SundialMark";
 import { formatMin, bookingTitle } from "@/lib/slots";
-import { newId } from "@/lib/seed";
+import { newId, DEMO_HOST } from "@/lib/seed";
 import type { DayAvailability, MeetingType } from "@/lib/types";
 
 const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -43,13 +43,25 @@ export function DeskApp() {
 
       <section className="desk-hero t-texts-reveal" data-reveal="in">
         <div>
-          <p className="eyebrow">Host desk</p>
+          <p className="eyebrow">Host desk · set availability</p>
           <h1 className="display">{state.profile.displayName}</h1>
           <p className="lede">{state.profile.headline}</p>
           <p className="degraded">{state.profile.accentNote}</p>
+          <p className="desk-job">
+            Mark weekday windows → save → share{" "}
+            <Link href={`/b/${state.profile.slug}`}>/b/{state.profile.slug}</Link>. Guests book
+            from that page.
+          </p>
           <div className="hero-actions">
-            <Link className="btn primary" href={`/b/${state.profile.slug}`}>
-              Open booking page
+            <button
+              type="button"
+              className="btn primary"
+              onClick={() => setTab("availability")}
+            >
+              Edit availability
+            </button>
+            <Link className="btn ghost" href={`/b/${state.profile.slug}`}>
+              Preview public page
             </Link>
             <button type="button" className="btn ghost" onClick={() => api.doExport()}>
               Export JSON
@@ -117,7 +129,11 @@ function CalendarPane({ api }: { api: ReturnType<typeof useSundial> }) {
         documented.
       </p>
       {events.length === 0 ? (
-        <p className="empty">No events yet. Share your public page and take a booking.</p>
+        <p className="empty">
+          No bookings yet. Save availability, then share{" "}
+          <Link href={`/b/${api.state.profile.slug}`}>/b/{api.state.profile.slug}</Link> — guests book
+          there.
+        </p>
       ) : (
         <ul className="event-list">
           {events.map((b) => (
@@ -150,6 +166,7 @@ function CalendarPane({ api }: { api: ReturnType<typeof useSundial> }) {
 
 function AvailabilityPane({ api }: { api: ReturnType<typeof useSundial> }) {
   const [draft, setDraft] = useState<DayAvailability[]>(api.state!.availability);
+  const [savedFlash, setSavedFlash] = useState(false);
 
   const toggle = (weekday: number) => {
     setDraft((prev) =>
@@ -158,30 +175,49 @@ function AvailabilityPane({ api }: { api: ReturnType<typeof useSundial> }) {
           ? {
               ...d,
               enabled: !d.enabled,
-              windows: !d.enabled && d.windows.length === 0
-                ? [{ startMin: 9 * 60, endMin: 17 * 60 }]
-                : d.windows,
+              windows:
+                !d.enabled && d.windows.length === 0
+                  ? [
+                      { startMin: 9 * 60, endMin: 12 * 60 },
+                      { startMin: 13 * 60 + 30, endMin: 17 * 60 },
+                    ]
+                  : d.windows,
             }
           : d
       )
     );
   };
 
-  const setWindow = (weekday: number, startMin: number, endMin: number) => {
+  const setWindowEdge = (
+    weekday: number,
+    index: number,
+    edge: "startMin" | "endMin",
+    minutes: number
+  ) => {
     setDraft((prev) =>
-      prev.map((d) =>
-        d.weekday === weekday ? { ...d, windows: [{ startMin, endMin }] } : d
-      )
+      prev.map((d) => {
+        if (d.weekday !== weekday) return d;
+        const windows = d.windows.length
+          ? d.windows.map((w, i) => (i === index ? { ...w, [edge]: minutes } : w))
+          : [{ startMin: 9 * 60, endMin: 17 * 60 }];
+        return { ...d, windows };
+      })
     );
   };
+
+  const timeValue = (min: number) =>
+    `${String(Math.floor(min / 60)).padStart(2, "0")}:${String(min % 60).padStart(2, "0")}`;
 
   return (
     <div>
       <h2 className="panel-title">Weekly availability</h2>
-      <p className="muted">Freeform windows in {api.state!.profile.timezone}.</p>
+      <p className="muted">
+        Open windows in {api.state!.profile.timezone}. Morning and afternoon stay separate — guests
+        only see hours you mark open.
+      </p>
       <ul className="avail-list">
         {draft.map((d) => (
-          <li key={d.weekday} className="avail-row">
+          <li key={d.weekday} className="avail-row avail-row-rich">
             <label className="check-row">
               <input
                 type="checkbox"
@@ -191,29 +227,38 @@ function AvailabilityPane({ api }: { api: ReturnType<typeof useSundial> }) {
               <span>{DAYS[d.weekday]}</span>
             </label>
             {d.enabled ? (
-              <div className="window-edit">
-                <input
-                  className="t-input"
-                  type="time"
-                  value={`${String(Math.floor((d.windows[0]?.startMin ?? 540) / 60)).padStart(2, "0")}:${String((d.windows[0]?.startMin ?? 540) % 60).padStart(2, "0")}`}
-                  onChange={(e) => {
-                    const [h, m] = e.target.value.split(":").map(Number);
-                    setWindow(d.weekday, h * 60 + m, d.windows[0]?.endMin ?? 17 * 60);
-                  }}
-                />
-                <span className="muted">to</span>
-                <input
-                  className="t-input"
-                  type="time"
-                  value={`${String(Math.floor((d.windows[0]?.endMin ?? 1020) / 60)).padStart(2, "0")}:${String((d.windows[0]?.endMin ?? 1020) % 60).padStart(2, "0")}`}
-                  onChange={(e) => {
-                    const [h, m] = e.target.value.split(":").map(Number);
-                    setWindow(d.weekday, d.windows[0]?.startMin ?? 9 * 60, h * 60 + m);
-                  }}
-                />
-                <span className="mono muted sm">
-                  {formatMin(d.windows[0]?.startMin ?? 540)}–{formatMin(d.windows[0]?.endMin ?? 1020)}
-                </span>
+              <div className="window-stack">
+                {(d.windows.length ? d.windows : [{ startMin: 9 * 60, endMin: 17 * 60 }]).map(
+                  (w, wi) => (
+                    <div key={wi} className="window-edit">
+                      <span className="window-label mono">
+                        {wi === 0 ? "AM" : wi === 1 ? "PM" : `W${wi + 1}`}
+                      </span>
+                      <input
+                        className="t-input"
+                        type="time"
+                        value={timeValue(w.startMin)}
+                        onChange={(e) => {
+                          const [h, m] = e.target.value.split(":").map(Number);
+                          setWindowEdge(d.weekday, wi, "startMin", h * 60 + m);
+                        }}
+                      />
+                      <span className="muted">to</span>
+                      <input
+                        className="t-input"
+                        type="time"
+                        value={timeValue(w.endMin)}
+                        onChange={(e) => {
+                          const [h, m] = e.target.value.split(":").map(Number);
+                          setWindowEdge(d.weekday, wi, "endMin", h * 60 + m);
+                        }}
+                      />
+                      <span className="mono muted sm">
+                        {formatMin(w.startMin)}–{formatMin(w.endMin)}
+                      </span>
+                    </div>
+                  )
+                )}
               </div>
             ) : (
               <span className="muted">Off</span>
@@ -221,9 +266,25 @@ function AvailabilityPane({ api }: { api: ReturnType<typeof useSundial> }) {
           </li>
         ))}
       </ul>
-      <button type="button" className="btn primary" onClick={() => api.setAvailability(draft)}>
-        Save availability
-      </button>
+      <div className="avail-actions">
+        <button
+          type="button"
+          className="btn primary"
+          onClick={async () => {
+            await api.setAvailability(draft);
+            setSavedFlash(true);
+            window.setTimeout(() => setSavedFlash(false), 2200);
+          }}
+        >
+          Save availability
+        </button>
+        <Link className="btn ghost" href={`/b/${api.state!.profile.slug}`}>
+          Open public booking page
+        </Link>
+        {savedFlash ? (
+          <span className="save-pill mono">Saved — guests see these hours now</span>
+        ) : null}
+      </div>
     </div>
   );
 }
@@ -362,7 +423,7 @@ function BackupPane({ api }: { api: ReturnType<typeof useSundial> }) {
           />
         </label>
         <button type="button" className="btn danger" onClick={() => api.reset()}>
-          Reset sample desk
+          Reset Maya desk
         </button>
       </div>
       <label className="profile-edit">
@@ -388,7 +449,7 @@ function BackupPane({ api }: { api: ReturnType<typeof useSundial> }) {
           defaultValue={api.state!.profile.slug}
           onBlur={(e) =>
             api.updateProfile({
-              slug: e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, "-") || "brandon",
+              slug: e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, "-") || DEMO_HOST.slug,
             })
           }
         />
