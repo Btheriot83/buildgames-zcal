@@ -2156,3 +2156,16 @@ html, body {
   background: var(--sage-open) !important;
   color: var(--sage-open-text) !important;
 }
+/* r6 buttons: confirm CTA weight + real-action transitions */
+.confirm-cta.btn.primary {
+  min-height: 3.1rem !important;
+  font-size: 1.02rem !important;
+  border-radius: 8px !important;
+  letter-spacing: -0.015em;
+}
+.slot-chip, .cal-day, .meet-card {
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease !important;
+}
+.confirm-flow.is-shaking {
+  animation: t-input-shake 420ms ease-in-out;
+}

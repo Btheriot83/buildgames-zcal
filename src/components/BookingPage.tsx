@@ -446,7 +446,7 @@ export function BookingPage({ slug }: { slug: string }) {
                 <span className="book-tz-label mono">{state.profile.timezone.replace(/_/g, " ")}</span>
               </div>
 
-              <div className="slot-pane">
+              <div className="slot-pane" key={dateKey || "none"} data-transition="clearline-panel">
                 <h3 className="slot-heading">
                   {dateKey ? (
                     <>
