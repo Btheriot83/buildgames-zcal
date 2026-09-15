@@ -2517,3 +2517,195 @@ html, body {
 @media (prefers-reduced-motion: no-preference) {
   .host-portrait .host-photo { opacity: 1 !important; }
 }
+
+/* ===== BEAT-THE-ORIGINAL Clearline (vs zcal.co) ===== */
+
+/* beat1: circular contact-sheet host — never empty slab */
+.host-portrait {
+  width: 5.5rem !important;
+  height: 5.5rem !important;
+  max-width: 5.5rem !important;
+  aspect-ratio: 1 !important;
+  border-radius: 999px !important;
+  margin-bottom: 0.85rem !important;
+  border: 1.5px solid #d0d4d8 !important;
+  background: #e8ebe9 !important;
+}
+.host-portrait .host-photo,
+.host-photo {
+  border-radius: 999px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  position: relative !important;
+}
+
+/* beat2: one white booking surface like zcal card */
+.book-stage {
+  display: grid !important;
+  grid-template-columns: minmax(15rem, 17.5rem) minmax(0, 1fr) !important;
+  gap: 0 !important;
+  align-items: stretch !important;
+  background: #fff !important;
+  border: 1px solid #d0d4d8 !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  box-shadow: none !important;
+}
+.book-host,
+.book-card {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+}
+.book-host {
+  padding: 1.35rem 1.2rem 1.5rem !important;
+  border-right: 1px solid #e2e5e8 !important;
+}
+.book-card {
+  padding: 1.35rem 1.35rem 1.5rem !important;
+}
+@media (max-width: 800px) {
+  .book-stage {
+    grid-template-columns: 1fr !important;
+  }
+  .book-host {
+    border-right: 0 !important;
+    border-bottom: 1px solid #e2e5e8 !important;
+  }
+}
+
+/* beat3: calendar | times side-by-side (zcal after-date pattern) */
+.pick-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(9.5rem, 11.5rem);
+  gap: 1.25rem;
+  align-items: start;
+  margin-top: 0.75rem;
+}
+.pick-cal { min-width: 0; }
+.pick-slots.slot-pane {
+  border-top: 0 !important;
+  padding-top: 0 !important;
+  border-left: 1px solid #e2e5e8;
+  padding-left: 1rem;
+  min-height: 12rem;
+}
+.slot-empty-art { display: none !important; }
+.slot-empty {
+  padding: 0.5rem 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+.slot-empty .muted {
+  font-size: 0.82rem !important;
+  color: #7a828c !important;
+}
+@media (max-width: 720px) {
+  .pick-split { grid-template-columns: 1fr; }
+  .pick-slots.slot-pane {
+    border-left: 0 !important;
+    padding-left: 0 !important;
+    border-top: 1px solid #e2e5e8 !important;
+    padding-top: 0.85rem !important;
+  }
+}
+
+/* beat4: selected day = ink fill + vermillion ring (zcal outline language) */
+.cal-day.in-month.is-active,
+.cal-day.is-active {
+  background: #121416 !important;
+  color: #f7f8f6 !important;
+  box-shadow: inset 0 0 0 2px #c41e3a !important;
+  font-weight: 600 !important;
+}
+.cal-day.in-month.is-open:not(.is-active) {
+  background: #c8d6e8 !important;
+  color: #1a4a8a !important;
+  font-weight: 600 !important;
+}
+.cal-nav .btn.ghost.sm {
+  color: #1a4a8a !important;
+  border: 0 !important;
+  font-size: 1.25rem !important;
+  min-width: 2rem;
+  padding: 0.15rem 0.4rem !important;
+}
+.cal-nav .btn.ghost.sm:hover {
+  background: #eef2f6 !important;
+  color: #121416 !important;
+}
+
+/* beat5: quieter host name scale like zcal left rail */
+.host-name.display {
+  font-size: clamp(1.15rem, 2vw, 1.35rem) !important;
+  font-family: var(--font-sans), "IBM Plex Sans", system-ui, sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+  margin: 0 0 0.2rem !important;
+}
+.book-host .eyebrow { margin-bottom: 0.35rem !important; }
+.host-headline { margin-bottom: 0.15rem !important; }
+.host-tz { margin-bottom: 0.85rem !important; }
+
+/* beat6: meet list as tight duration-forward rails */
+.meet-card .meet-desc { display: none !important; }
+.meet-list { margin-bottom: 0.85rem !important; }
+
+/* beat7: home points — job facts, no pigment poetry */
+.home-points li::before { color: #121416 !important; }
+
+/* hard flat bar retention */
+.book-stage, .book-card, .book-host, .meet-card, .slot-chip, .btn, .panel,
+.confirm-summary, .home-visual-frame, .job-strip li, .cal-day {
+  background-image: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+}
+
+/* beat8: collapse assist — zcal left rail stays quiet */
+.assist-box {
+  border-top: 1px solid #e2e5e8 !important;
+  padding-top: 0.55rem !important;
+  margin-top: 0.35rem !important;
+  opacity: 1 !important;
+}
+.assist-summary {
+  list-style: none;
+  cursor: pointer;
+  font-size: 0.78rem !important;
+  font-weight: 500 !important;
+  color: #7a828c !important;
+  padding: 0.2rem 0;
+}
+.assist-summary::-webkit-details-marker { display: none; }
+.assist-box[open] .assist-summary { margin-bottom: 0.55rem; color: #3a4149 !important; }
+
+/* beat9: brand mark flat vermillion tile */
+.brand-mark {
+  width: 11px !important;
+  height: 11px !important;
+  border-radius: 2px !important;
+  background: #c41e3a !important;
+  border: 0 !important;
+}
+
+/* beat10: drop duplicate tz under calendar when slots show it */
+.pick-split .book-tz-foot { display: none !important; }
+.book-job-label {
+  font-size: 1.35rem !important;
+  letter-spacing: -0.025em !important;
+  margin: 0 0 0.25rem !important;
+}
+.card-meeting-chip { margin-bottom: 0 !important; }
+.slot-heading {
+  font-size: 0.92rem !important;
+  margin: 0 0 0.35rem !important;
+}
+.slot-grid { max-width: none !important; width: 100%; }
+.slot-chip { font-variant-numeric: tabular-nums; }
