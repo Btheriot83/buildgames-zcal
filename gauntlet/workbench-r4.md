@@ -47,3 +47,10 @@ Bar comps: `shots-r4/bar-zcal-*.png` · Baseline: `shots-r4/r0-*-baseline.png`
 - verdict: Confirm CTA taller; shake/success-check/toast/panel-slide now bound to book/error/desk actions (see TRANSITIONS.md). Motion still subtler than zcal’s product chrome.
 - commit: b6edcc5
 - transitions map: success-check→book done; toast→api.toast; error-state-shake→confirm err; skeleton-reveal→cold load; texts-reveal→page enter; tabs-sliding→desk tabs; number-pop-in→booking count; modal→meeting editor; panel-reveal→desk panel
+
+## r7 — fonts: uppercase month (dream→target)
+- files: src/components/BookingPage.tsx, src/app/globals.css
+- shot: gauntlet/shots-r4/r7-fonts-month-caps.png · target: gauntlet/shots-r4/dream-target.png
+- verdict: Month tracking/caps closer to target SEPTEMBER 2026; vs bar, zcal stays title-case quieter — we match target not bar here.
+- commit: 99350b9
+- dream-loop: close live→target type hierarchy

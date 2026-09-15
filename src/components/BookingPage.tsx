@@ -393,7 +393,7 @@ export function BookingPage({ slug }: { slug: string }) {
                 </p>
               ) : null}
               <div className="cal-head">
-                <h3 className="panel-title">{monthLabel(month.y, month.m0)}</h3>
+                <h3 className="panel-title cal-month-label">{monthLabel(month.y, month.m0)}</h3>
                 <div className="cal-nav">
                   <button
                     type="button"
