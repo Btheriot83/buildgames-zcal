@@ -76,3 +76,10 @@ Bar comps: `shots-r4/bar-zcal-*.png` · Baseline: `shots-r4/r0-*-baseline.png`
 - commit: 9af7748
 - bar A/B: yes (every 5th)
 - dream-loop: slot heading composition vs target
+
+## r11 — contrast: white booking cards (dream→target)
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r11-contrast-cards.png
+- verdict: Cards closer to target/zcal white surfaces on linen; linen field still warmer than bar’s pure white page.
+- commit: 547231e
+- dream-loop: materials/surfaces vs target

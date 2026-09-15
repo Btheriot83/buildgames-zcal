@@ -128,3 +128,15 @@
 }
 .slot-globe { font-size: 0.95rem; line-height: 1; }
 
+
+/* r11 contrast dream→target: cleaner cream card edge */
+:root {
+  --card: #ffffff;
+  --book-card: #ffffff;
+  --stroke-strong: #b6a78f;
+}
+.book-card, .book-host {
+  background: #fff;
+  border-color: var(--stroke-strong);
+}
+
