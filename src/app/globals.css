@@ -2147,3 +2147,12 @@ html, body {
   font-size: 0.7rem !important;
   font-weight: 600 !important;
 }
+/* r5 contrast: open-day slate closer to zcal light-blue cue */
+:root {
+  --sage-open: #c9d5e3;
+  --sage-open-text: #152033;
+}
+.cal-day.in-month.is-open:not(.is-active) {
+  background: var(--sage-open) !important;
+  color: var(--sage-open-text) !important;
+}
