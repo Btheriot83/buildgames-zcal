@@ -13,7 +13,7 @@ Cool graphite desk under studio daylight — hairline rails, vermillion mark + c
 ## Palette (do not replace)
 | Token | Hex | Role |
 | --- | --- | --- |
-| Field | `#eef0ed` | Cool paper (+ `cool-paper.jpg`) |
+| Field | `#f4f5f4` | Flat cool paper (texture optional; r10 hard-flat) |
 | Card | `#ffffff` | Booking surface |
 | Ink | `#121416` | Primary text / active day |
 | Vermillion | `#c41e3a` / `#9e1830` | Accent, open-day wash |
