@@ -225,3 +225,19 @@
 .assist-copy { color: var(--ink-soft); }
 .book-tz-foot { color: #3a342c; border-top-color: var(--stroke-strong); }
 
+
+/* r19 bar gap dream→target: tz row under day heading */
+.slot-tz-select {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: -0.15rem 0 0.75rem;
+  padding: 0.35rem 0.65rem;
+  border: 1.5px solid var(--stroke-strong);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+

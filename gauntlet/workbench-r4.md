@@ -128,3 +128,9 @@ Bar comps: `shots-r4/bar-zcal-*.png` · Baseline: `shots-r4/r0-*-baseline.png`
 - shot: gauntlet/shots-r4/r18-contrast-secondary.png
 - verdict: Secondary copy darker on white cards; assist box still extra chrome vs target/zcal minimal left rail.
 - commit: 71e547d
+
+## r19 — bar gap: slot timezone chip (dream→target)
+- files: src/components/BookingPage.tsx, src/app/globals.css
+- shot: gauntlet/shots-r4/r19-bar-gap-slot-tz.png
+- verdict: Local tz chip under day heading toward target; bar still has live clock + am/pm toggle.
+- commit: 81cba90

@@ -474,6 +474,11 @@ export function BookingPage({ slug }: { slug: string }) {
                     "Pick an open day"
                   )}
                 </h3>
+                {dateKey ? (
+                  <div className="slot-tz-select" aria-label="Timezone">
+                    <span className="mono">{state.profile.timezone.replace(/_/g, " ")} (local)</span>
+                  </div>
+                ) : null}
                 {!dateKey ? (
                   <div className="slot-empty">
                     <Image
