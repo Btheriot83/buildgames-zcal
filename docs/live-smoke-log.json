@@ -1,20 +1,19 @@
 {
-  "base": "https://buildgames-zcal.vercel.app",
+  "base": "http://127.0.0.1:3013",
   "booked": true,
   "log": [
-    "home status title=Sundial — freeform scheduling",
+    "home status title=Sundial — book a quiet hour",
+    "home has job=true",
     "shot live-home.png",
-    "desk h1=Brandon Theriot",
+    "desk h1=Maya Ortega",
     "shot live-desk.png",
+    "booking host=Maya Ortega",
     "shot live-booking.png",
-    "day chips=14",
-    "picked day=Tue, Sep 15 slots=24",
+    "slots visible=13",
     "success pane=true",
     "shot live-success.png",
-    "calendar events after book=1",
     "shot live-calendar.png",
-    "shot original-zcal-home.png",
-    "zcal title=zcal – Beautiful scheduling pages your clients will love"
+    "shot original-zcal-home.png"
   ],
-  "at": "2026-09-15T03:16:27.080Z"
+  "at": "2026-09-15T04:38:18.820Z"
 }

@@ -290,7 +290,7 @@ export function BookingPage({ slug }: { slug: string }) {
             </label>
             <button
               type="button"
-              className="btn ghost sm assist-btn"
+              className="btn secondary sm assist-btn"
               disabled={assistLoading || !meeting}
               onClick={runAssist}
             >
@@ -381,18 +381,19 @@ export function BookingPage({ slug }: { slug: string }) {
                 disabled={!name.trim() || !email.includes("@")}
                 onClick={submit}
               >
-                Confirm time
+                Confirm booking
               </button>
             </div>
           ) : (
             <div className="pick-flow">
+              <h2 className="book-job-label">Select a day and time</h2>
               {meeting ? (
                 <p className="card-meeting-chip mono">
                   {meeting.title} · {meeting.durationMin} min · {state.profile.timezone.replace(/_/g, " ")}
                 </p>
               ) : null}
               <div className="cal-head">
-                <h2 className="panel-title">{monthLabel(month.y, month.m0)}</h2>
+                <h3 className="panel-title">{monthLabel(month.y, month.m0)}</h3>
                 <div className="cal-nav">
                   <button
                     type="button"

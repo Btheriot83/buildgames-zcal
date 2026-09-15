@@ -60,7 +60,7 @@ export function DeskApp() {
             >
               Edit availability
             </button>
-            <Link className="btn ghost" href={`/b/${state.profile.slug}`}>
+            <Link className="btn secondary" href={`/b/${state.profile.slug}`}>
               Preview public page
             </Link>
             <button type="button" className="btn ghost" onClick={() => api.doExport()}>

@@ -49,7 +49,7 @@ export default function Home() {
             <Link className="btn primary" href="/desk">
               Set availability
             </Link>
-            <Link className="btn ghost" href={`/b/${DEMO_HOST.slug}`}>
+            <Link className="btn secondary" href={`/b/${DEMO_HOST.slug}`}>
               Book with {DEMO_HOST.displayName.split(" ")[0]}
             </Link>
           </div>
