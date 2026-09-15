@@ -477,7 +477,7 @@ export function BookingPage({ slug }: { slug: string }) {
                       height={165}
                       className="slot-empty-art"
                     />
-                    <p className="muted">Sage days are open hours — tap one to see times.</p>
+                    <p className="muted">Open days show available hours — tap one to see times.</p>
                   </div>
                 ) : slots.length === 0 ? (
                   <p className="muted">No open hours left this day — try another open day.</p>

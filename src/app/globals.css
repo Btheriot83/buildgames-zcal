@@ -2274,3 +2274,24 @@ html, body {
   gap: 0.65rem !important;
   align-items: flex-start;
 }
+/* r4 fonts: quieter eyebrow + period labels (anti-cheese hierarchy) */
+.book-host .eyebrow {
+  font-size: 0.62rem !important;
+  letter-spacing: 0.12em !important;
+  color: #6a727a !important;
+  font-weight: 600 !important;
+}
+.slot-group-label {
+  font-size: 0.68rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase;
+  color: #7a828c !important;
+  margin: 0 0 0.35rem !important;
+}
+.slot-heading {
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.015em;
+  color: #121416 !important;
+}
