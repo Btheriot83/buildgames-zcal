@@ -68,3 +68,11 @@ Bar comps: `shots-r4/bar-zcal-*.png` · Baseline: `shots-r4/r0-*-baseline.png`
 - verdict: Job label now matches zcal/target wording; bar still wins on single-card simplicity.
 - commit: 32bc705
 - dream-loop: job label matches target H2
+
+## r10 — bar gap: globe + day heading (bar A/B · dream→target)
+- files: src/components/BookingPage.tsx, src/app/globals.css
+- shot: gauntlet/shots-r4/r10-bar-gap-globe-day.png · bar: gauntlet/shots-r4/bar-r10-zcal-booking.png
+- verdict: Globe+weekday mirrors target slot header; bar keeps timezone+24h toggle we still lack.
+- commit: 9af7748
+- bar A/B: yes (every 5th)
+- dream-loop: slot heading composition vs target

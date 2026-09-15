@@ -1625,3 +1625,13 @@ textarea.t-input {
   margin-bottom: 0.55rem;
 }
 
+
+/* r10 bar gap dream→target: globe + day heading row */
+.slot-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 1.02rem;
+}
+.slot-globe { font-size: 0.95rem; line-height: 1; }
+

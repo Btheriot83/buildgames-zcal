@@ -459,13 +459,20 @@ export function BookingPage({ slug }: { slug: string }) {
 
               <div className="slot-pane">
                 <h3 className="slot-heading">
-                  {dateKey
-                    ? new Date(dateKey + "T12:00:00").toLocaleDateString(undefined, {
-                        weekday: "long",
-                        month: "short",
-                        day: "numeric",
-                      })
-                    : "Pick an open day"}
+                  {dateKey ? (
+                    <>
+                      <span className="slot-globe" aria-hidden>🌐</span>
+                      <span>
+                        {new Date(dateKey + "T12:00:00").toLocaleDateString(undefined, {
+                          weekday: "long",
+                          month: "short",
+                          day: "numeric",
+                        })}
+                      </span>
+                    </>
+                  ) : (
+                    "Pick an open day"
+                  )}
                 </h3>
                 {!dateKey ? (
                   <div className="slot-empty">
