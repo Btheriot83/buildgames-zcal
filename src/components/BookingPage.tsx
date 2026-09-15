@@ -247,14 +247,17 @@ export function BookingPage({ slug }: { slug: string }) {
           <p className="host-headline">{state.profile.headline}</p>
           <p className="host-tz mono">{state.profile.timezone}</p>
 
-          <div className="meet-list" role="listbox" aria-label="Meeting type">
+          {meeting ? (
+            <h2 className="host-meeting-title">{meeting.title}</h2>
+          ) : null}
+          <div className="meet-chip-row" role="listbox" aria-label="Meeting type">
             {state.meetingTypes.map((m) => (
               <button
                 key={m.id}
                 type="button"
                 role="option"
                 aria-selected={activeMeetingId === m.id}
-                className={`meet-card ${activeMeetingId === m.id ? "is-active" : ""}`}
+                className={`meet-chip ${activeMeetingId === m.id ? "is-active" : ""}`}
                 onClick={() => {
                   setMeetingId(m.id);
                   setSlot(null);
@@ -262,16 +265,14 @@ export function BookingPage({ slug }: { slug: string }) {
                   setAssist(null);
                 }}
               >
-                <span className="meet-row">
-                  <span className="meet-title">{m.title}</span>
-                  <span className="meet-meta mono">{m.durationMin} min</span>
-                </span>
-                <span className="meet-desc">{m.description}</span>
+                <span className="meet-chip-dur mono">{m.durationMin} min</span>
+                <span className="meet-chip-label sr-only">{m.title}</span>
               </button>
             ))}
           </div>
 
-          <div className="assist-box">
+          <details className="assist-box">
+            <summary className="assist-summary">Need a suggested hour?</summary>
             <label className="assist-label">
               Anything I should know?
               <input
@@ -311,7 +312,7 @@ export function BookingPage({ slug }: { slug: string }) {
                 <p className="assist-note mono">{assist.mode === "local" ? "Local ranking" : "Live model"} · {assist.note}</p>
               </div>
             ) : null}
-          </div>
+          </details>
         </aside>
 
         <section className="book-card">
@@ -385,6 +386,8 @@ export function BookingPage({ slug }: { slug: string }) {
                   {meeting.title} · {meeting.durationMin} min · {state.profile.timezone.replace(/_/g, " ")}
                 </p>
               ) : null}
+              <div className="pick-split">
+              <div className="pick-cal">
               <div className="cal-head">
                 <h3 className="panel-title cal-month-label">{monthLabel(month.y, month.m0)}</h3>
                 <div className="cal-nav">
@@ -446,8 +449,9 @@ export function BookingPage({ slug }: { slug: string }) {
               <div className="book-tz-foot" aria-label="Timezone">
                 <span className="book-tz-label mono">{state.profile.timezone.replace(/_/g, " ")}</span>
               </div>
+              </div>
 
-              <div className="slot-pane" key={dateKey || "none"} data-transition="clearline-panel">
+              <div className="slot-pane pick-slots" key={dateKey || "none"} data-transition="clearline-panel">
                 <h3 className="slot-heading">
                   {dateKey ? (
                     <>
@@ -512,6 +516,7 @@ export function BookingPage({ slug }: { slug: string }) {
                       ))}
                   </div>
                 )}
+              </div>
               </div>
             </div>
           )}

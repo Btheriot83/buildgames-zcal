@@ -734,12 +734,14 @@ textarea.t-input {
   object-fit: cover;
   z-index: 0;
 }
-@media (prefers-reduced-motion: no-preference) {
-  .host-portrait .host-photo { opacity: 0; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .host-portrait .host-video { display: none !important; }
-  .host-portrait .host-photo { opacity: 1 !important; position: relative; }
+/* Clearline: still photo only — never hide .host-photo (Courtyard video-hide retired) */
+.host-portrait .host-video { display: none !important; }
+.host-portrait .host-photo {
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: relative !important;
+  inset: auto !important;
+  z-index: 1;
 }
 .host-name { font-size: clamp(1.8rem, 3.5vw, 2.35rem); margin-bottom: 0.35rem; }
 .host-headline { color: var(--ink-soft); line-height: 1.45; margin: 0 0 0.35rem; }
@@ -2515,3 +2517,459 @@ html, body {
 @media (prefers-reduced-motion: no-preference) {
   .host-portrait .host-photo { opacity: 1 !important; }
 }
+
+/* ===== BEAT-THE-ORIGINAL Clearline (vs zcal.co) ===== */
+
+/* beat1: circular contact-sheet host — never empty slab */
+.host-portrait {
+  width: 5.5rem !important;
+  height: 5.5rem !important;
+  max-width: 5.5rem !important;
+  aspect-ratio: 1 !important;
+  border-radius: 999px !important;
+  margin-bottom: 0.85rem !important;
+  border: 1.5px solid #d0d4d8 !important;
+  background: #e8ebe9 !important;
+}
+.host-portrait .host-photo,
+.host-photo {
+  border-radius: 999px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  position: relative !important;
+}
+
+/* beat2: one white booking surface like zcal card */
+.book-stage {
+  display: grid !important;
+  grid-template-columns: minmax(15rem, 17.5rem) minmax(0, 1fr) !important;
+  gap: 0 !important;
+  align-items: stretch !important;
+  background: #fff !important;
+  border: 1px solid #d0d4d8 !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  box-shadow: none !important;
+}
+.book-host,
+.book-card {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+}
+.book-host {
+  padding: 1.35rem 1.2rem 1.5rem !important;
+  border-right: 1px solid #e2e5e8 !important;
+}
+.book-card {
+  padding: 1.35rem 1.35rem 1.5rem !important;
+}
+@media (max-width: 800px) {
+  .book-stage {
+    grid-template-columns: 1fr !important;
+  }
+  .book-host {
+    border-right: 0 !important;
+    border-bottom: 1px solid #e2e5e8 !important;
+  }
+}
+
+/* beat3: calendar | times side-by-side (zcal after-date pattern) */
+.pick-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(9.5rem, 11.5rem);
+  gap: 1.25rem;
+  align-items: start;
+  margin-top: 0.75rem;
+}
+.pick-cal { min-width: 0; }
+.pick-slots.slot-pane {
+  border-top: 0 !important;
+  padding-top: 0 !important;
+  border-left: 1px solid #e2e5e8;
+  padding-left: 1rem;
+  min-height: 12rem;
+}
+.slot-empty-art { display: none !important; }
+.slot-empty {
+  padding: 0.5rem 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+.slot-empty .muted {
+  font-size: 0.82rem !important;
+  color: #7a828c !important;
+}
+@media (max-width: 720px) {
+  .pick-split { grid-template-columns: 1fr; }
+  .pick-slots.slot-pane {
+    border-left: 0 !important;
+    padding-left: 0 !important;
+    border-top: 1px solid #e2e5e8 !important;
+    padding-top: 0.85rem !important;
+  }
+}
+
+/* beat4: selected day = ink fill + vermillion ring (zcal outline language) */
+.cal-day.in-month.is-active,
+.cal-day.is-active {
+  background: #121416 !important;
+  color: #f7f8f6 !important;
+  box-shadow: inset 0 0 0 2px #c41e3a !important;
+  font-weight: 600 !important;
+}
+.cal-day.in-month.is-open:not(.is-active) {
+  background: #c8d6e8 !important;
+  color: #1a4a8a !important;
+  font-weight: 600 !important;
+}
+.cal-nav .btn.ghost.sm {
+  color: #1a4a8a !important;
+  border: 0 !important;
+  font-size: 1.25rem !important;
+  min-width: 2rem;
+  padding: 0.15rem 0.4rem !important;
+}
+.cal-nav .btn.ghost.sm:hover {
+  background: #eef2f6 !important;
+  color: #121416 !important;
+}
+
+/* beat5: quieter host name scale like zcal left rail */
+.host-name.display {
+  font-size: clamp(1.15rem, 2vw, 1.35rem) !important;
+  font-family: var(--font-sans), "IBM Plex Sans", system-ui, sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+  margin: 0 0 0.2rem !important;
+}
+.book-host .eyebrow { margin-bottom: 0.35rem !important; }
+.host-headline { margin-bottom: 0.15rem !important; }
+.host-tz { margin-bottom: 0.85rem !important; }
+
+/* beat6: meet list as tight duration-forward rails */
+.meet-card .meet-desc { display: none !important; }
+.meet-list { margin-bottom: 0.85rem !important; }
+
+/* beat7: home points — job facts, no pigment poetry */
+.home-points li::before { color: #121416 !important; }
+
+/* hard flat bar retention */
+.book-stage, .book-card, .book-host, .meet-card, .slot-chip, .btn, .panel,
+.confirm-summary, .home-visual-frame, .job-strip li, .cal-day {
+  background-image: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+}
+
+/* beat8: collapse assist — zcal left rail stays quiet */
+.assist-box {
+  border-top: 1px solid #e2e5e8 !important;
+  padding-top: 0.55rem !important;
+  margin-top: 0.35rem !important;
+  opacity: 1 !important;
+}
+.assist-summary {
+  list-style: none;
+  cursor: pointer;
+  font-size: 0.78rem !important;
+  font-weight: 500 !important;
+  color: #7a828c !important;
+  padding: 0.2rem 0;
+}
+.assist-summary::-webkit-details-marker { display: none; }
+.assist-box[open] .assist-summary { margin-bottom: 0.55rem; color: #3a4149 !important; }
+
+/* beat9: brand mark flat vermillion tile */
+.brand-mark {
+  width: 11px !important;
+  height: 11px !important;
+  border-radius: 2px !important;
+  background: #c41e3a !important;
+  border: 0 !important;
+}
+
+/* beat10: drop duplicate tz under calendar when slots show it */
+.pick-split .book-tz-foot { display: none !important; }
+.book-job-label {
+  font-size: 1.35rem !important;
+  letter-spacing: -0.025em !important;
+  margin: 0 0 0.25rem !important;
+}
+.card-meeting-chip { margin-bottom: 0 !important; }
+.slot-heading {
+  font-size: 0.92rem !important;
+  margin: 0 0 0.35rem !important;
+}
+.slot-grid { max-width: none !important; width: 100%; }
+.slot-chip { font-variant-numeric: tabular-nums; }
+
+/* r5: selected day = open wash + vermillion ring (zcal outline language, Clearline pigment) */
+.cal-day.in-month.is-active,
+.cal-day.is-active {
+  background: #c8d6e8 !important;
+  color: #121416 !important;
+  box-shadow: inset 0 0 0 2px #c41e3a !important;
+  font-weight: 700 !important;
+}
+
+/* r6: quieter host eyebrow + name (zcal left restraint) */
+.book-host .eyebrow { display: none !important; }
+.host-name.display {
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  margin-top: 0.15rem !important;
+}
+.host-portrait {
+  width: 4.25rem !important;
+  height: 4.25rem !important;
+  max-width: 4.25rem !important;
+}
+
+/* r7: meet types as horizontal duration chips row (cut stacked card cheese) */
+.meet-list {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.4rem !important;
+  margin-bottom: 0.75rem !important;
+}
+.meet-card {
+  flex: 0 0 auto !important;
+  padding: 0.35rem 0.55rem !important;
+  min-width: 0 !important;
+  width: auto !important;
+}
+.meet-card .meet-row {
+  gap: 0.35rem !important;
+}
+.meet-card .meet-title {
+  font-size: 0.78rem !important;
+}
+.meet-card .meet-meta {
+  font-size: 0.65rem !important;
+  padding: 0.1rem 0.4rem !important;
+}
+
+/* r8: air — widen calendar, quieter slot pane */
+.book-stage {
+  grid-template-columns: minmax(13rem, 15.5rem) minmax(0, 1fr) !important;
+  max-width: 920px;
+  margin-inline: auto;
+}
+.pick-split {
+  grid-template-columns: minmax(0, 1.35fr) minmax(8.5rem, 10.5rem) !important;
+  gap: 1.5rem !important;
+}
+.book-job-label {
+  font-size: 1.45rem !important;
+  font-weight: 600 !important;
+}
+.pick-slots .slot-tz-select {
+  display: none !important;
+}
+.slot-group-label { margin-top: 0.35rem !important; }
+
+/* r9: hard flat retention after cuts */
+.book-stage, .meet-card, .slot-chip, .cal-day {
+  box-shadow: none !important;
+}
+.cal-day.in-month.is-active {
+  /* ring only — keep explicit after flat wipe */
+  box-shadow: inset 0 0 0 2px #c41e3a !important;
+}
+
+/* r6: shell breathing room vs zcal centered card */
+.book-shell.shell { max-width: 980px; padding-top: 1.75rem; }
+.site-header { margin-bottom: 1.5rem !important; }
+
+/* r7: force duration chips horizontal — kill full-width meet-card residue */
+.book-host .meet-list {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  gap: 0.35rem !important;
+}
+.book-host .meet-card {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  width: auto !important;
+  max-width: none !important;
+  padding: 0.32rem 0.5rem !important;
+}
+.book-host .meet-card .meet-row {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.35rem;
+}
+.book-host .meet-card .meet-title {
+  white-space: nowrap;
+  font-size: 0.76rem !important;
+}
+
+/* r8: selected open wash + vermillion ring (ensure fill under ring) */
+.cal-day.in-month.is-open.is-active,
+.cal-day.in-month.is-active {
+  background: #c8d6e8 !important;
+  color: #121416 !important;
+  box-shadow: inset 0 0 0 2px #c41e3a !important;
+}
+
+/* r9: slot column denser like zcal time list */
+.pick-slots .slot-chip {
+  min-height: 2.15rem !important;
+  padding: 0.4rem 0.65rem !important;
+  font-size: 0.84rem !important;
+  border-radius: 8px !important;
+}
+.pick-slots .slot-groups { gap: 0.45rem !important; }
+.pick-slots .slot-grid { gap: 0.3rem !important; }
+
+/* r8: quieter nav weight vs zcal chrome absence */
+.book-shell .site-nav a { font-size: 0.88rem !important; color: #6a727a !important; }
+
+/* r9: zcal-like duration chips under meeting title (cut stacked cards) */
+.host-meeting-title {
+  font-family: var(--font-sans), "IBM Plex Sans", system-ui, sans-serif !important;
+  font-size: 1.15rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+  margin: 0.35rem 0 0.65rem !important;
+  color: #121416 !important;
+  line-height: 1.25;
+}
+.meet-chip-row {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  gap: 0.4rem !important;
+  margin: 0 0 0.85rem !important;
+}
+.meet-chip {
+  appearance: none;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid #d0d4d8;
+  background: #fff;
+  border-radius: 999px;
+  padding: 0.35rem 0.65rem;
+  font: inherit;
+  cursor: pointer;
+  color: #3a4149;
+}
+.meet-chip.is-active {
+  background: #eef1f4 !important;
+  border-color: #121416 !important;
+  color: #121416 !important;
+}
+.meet-chip-dur {
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+}
+.meet-chip-label {
+  font-size: 0.78rem !important;
+  font-weight: 500 !important;
+  white-space: nowrap;
+}
+.meet-list, .meet-card { /* legacy hidden when chips used */ }
+
+/* r10: hide site chrome on public book — card is the product */
+.book-shell .site-header {
+  max-width: 920px;
+  margin-inline: auto;
+  opacity: 0.85;
+}
+.book-shell .site-nav { gap: 0.85rem !important; }
+
+/* r10 marker: public book chrome quieted */
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+/* r11: duration-only pills like zcal */
+.meet-chip { padding: 0.4rem 0.75rem !important; }
+.meet-chip-dur { font-size: 0.8rem !important; }
+/* r12: slot pane scroll — keep card calm like zcal pre-time reveal */
+.pick-slots {
+  max-height: 28rem;
+  overflow-y: auto;
+}
+.pick-slots::-webkit-scrollbar { width: 6px; }
+.pick-slots::-webkit-scrollbar-thumb { background: #d0d4d8; border-radius: 999px; }
+
+/* r12: remove residual card shadow cheese */
+.book-stage { box-shadow: none !important; }
+
+/* r13: book page — brand only, hide Desk/Public chrome (zcal card is the page) */
+.book-shell .site-nav { display: none !important; }
+.book-shell .site-header { margin-bottom: 1.1rem !important; }
+
+/* r14: month chevrons quiet gray like zcal (not blue shout) */
+.cal-nav .btn.ghost.sm {
+  color: #9aa1a9 !important;
+  font-size: 1.1rem !important;
+}
+.cal-nav .btn.ghost.sm:hover { color: #121416 !important; background: transparent !important; }
+
+/* r15: more card air + center like zcal */
+.book-stage {
+  max-width: 860px !important;
+  border-radius: 18px !important;
+}
+.book-host { padding: 1.5rem 1.25rem 1.6rem !important; }
+.book-card { padding: 1.5rem 1.5rem 1.6rem !important; }
+.book-job-label { font-size: 1.25rem !important; font-weight: 600 !important; }
+.host-meeting-title { font-size: 1.05rem !important; }
+
+/* r14 applied: quiet chevrons */
+
+/* r15 applied: card air */
+
+/* r16: open-day blue type like zcal available days */
+.cal-day.in-month.is-open:not(.is-active) {
+  background: #e8f1fb !important;
+  color: #1a6dd4 !important;
+  font-weight: 600 !important;
+}
+.cal-day.in-month.is-open.is-active,
+.cal-day.in-month.is-active {
+  background: #e8f1fb !important;
+  color: #121416 !important;
+  box-shadow: inset 0 0 0 2px #c41e3a !important;
+}
+.cal-day.in-month.is-open:not(:disabled):hover {
+  background: #d7e8f8 !important;
+  color: #0f4f9e !important;
+}
+
+/* r17: assist summary less link-cheese */
+.assist-summary {
+  text-decoration: none !important;
+  color: #8a929a !important;
+  font-size: 0.72rem !important;
+}
+
+/* r17 assist quiet */
+
+/* r18: card-only public book like zcal (no wordmark chrome) */
+.book-shell .site-header { display: none !important; }
+.book-shell { padding-top: 2.25rem !important; }
+/* r19: quieter selected — blue ring primary, vermillion hairline accent */
+.cal-day.in-month.is-active,
+.cal-day.is-active {
+  background: #e8f1fb !important;
+  color: #0f4f9e !important;
+  box-shadow: inset 0 0 0 2px #1a6dd4, inset 0 0 0 3px #fff, inset 0 0 0 4px #c41e3a !important;
+  font-weight: 700 !important;
+}
+
+/* r20: cut assist from left rail first screen */
+.book-host .assist-box { display: none !important; }

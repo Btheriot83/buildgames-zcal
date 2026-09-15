@@ -52,9 +52,9 @@ export default function Home() {
             </Link>
           </div>
           <ul className="home-points">
-            <li>Vermillion days mark open hours on the month card</li>
+            <li>Open days light up on the month card</li>
             <li>Clearline ranks hours from your windows</li>
-            <li>IndexedDB calendar — export anytime</li>
+            <li>Local calendar — export anytime</li>
           </ul>
         </div>
         <div className="home-visual">
