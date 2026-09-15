@@ -1,0 +1,85 @@
+{
+  "product": "Sundial",
+  "slug": "zcal",
+  "phase": "B6",
+  "integrityGate": "gauntlet/INTEGRITY_GATE.md",
+  "reassess": "narrow/REASSESS.md",
+  "tier": "WEAK",
+  "demoUrl": "https://buildgames-zcal.vercel.app",
+  "barUrl": "https://zcal.co/",
+  "barBookingExample": "https://zcal.co/i/qnac7kcd",
+  "identity": "Clearline",
+  "identityLocked": true,
+  "reseed": false,
+  "retiredIdentity": "Courtyard Meridian",
+  "phaseA": {
+    "done": true,
+    "techniquesDone": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "commit": "cd0e397",
+    "discover": "docs/DISCOVER.md",
+    "define": "docs/DEFINE.md",
+    "deliver": "docs/DELIVER.md",
+    "identityPath": "docs/IDENTITY.md"
+  },
+  "roundsCounted": 10,
+  "roundShas": [
+    "05997b6",
+    "f7b7e9e",
+    "5518803",
+    "4bc196c",
+    "cda8bbc",
+    "9422756",
+    "995afa1",
+    "834e195",
+    "d0fb825",
+    "66a95b7"
+  ],
+  "shotCount": 20,
+  "barShotRounds": [
+    5,
+    10
+  ],
+  "honestNotes": [
+    "Clearline LOCKED \u2014 no Courtyard reseed; anti-cheesy craft vs zcal.",
+    "10 separate rN commits with shots + workbench verdicts (no batch dump).",
+    "Killed pink sage-open residual, Sage days copy, emoji globe chrome.",
+    "Slot chips single-column; month title-case; meet cards duration-forward.",
+    "Original zcal still wins SaaS blue polish + OAuth/media; Clearline closer on materials honesty."
+  ],
+  "transitions": {
+    "success-check": "book done SuccessCheck",
+    "toast": "api.toast Toast is-open",
+    "error-state-shake": "confirm form err / api.errorShake",
+    "skeleton-reveal": "desk+booking cold load",
+    "texts-reveal": "home/desk/book/success enter",
+    "tabs-sliding": "desk tabs",
+    "number-pop-in": "desk booking count",
+    "modal": "meeting type editor",
+    "panel-reveal": "desk panel t-panel-slide",
+    "clearline-panel": "day select \u2192 slot pane remount"
+  },
+  "workbench": "apps/zcal/gauntlet/workbench-r6.md",
+  "shotsDir": "apps/zcal/gauntlet/shots-r6",
+  "repo": "https://github.com/Btheriot83/buildgames-zcal",
+  "doNotMessageBrandon": true,
+  "finishedAtUtc": "2026-09-15T07:15:23Z",
+  "finishedAtPt": "2026-09-15 12:15 AM PT",
+  "branch": "gauntlet/zcal-r6",
+  "featureSha": "66a95b7",
+  "prs": [],
+  "mainSha": null,
+  "deploy": {},
+  "liveSmoke": {
+    "ok": false,
+    "checks": []
+  }
+}
