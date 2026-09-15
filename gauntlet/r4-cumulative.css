@@ -165,3 +165,16 @@
   font-size: 0.68rem;
 }
 
+
+/* r14 contrast: weekday + chip meta */
+.cal-weekdays span {
+  color: var(--ink-soft);
+  font-weight: 700;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+}
+.card-meeting-chip {
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+

@@ -97,3 +97,9 @@ Bar comps: `shots-r4/bar-zcal-*.png` · Baseline: `shots-r4/r0-*-baseline.png`
 - verdict: Maya Ortega display closer to target serif weight; bar uses sans host name — we keep Courtyard Newsreader lock.
 - commit: 029269f
 - dream-loop: host type vs target
+
+## r14 — contrast: weekday + meeting chip
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r14-contrast-weekdays.png
+- verdict: Weekday letters hold against white card like target; bar’s single-letter row still slightly quieter.
+- commit: e555366
