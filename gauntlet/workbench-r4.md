@@ -103,3 +103,10 @@ Bar comps: `shots-r4/bar-zcal-*.png` · Baseline: `shots-r4/r0-*-baseline.png`
 - shot: gauntlet/shots-r4/r14-contrast-weekdays.png
 - verdict: Weekday letters hold against white card like target; bar’s single-letter row still slightly quieter.
 - commit: e555366
+
+## r15 — bar gap: calendar cell density (bar A/B · dream→target)
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r15-bar-gap-cal-density.png · bar: gauntlet/shots-r4/bar-r15-zcal-booking.png
+- verdict: Day circles denser toward target/zcal widget; bar still more circular-perfect spacing.
+- commit: f99ece2
+- bar A/B: yes (every 5th)
