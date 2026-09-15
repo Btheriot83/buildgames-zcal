@@ -62,3 +62,6 @@ Short, cool, specific. No courtyard / linen / shade poetry. Hand-locked in `DELI
 ## What Phase B MAY improve
 - Calendar density, hierarchy, confirm UX vs https://zcal.co/
 - Assist quality, empty states, residual anti-slop, smoke reliability
+
+## Phase B6 note (2026-09-15)
+Clearline remains LOCKED. B6 = anti-cheesy craft vs zcal (cool slate, no pink/sage/linen, no emoji chrome). Courtyard Meridian stays retired.
