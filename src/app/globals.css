@@ -1524,3 +1524,25 @@ textarea.t-input {
   color: #8a8278 !important;
   opacity: 1;
 }
+
+/* r3 buttons: duration meta reads as zcal 30/60 chip */
+.meet-card .meet-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+  padding: 0.2rem 0.55rem;
+  border: 1.5px solid var(--stroke-strong);
+  border-radius: 8px;
+  background: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  width: fit-content;
+}
+.meet-card.is-active .meet-meta {
+  border-color: var(--ink);
+  background: color-mix(in srgb, var(--sage-soft) 35%, #fff);
+  color: var(--ink);
+}

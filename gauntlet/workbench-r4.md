@@ -21,3 +21,9 @@ Bar comps: `shots-r4/bar-zcal-*.png` · Baseline: `shots-r4/r0-*-baseline.png`
 - shot: gauntlet/shots-r4/r2-contrast-days.png
 - verdict: Closed/out-month days finally recede vs sage-open circles; still not as airy as zcal grey wash.
 - commit: 8cc354d
+
+## r3 — buttons meet duration chip density
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r3-buttons-meet.png
+- verdict: Duration chips denser like zcal 30/60 toggles; meet cards still taller than bar duration-only UI.
+- commit: 57824b0
