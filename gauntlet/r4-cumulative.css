@@ -1,0 +1,256 @@
+
+/* ===== Phase B4 integrity — r1 fonts: month label quieter like zcal ===== */
+.cal-head .panel-title,
+.cal-nav .panel-title {
+  font-family: var(--font-sans), "IBM Plex Sans", system-ui, sans-serif;
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+
+/* r2 contrast: closed days quieter; muted holds on cream */
+:root { --muted: #4a433a; }
+.cal-day:disabled,
+.cal-day.out-month {
+  color: #8a8278 !important;
+  opacity: 1;
+}
+
+/* r3 buttons: duration meta reads as zcal 30/60 chip */
+.meet-card .meet-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+  padding: 0.2rem 0.55rem;
+  border: 1.5px solid var(--stroke-strong);
+  border-radius: 8px;
+  background: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  width: fit-content;
+}
+.meet-card.is-active .meet-meta {
+  border-color: var(--ink);
+  background: color-mix(in srgb, var(--sage-soft) 35%, #fff);
+  color: var(--ink);
+}
+
+/* r4 bar gap: timezone foot under month (zcal globe + tz row) */
+.book-tz-foot {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0.15rem 0 0.85rem;
+  padding: 0.35rem 0.15rem;
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+  font-weight: 500;
+  border-top: 1px solid var(--stroke);
+}
+.book-tz-globe { font-size: 0.95rem; line-height: 1; }
+.book-tz-label { letter-spacing: 0.01em; }
+
+
+/* r5 contrast: stronger sage-open vs cream (zcal blue-tint cue) */
+:root {
+  --sage-open: #a8bea2;
+  --sage-open-text: #1f2a1c;
+}
+.cal-day.in-month.is-open:not(.is-active) {
+  background: var(--sage-open);
+  color: var(--sage-open-text);
+  font-weight: 650;
+  font-weight: 600;
+}
+
+
+/* r6 buttons: confirm CTA + shake surface — transitions fire on real book/error */
+.confirm-cta.btn.primary {
+  min-height: 3rem;
+  letter-spacing: -0.015em;
+}
+.confirm-flow.is-shaking .t-input,
+.t-input.is-shaking {
+  animation: t-input-shake calc(var(--shake-dur, 420ms) * 1) var(--shake-ease, ease-in-out);
+}
+.success-pane .t-success-check[data-state="in"] {
+  color: var(--copper-deep);
+}
+
+
+/* r7 fonts dream→target: uppercase month like target SEPTEMBER 2026 */
+.cal-month-label {
+  font-family: var(--font-sans), "IBM Plex Sans", system-ui, sans-serif;
+  font-size: 0.92rem;
+  font-weight: 650;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+
+/* r8 buttons dream→target: title + duration on one row */
+.meet-card .meet-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+}
+.meet-card .meet-meta {
+  margin-top: 0;
+  flex-shrink: 0;
+  padding: 0.15rem 0.5rem;
+}
+
+
+/* r9 bar gap: job label weight closer to zcal/target */
+.book-job-label {
+  font-size: 1.28rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.55rem;
+}
+
+
+/* r10 bar gap dream→target: globe + day heading row */
+.slot-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 1.02rem;
+}
+.slot-globe { font-size: 0.95rem; line-height: 1; }
+
+
+/* r11 contrast dream→target: cleaner cream card edge */
+:root {
+  --card: #ffffff;
+  --book-card: #ffffff;
+  --stroke-strong: #b6a78f;
+}
+.book-card, .book-host {
+  background: #fff;
+  border-color: var(--stroke-strong);
+}
+
+
+/* r12 buttons dream→target: denser meet cards */
+.meet-card {
+  padding: 0.7rem 0.85rem;
+  gap: 0.35rem;
+}
+.meet-card .meet-desc {
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+.meet-list { gap: 0.55rem; }
+
+
+/* r13 fonts dream→target: host display scale */
+.host-name.display {
+  font-size: clamp(1.85rem, 3.2vw, 2.35rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 0.35rem;
+}
+.eyebrow {
+  letter-spacing: 0.16em;
+  font-size: 0.68rem;
+}
+
+
+/* r14 contrast: weekday + chip meta */
+.cal-weekdays span {
+  color: var(--ink-soft);
+  font-weight: 700;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+}
+.card-meeting-chip {
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+
+/* r15 bar gap dream→target: denser day cells */
+.cal-day {
+  width: 2.4rem;
+  height: 2.4rem;
+  font-size: 0.92rem;
+}
+.cal-grid {
+  gap: 0.18rem;
+  justify-content: space-between;
+}
+
+
+/* r16 buttons dream→target: slot chips */
+.slot-chip {
+  min-height: 2.55rem;
+  border-radius: 10px;
+  font-size: 0.88rem;
+}
+.slot-chip.is-active {
+  background: #16140f;
+  color: #fffdf8;
+  border-color: #16140f;
+  font-weight: 600;
+}
+.slot-grid { gap: 0.45rem; }
+
+
+/* r17 fonts: Morning/Afternoon labels */
+.slot-group-label {
+  font-family: var(--font-sans), "IBM Plex Sans", system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 650;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 0.4rem;
+}
+
+
+/* r18 contrast: assist/host secondary copy */
+.host-headline { color: #3a342c; font-size: 0.95rem; }
+.assist-label { color: var(--ink-soft); font-weight: 600; font-size: 0.82rem; }
+.assist-copy { color: var(--ink-soft); }
+.book-tz-foot { color: #3a342c; border-top-color: var(--stroke-strong); }
+
+
+/* r19 bar gap dream→target: tz row under day heading */
+.slot-tz-select {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: -0.15rem 0 0.75rem;
+  padding: 0.35rem 0.65rem;
+  border: 1.5px solid var(--stroke-strong);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+
+/* r20 flat coherence: kill residual soft elevation; hard bar */
+.book-stage, .book-card, .book-host, .meet-card, .slot-chip, .btn, .panel, .confirm-summary {
+  box-shadow: none !important;
+  background-image: none !important;
+}
+.book-stage {
+  gap: 1.1rem;
+}
+.success-pane .display {
+  letter-spacing: -0.03em;
+}
+

@@ -190,7 +190,7 @@ export function BookingPage({ slug }: { slug: string }) {
         <SiteHeader slug={slug} />
         <Toast message={api.toast} />
         <section className="success-pane t-texts-reveal" data-reveal="in">
-          <SuccessCheck show />
+          <SuccessCheck show />{/* recipe: success-check on book done */}
           <h1 className="display">You&apos;re booked</h1>
           <p className="lede">
             {meeting?.title} with {state.profile.displayName}
@@ -271,8 +271,10 @@ export function BookingPage({ slug }: { slug: string }) {
                   setAssist(null);
                 }}
               >
-                <span className="meet-title">{m.title}</span>
-                <span className="meet-meta mono">{m.durationMin} min</span>
+                <span className="meet-row">
+                  <span className="meet-title">{m.title}</span>
+                  <span className="meet-meta mono">{m.durationMin} min</span>
+                </span>
                 <span className="meet-desc">{m.description}</span>
               </button>
             ))}
@@ -323,7 +325,7 @@ export function BookingPage({ slug }: { slug: string }) {
 
         <section className="book-card">
           {step === "confirm" && slot && meeting && dateKey ? (
-            <div className={`confirm-flow ${api.errorShake ? "is-shaking" : ""}`}>
+            <div className={`confirm-flow ${api.errorShake ? "is-shaking" : ""}`} data-transition="error-state-shake">
               <button
                 type="button"
                 className="back-link"
@@ -348,7 +350,7 @@ export function BookingPage({ slug }: { slug: string }) {
                 <label>
                   Your name
                   <input
-                    className={`t-input ${err ? "is-error" : ""}`}
+                    className={`t-input ${err ? "is-error is-shaking" : ""}`}
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     autoComplete="name"
@@ -357,7 +359,7 @@ export function BookingPage({ slug }: { slug: string }) {
                 <label>
                   Email
                   <input
-                    className={`t-input ${err ? "is-error" : ""}`}
+                    className={`t-input ${err ? "is-error is-shaking" : ""}`}
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -386,14 +388,14 @@ export function BookingPage({ slug }: { slug: string }) {
             </div>
           ) : (
             <div className="pick-flow">
-              <h2 className="book-job-label">Select a day and time</h2>
+              <h2 className="book-job-label">Select date and time</h2>
               {meeting ? (
                 <p className="card-meeting-chip mono">
                   {meeting.title} · {meeting.durationMin} min · {state.profile.timezone.replace(/_/g, " ")}
                 </p>
               ) : null}
               <div className="cal-head">
-                <h3 className="panel-title">{monthLabel(month.y, month.m0)}</h3>
+                <h3 className="panel-title cal-month-label">{monthLabel(month.y, month.m0)}</h3>
                 <div className="cal-nav">
                   <button
                     type="button"
@@ -450,16 +452,33 @@ export function BookingPage({ slug }: { slug: string }) {
                 })}
               </div>
 
+              <div className="book-tz-foot" aria-label="Timezone">
+                <span className="book-tz-globe" aria-hidden>🌐</span>
+                <span className="book-tz-label mono">{state.profile.timezone.replace(/_/g, " ")}</span>
+              </div>
+
               <div className="slot-pane">
                 <h3 className="slot-heading">
-                  {dateKey
-                    ? new Date(dateKey + "T12:00:00").toLocaleDateString(undefined, {
-                        weekday: "long",
-                        month: "short",
-                        day: "numeric",
-                      })
-                    : "Pick an open day"}
+                  {dateKey ? (
+                    <>
+                      <span className="slot-globe" aria-hidden>🌐</span>
+                      <span>
+                        {new Date(dateKey + "T12:00:00").toLocaleDateString(undefined, {
+                          weekday: "long",
+                          month: "short",
+                          day: "numeric",
+                        })}
+                      </span>
+                    </>
+                  ) : (
+                    "Pick an open day"
+                  )}
                 </h3>
+                {dateKey ? (
+                  <div className="slot-tz-select" aria-label="Timezone">
+                    <span className="mono">{state.profile.timezone.replace(/_/g, " ")} (local)</span>
+                  </div>
+                ) : null}
                 {!dateKey ? (
                   <div className="slot-empty">
                     <Image

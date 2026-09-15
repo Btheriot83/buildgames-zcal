@@ -102,7 +102,7 @@ export function DeskApp() {
         <span className="t-tabs-pill" data-tab={tab} aria-hidden />
       </div>
 
-      <div className={`panel t-panel-reveal ${api.errorShake ? "t-input is-error" : ""}`} data-open="true">
+      <div className={`panel t-panel-slide ${api.errorShake ? "t-input is-error" : ""}`} data-open="true">
         {tab === "calendar" && <CalendarPane api={api} />}
         {tab === "availability" && <AvailabilityPane api={api} />}
         {tab === "meetings" && <MeetingsPane api={api} />}
