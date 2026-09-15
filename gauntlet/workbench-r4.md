@@ -134,3 +134,12 @@ Bar comps: `shots-r4/bar-zcal-*.png` · Baseline: `shots-r4/r0-*-baseline.png`
 - shot: gauntlet/shots-r4/r19-bar-gap-slot-tz.png
 - verdict: Local tz chip under day heading toward target; bar still has live clock + am/pm toggle.
 - commit: 81cba90
+
+## r20 — flat coherence final (bar A/B · dream→target)
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r20-flat-coherence.png · home: gauntlet/shots-r4/r20-home.png · bar: gauntlet/shots-r4/bar-r20-zcal-*.png
+- verdict: Hard flat bar held; live→target closed on type/meet-row/month/tz/cards; original zcal still wins SaaS blue polish + OAuth/media depth — Courtyard craft honest ~closer, not a beat.
+- commit: e37b7fe
+- bar A/B: yes (every 5th)
+- transitions: see docs/TRANSITIONS.md + r6 map
+- dream-loop: target at gauntlet/shots-r4/dream-target.png (also .dream-loop/target.png gitignored)

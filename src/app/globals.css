@@ -1748,3 +1748,16 @@ textarea.t-input {
   font-weight: 500;
 }
 
+
+/* r20 flat coherence: kill residual soft elevation; hard bar */
+.book-stage, .book-card, .book-host, .meet-card, .slot-chip, .btn, .panel, .confirm-summary {
+  box-shadow: none !important;
+  background-image: none !important;
+}
+.book-stage {
+  gap: 1.1rem;
+}
+.success-pane .display {
+  letter-spacing: -0.03em;
+}
+
