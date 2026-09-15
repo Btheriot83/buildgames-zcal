@@ -54,3 +54,10 @@ Bar comps: `shots-r4/bar-zcal-*.png` · Baseline: `shots-r4/r0-*-baseline.png`
 - verdict: Month tracking/caps closer to target SEPTEMBER 2026; vs bar, zcal stays title-case quieter — we match target not bar here.
 - commit: 99350b9
 - dream-loop: close live→target type hierarchy
+
+## r8 — buttons: meet title|duration row (dream→target)
+- files: src/components/BookingPage.tsx, src/app/globals.css
+- shot: gauntlet/shots-r4/r8-buttons-meet-row.png
+- verdict: Duration sits right of title like target (and nearer zcal 30/60 chip row); cards still taller than bar duration-only UI.
+- commit: 9ff5799
+- dream-loop: close meet-card composition to target

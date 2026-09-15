@@ -1601,3 +1601,18 @@ textarea.t-input {
   color: var(--ink);
 }
 
+
+/* r8 buttons dream→target: title + duration on one row */
+.meet-card .meet-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+}
+.meet-card .meet-meta {
+  margin-top: 0;
+  flex-shrink: 0;
+  padding: 0.15rem 0.5rem;
+}
+

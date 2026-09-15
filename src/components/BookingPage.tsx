@@ -271,8 +271,10 @@ export function BookingPage({ slug }: { slug: string }) {
                   setAssist(null);
                 }}
               >
-                <span className="meet-title">{m.title}</span>
-                <span className="meet-meta mono">{m.durationMin} min</span>
+                <span className="meet-row">
+                  <span className="meet-title">{m.title}</span>
+                  <span className="meet-meta mono">{m.durationMin} min</span>
+                </span>
                 <span className="meet-desc">{m.description}</span>
               </button>
             ))}
