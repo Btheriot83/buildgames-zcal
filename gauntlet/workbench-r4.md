@@ -1,0 +1,17 @@
+# Sundial Phase B4 workbench (INTEGRITY re-run · 20 counted loops)
+
+**Identity (LOCKED):** Courtyard Meridian — `docs/IDENTITY.md` — **no reseed**  
+**Bar:** https://zcal.co/ (+ booking `https://zcal.co/i/qnac7kcd`)  
+**Demo:** https://buildgames-zcal.vercel.app  
+**Gate:** `/workspace/build-games/gauntlet/INTEGRITY_GATE.md`  
+**Rule:** one named focus · files · shot · honest verdict · separate `rN:` commit · ≤3s visible
+
+Bar comps: `shots-r4/bar-zcal-*.png` · Baseline: `shots-r4/r0-*-baseline.png`
+
+---
+
+## r1 — fonts: month label quieter like zcal
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r1-fonts-month.png
+- verdict: Month title now scans as compact sans chrome (zcal September 2026 weight); still one size louder than bar's ultra-quiet header.
+- commit: d75682b
