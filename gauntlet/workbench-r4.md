@@ -15,3 +15,9 @@ Bar comps: `shots-r4/bar-zcal-*.png` · Baseline: `shots-r4/r0-*-baseline.png`
 - shot: gauntlet/shots-r4/r1-fonts-month.png
 - verdict: Month title now scans as compact sans chrome (zcal September 2026 weight); still one size louder than bar's ultra-quiet header.
 - commit: d75682b
+
+## r2 — contrast disabled/open day separation
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r2-contrast-days.png
+- verdict: Closed/out-month days finally recede vs sage-open circles; still not as airy as zcal grey wash.
+- commit: 8cc354d

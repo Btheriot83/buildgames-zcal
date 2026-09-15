@@ -9,3 +9,11 @@
   color: var(--ink);
 }
 
+
+/* r2 contrast: closed days quieter; muted holds on cream */
+:root { --muted: #4a433a; }
+.cal-day:disabled,
+.cal-day.out-month {
+  color: #8a8278 !important;
+  opacity: 1;
+}
