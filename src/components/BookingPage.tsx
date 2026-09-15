@@ -238,6 +238,8 @@ export function BookingPage({ slug }: { slug: string }) {
               className="host-photo"
               width={280}
               height={280}
+              decoding="async"
+              fetchPriority="high"
             />
           </div>
           <p className="eyebrow">Public booking · pick a slot</p>
