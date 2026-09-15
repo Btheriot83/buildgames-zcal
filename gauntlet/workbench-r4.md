@@ -110,3 +110,9 @@ Bar comps: `shots-r4/bar-zcal-*.png` · Baseline: `shots-r4/r0-*-baseline.png`
 - verdict: Day circles denser toward target/zcal widget; bar still more circular-perfect spacing.
 - commit: f99ece2
 - bar A/B: yes (every 5th)
+
+## r16 — buttons: slot chip active weight (dream→target)
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r16-buttons-slots.png
+- verdict: Active ink fill matches target selected 9:00 AM; bar uses blue fill — Courtyard ink kept.
+- commit: 9a2c866

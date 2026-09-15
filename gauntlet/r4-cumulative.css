@@ -190,3 +190,18 @@
   justify-content: space-between;
 }
 
+
+/* r16 buttons dream→target: slot chips */
+.slot-chip {
+  min-height: 2.55rem;
+  border-radius: 10px;
+  font-size: 0.88rem;
+}
+.slot-chip.is-active {
+  background: #16140f;
+  color: #fffdf8;
+  border-color: #16140f;
+  font-weight: 600;
+}
+.slot-grid { gap: 0.45rem; }
+
