@@ -21,8 +21,9 @@ Critic sees **screenshots only** (no code, no builder rationale). Studio bar: a 
 - Critic re-score logged in workbench after live smoke
 
 ### Round C — polish / motion / copy
-- Shots: `gauntlet/shots/r2-booking.png`, `gauntlet/shots/r2-confirm.png`
-- Gaps chased: slot density, confirm clarity, anti-slop leftovers
+- Shots: `gauntlet/shots/r5-booking.png`, `gauntlet/shots/r5-home.png`, `gauntlet/shots/r5-after-confirm.png`
+- Gaps chased: auto day, AM/PM groups, confirm gate, today vs active, success copy
+- Fresh critic after R5: ~7.1/10 vs studio bar for Courtyard Meridian; zcal still wins blind on SaaS depth/OAuth
 
 Builder never self-grades. Scores live in workbench + status JSON.
 
