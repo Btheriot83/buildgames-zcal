@@ -2830,3 +2830,6 @@ html, body {
 }
 .pick-slots .slot-groups { gap: 0.45rem !important; }
 .pick-slots .slot-grid { gap: 0.3rem !important; }
+
+/* r8: quieter nav weight vs zcal chrome absence */
+.book-shell .site-nav a { font-size: 0.88rem !important; color: #6a727a !important; }
