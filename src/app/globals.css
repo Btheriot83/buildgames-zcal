@@ -2215,3 +2215,19 @@ html, body {
 .home-shell {
   background: transparent;
 }
+
+/* ===== Phase B6 Clearline integrity ===== */
+/* r1 fonts: day numbers tabular quieter like zcal */
+.cal-day {
+  font-variant-numeric: tabular-nums !important;
+  font-size: 0.92rem !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.01em;
+}
+.cal-day.is-active,
+.cal-day.in-month.is-active {
+  font-weight: 600 !important;
+}
+.cal-day.in-month.is-open:not(.is-active) {
+  font-weight: 500 !important;
+}
