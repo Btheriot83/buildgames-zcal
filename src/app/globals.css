@@ -1647,3 +1647,15 @@ textarea.t-input {
   border-color: var(--stroke-strong);
 }
 
+
+/* r12 buttons dream→target: denser meet cards */
+.meet-card {
+  padding: 0.7rem 0.85rem;
+  gap: 0.35rem;
+}
+.meet-card .meet-desc {
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+.meet-list { gap: 0.55rem; }
+

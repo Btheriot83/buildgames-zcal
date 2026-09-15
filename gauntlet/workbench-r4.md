@@ -83,3 +83,10 @@ Bar comps: `shots-r4/bar-zcal-*.png` · Baseline: `shots-r4/r0-*-baseline.png`
 - verdict: Cards closer to target/zcal white surfaces on linen; linen field still warmer than bar’s pure white page.
 - commit: 547231e
 - dream-loop: materials/surfaces vs target
+
+## r12 — buttons: denser meet cards (dream→target)
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r12-buttons-meet-dense.png
+- verdict: Meet list tighter like target; still three descriptive cards vs zcal’s two duration chips.
+- commit: 7e78a80
+- dream-loop: control density vs target
