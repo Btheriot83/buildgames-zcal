@@ -4360,3 +4360,62 @@ a.surface-card:hover {
   font-weight: 650 !important;
   letter-spacing: -0.015em;
 }
+
+
+/* ===== craft4: purposeful button transitions (≤240ms) ===== */
+.btn {
+  transition:
+    background-color 160ms ease-out,
+    border-color 160ms ease-out,
+    color 160ms ease-out,
+    opacity 160ms ease-out !important;
+}
+.btn.primary {
+  background: #121416 !important;
+  border-color: #121416 !important;
+  color: #f7f8f6 !important;
+}
+.btn.primary:hover:not(:disabled) {
+  background: #000 !important;
+  border-color: #000 !important;
+}
+.btn.primary:active:not(:disabled) {
+  opacity: 0.88;
+}
+.btn.ghost {
+  transition:
+    border-color 140ms ease-out,
+    background-color 140ms ease-out,
+    color 140ms ease-out !important;
+}
+.week-slot,
+.slot-card,
+.duration-card,
+.mode-chip,
+.week-col-head {
+  transition:
+    background-color 140ms ease-out,
+    border-color 140ms ease-out,
+    color 140ms ease-out !important;
+}
+.week-slot:active:not(:disabled) {
+  background: #121416 !important;
+  color: #f7f8f6 !important;
+}
+.confirm-cta.btn.primary {
+  transition:
+    background-color 180ms ease-out,
+    border-color 180ms ease-out,
+    opacity 180ms ease-out !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .week-slot,
+  .slot-card,
+  .duration-card,
+  .mode-chip,
+  .week-col-head,
+  .confirm-cta.btn.primary {
+    transition: none !important;
+  }
+}
