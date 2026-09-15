@@ -3,8 +3,8 @@ import type { DayAvailability, MeetingType, Profile, SundialState } from "./type
 
 export const PRODUCT = {
   name: "Sundial",
-  tagline: "Freeform hours. Quiet bookings.",
-  aesthetic: "Sundial Atelier",
+  tagline: "One beautiful page. Pick a day. Take an hour.",
+  aesthetic: "Courtyard Meridian",
 } as const;
 
 const week: DayAvailability[] = [0, 1, 2, 3, 4, 5, 6].map((weekday) => ({
@@ -47,9 +47,9 @@ export function seedState(): SundialState {
   const profile: Profile = {
     slug: "brandon",
     displayName: "Brandon Theriot",
-    headline: "Build Games · scheduling without the SaaS fog",
+    headline: "Office hours under the linen shade",
     timezone: "America/Phoenix",
-    accentNote: "Local calendar only — Google Calendar not connected (degraded mode).",
+    accentNote: "Bookings stay in this browser until you export.",
   };
 
   return {

@@ -22,9 +22,9 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sundial — freeform scheduling",
+  title: "Sundial — book a quiet hour",
   description:
-    "Personal freeform scheduling: set availability, share a booking page, reserve a slot into a local calendar store. A Build Games zcal replacement.",
+    "Share a beautiful booking page. Guests pick a day and an hour. Bookings land in a local calendar — a Build Games take on zcal.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

@@ -1,38 +1,56 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useSundial } from "@/lib/useSundial";
 import { availableSlots, nextDays } from "@/lib/slots";
+import {
+  addMonths,
+  buildMonthGrid,
+  monthLabel,
+  todayKeyLocal,
+} from "@/lib/calendar";
 import { Toast } from "./Toast";
 import { SuccessCheck } from "./SuccessCheck";
 import { SiteHeader } from "./SiteHeader";
-import { SundialMark } from "./SundialMark";
 import type { SlotOption } from "@/lib/slots";
 import type { MeetingType as MT } from "@/lib/types";
+import type { AssistResponse } from "@/lib/assist";
+
+type Step = "pick" | "confirm" | "done";
 
 export function BookingPage({ slug }: { slug: string }) {
   const api = useSundial();
+  const today = useMemo(() => todayKeyLocal(), []);
+  const now = useMemo(() => {
+    const d = new Date();
+    return { y: d.getFullYear(), m0: d.getMonth() };
+  }, []);
+
   const [meetingId, setMeetingId] = useState<string | null>(null);
+  const [month, setMonth] = useState(now);
   const [dateKey, setDateKey] = useState<string | null>(null);
   const [slot, setSlot] = useState<SlotOption | null>(null);
+  const [step, setStep] = useState<Step>("pick");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [note, setNote] = useState("");
-  const [done, setDone] = useState(false);
   const [err, setErr] = useState<string | null>(null);
+  const [intent, setIntent] = useState("");
+  const [assist, setAssist] = useState<AssistResponse | null>(null);
+  const [assistLoading, setAssistLoading] = useState(false);
 
-  const days = useMemo(() => nextDays(14), []);
+  const daysAhead = useMemo(() => nextDays(21), []);
 
   if (!api.ready || !api.state) {
     return (
       <div className="shell book-shell">
         <SiteHeader />
-        <div className="t-skel">
-          <div className="t-skel-skeleton is-pulsing">
-            <div className="skel-block" />
-            <div className="skel-block short" />
-          </div>
+        <div className="t-skel book-skel">
+          <div className="skel-block" />
+          <div className="skel-block short" />
+          <div className="skel-card" />
         </div>
       </div>
     );
@@ -45,11 +63,19 @@ export function BookingPage({ slug }: { slug: string }) {
     return (
       <div className="shell book-shell">
         <SiteHeader />
-        <section className="book-hero">
+        <section className="book-empty">
+          <Image
+            src="/assets/empty-book.jpg"
+            alt=""
+            width={480}
+            height={360}
+            className="empty-art"
+            priority
+          />
           <h1 className="display">Unknown page</h1>
           <p className="lede">
-            No host profile for <code>/{slug}</code> in this browser&apos;s IndexedDB. Open the{" "}
-            <Link href="/desk">desk</Link> to seed the sample host, or import a backup.
+            No host for <code>/{slug}</code> in this browser. Open the{" "}
+            <Link href="/desk">desk</Link> once to seed the sample host, or import a backup.
           </p>
         </section>
       </div>
@@ -58,10 +84,62 @@ export function BookingPage({ slug }: { slug: string }) {
 
   const meeting: MT | undefined =
     state.meetingTypes.find((m) => m.id === meetingId) ?? state.meetingTypes[0];
-
   const activeMeetingId = meeting?.id ?? null;
+
   const slots =
     meeting && dateKey ? availableSlots(state, meeting, dateKey) : [];
+
+  const grid = buildMonthGrid(month.y, month.m0, today);
+
+  const dayHasSlots = (key: string) => {
+    if (!meeting) return false;
+    return availableSlots(state, meeting, key).length > 0;
+  };
+
+  const runAssist = async () => {
+    if (!meeting) return;
+    setAssistLoading(true);
+    try {
+      const candidates = daysAhead.map((dk) => ({
+        dateKey: dk,
+        slots: availableSlots(state, meeting, dk),
+      })).filter((c) => c.slots.length > 0);
+      const res = await fetch("/api/assist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          hostName: state.profile.displayName,
+          guestIntent: intent,
+          meeting,
+          availability: state.availability,
+          candidates: candidates.slice(0, 10),
+        }),
+      });
+      if (!res.ok) throw new Error("assist failed");
+      const data = (await res.json()) as AssistResponse;
+      setAssist(data);
+    } catch {
+      setAssist(null);
+      api.flash("Assist unavailable — browse the calendar");
+    } finally {
+      setAssistLoading(false);
+    }
+  };
+
+  const applySuggestion = (s: AssistResponse["suggestions"][0]) => {
+    const [y, m] = s.dateKey.split("-").map(Number);
+    setMonth({ y, m0: m - 1 });
+    setDateKey(s.dateKey);
+    if (meeting) {
+      const found = availableSlots(state, meeting, s.dateKey).find(
+        (x) => x.startIso === s.startIso
+      );
+      if (found) {
+        setSlot(found);
+        setStep("confirm");
+      }
+    }
+  };
 
   const submit = async () => {
     if (!meeting || !slot) return;
@@ -78,10 +156,10 @@ export function BookingPage({ slug }: { slug: string }) {
       setErr(res.error);
       return;
     }
-    setDone(true);
+    setStep("done");
   };
 
-  if (done) {
+  if (step === "done") {
     return (
       <div className="shell book-shell">
         <SiteHeader slug={slug} />
@@ -91,11 +169,11 @@ export function BookingPage({ slug }: { slug: string }) {
           <h1 className="display">You&apos;re on the sundial</h1>
           <p className="lede">
             {meeting?.title} with {state.profile.displayName}
-            {slot ? ` · ${slot.label}` : ""}.
+            {slot ? ` · ${slot.label}` : ""}
+            {dateKey ? ` · ${dateKey}` : ""}.
           </p>
-          <p className="muted">
-            Event written to the local calendar store in this browser. Confirmation email is not
-            sent (no accounts / no mailer).
+          <p className="muted success-note">
+            Saved to this browser&apos;s local calendar. No email is sent.
           </p>
           <div className="hero-actions">
             <Link className="btn primary" href="/desk">
@@ -105,8 +183,9 @@ export function BookingPage({ slug }: { slug: string }) {
               type="button"
               className="btn ghost"
               onClick={() => {
-                setDone(false);
+                setStep("pick");
                 setSlot(null);
+                setDateKey(null);
                 setName("");
                 setEmail("");
                 setNote("");
@@ -125,131 +204,262 @@ export function BookingPage({ slug }: { slug: string }) {
       <SiteHeader slug={slug} />
       <Toast message={api.toast} />
 
-      <section className="book-hero t-texts-reveal" data-reveal="in">
-        <div>
+      <div className="book-stage t-texts-reveal" data-reveal="in">
+        <aside className="book-host">
+          <div className="host-portrait" aria-hidden>
+            <video
+              className="host-video"
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster="/assets/sundial-hero.jpg"
+            >
+              <source src="/assets/gnomon-drift.webm" type="video/webm" />
+              <source src="/assets/gnomon-drift.mp4" type="video/mp4" />
+            </video>
+            <img
+              src="/assets/sundial-hero.jpg"
+              alt=""
+              className="host-photo"
+              width={280}
+              height={280}
+            />
+          </div>
           <p className="eyebrow">Book time</p>
-          <h1 className="display">{state.profile.displayName}</h1>
-          <p className="lede">{state.profile.headline}</p>
-          <p className="degraded">{state.profile.accentNote}</p>
-        </div>
-        <SundialMark size={120} />
-      </section>
+          <h1 className="display host-name">{state.profile.displayName}</h1>
+          <p className="host-headline">{state.profile.headline}</p>
+          <p className="host-tz mono">{state.profile.timezone}</p>
 
-      <div className="book-grid">
-        <aside className="meet-col">
-          <h2 className="panel-title">Meeting</h2>
-          <div className="t-tabs vertical" role="tablist">
+          <div className="meet-list" role="listbox" aria-label="Meeting type">
             {state.meetingTypes.map((m) => (
               <button
                 key={m.id}
                 type="button"
-                role="tab"
+                role="option"
+                aria-selected={activeMeetingId === m.id}
                 className={`meet-card ${activeMeetingId === m.id ? "is-active" : ""}`}
                 onClick={() => {
                   setMeetingId(m.id);
                   setSlot(null);
+                  setStep("pick");
+                  setAssist(null);
                 }}
               >
-                <strong>{m.title}</strong>
-                <span className="muted">{m.durationMin} min</span>
-                <p>{m.description}</p>
+                <span className="meet-title">{m.title}</span>
+                <span className="meet-meta mono">{m.durationMin} min</span>
+                <span className="meet-desc">{m.description}</span>
               </button>
             ))}
           </div>
+
+          <div className="assist-box">
+            <label className="assist-label">
+              Anything I should know?
+              <input
+                className="t-input"
+                placeholder="e.g. morning intro, quick coffee…"
+                value={intent}
+                onChange={(e) => setIntent(e.target.value)}
+              />
+            </label>
+            <button
+              type="button"
+              className="btn ghost sm assist-btn"
+              disabled={assistLoading || !meeting}
+              onClick={runAssist}
+            >
+              {assistLoading ? "Checking open hours…" : "Find a good hour"}
+            </button>
+            {assist ? (
+              <div className="assist-result">
+                <p className="assist-copy">{assist.copy}</p>
+                <ul className="assist-suggestions">
+                  {assist.suggestions.map((s) => (
+                    <li key={s.startIso}>
+                      <button
+                        type="button"
+                        className="assist-chip"
+                        onClick={() => applySuggestion(s)}
+                      >
+                        <strong>
+                          {s.dateKey} · {s.label}
+                        </strong>
+                        <span>{s.reason}</span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+                <p className="assist-note mono">{assist.note}</p>
+              </div>
+            ) : null}
+          </div>
         </aside>
 
-        <section className="day-col">
-          <h2 className="panel-title">Day</h2>
-          <div className="day-grid">
-            {days.map((dk) => {
-              const d = new Date(dk + "T12:00:00");
-              const label = d.toLocaleDateString(undefined, {
-                weekday: "short",
-                month: "short",
-                day: "numeric",
-              });
-              return (
-                <button
-                  key={dk}
-                  type="button"
-                  className={`day-chip ${dateKey === dk ? "is-active" : ""}`}
-                  onClick={() => {
-                    setDateKey(dk);
-                    setSlot(null);
-                  }}
-                >
-                  {label}
-                </button>
-              );
-            })}
-          </div>
-        </section>
-
-        <section className="slot-col">
-          <h2 className="panel-title">Time</h2>
-          {!dateKey ? (
-            <p className="muted">Pick a day.</p>
-          ) : slots.length === 0 ? (
-            <p className="muted">No open slots this day.</p>
+        <section className="book-card">
+          {step === "confirm" && slot && meeting && dateKey ? (
+            <div className={`confirm-flow ${api.errorShake ? "is-shaking" : ""}`}>
+              <button
+                type="button"
+                className="back-link"
+                onClick={() => setStep("pick")}
+              >
+                ← Change time
+              </button>
+              <h2 className="panel-title">Confirm</h2>
+              <p className="confirm-summary">
+                <strong>{meeting.title}</strong>
+                <span>
+                  {new Date(dateKey + "T12:00:00").toLocaleDateString(undefined, {
+                    weekday: "long",
+                    month: "long",
+                    day: "numeric",
+                  })}{" "}
+                  · {slot.label}
+                </span>
+                <span className="muted">{meeting.durationMin} min · {state.profile.timezone}</span>
+              </p>
+              <div className="grid-2">
+                <label>
+                  Your name
+                  <input
+                    className={`t-input ${err ? "is-error" : ""}`}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    autoComplete="name"
+                  />
+                </label>
+                <label>
+                  Email
+                  <input
+                    className={`t-input ${err ? "is-error" : ""}`}
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    autoComplete="email"
+                  />
+                </label>
+              </div>
+              <label>
+                Note (optional)
+                <textarea
+                  className="t-input"
+                  rows={2}
+                  value={note}
+                  onChange={(e) => setNote(e.target.value)}
+                />
+              </label>
+              {err ? <p className="t-error-msg is-error">{err}</p> : null}
+              <button type="button" className="btn primary confirm-cta" onClick={submit}>
+                Confirm time
+              </button>
+            </div>
           ) : (
-            <div className="slot-grid">
-              {slots.map((s) => (
-                <button
-                  key={s.startIso}
-                  type="button"
-                  className={`slot-chip mono ${slot?.startIso === s.startIso ? "is-active" : ""}`}
-                  onClick={() => setSlot(s)}
-                >
-                  {s.label}
-                </button>
-              ))}
+            <div className="pick-flow">
+              <div className="cal-head">
+                <h2 className="panel-title">{monthLabel(month.y, month.m0)}</h2>
+                <div className="cal-nav">
+                  <button
+                    type="button"
+                    className="btn ghost sm"
+                    aria-label="Previous month"
+                    onClick={() => setMonth((m) => addMonths(m.y, m.m0, -1))}
+                  >
+                    ‹
+                  </button>
+                  <button
+                    type="button"
+                    className="btn ghost sm"
+                    aria-label="Next month"
+                    onClick={() => setMonth((m) => addMonths(m.y, m.m0, 1))}
+                  >
+                    ›
+                  </button>
+                </div>
+              </div>
+
+              <div className="cal-weekdays" aria-hidden>
+                {["S", "M", "T", "W", "T", "F", "S"].map((d, i) => (
+                  <span key={`${d}-${i}`}>{d}</span>
+                ))}
+              </div>
+
+              <div className="cal-grid" role="grid" aria-label="Choose a day">
+                {grid.map((cell) => {
+                  const open = cell.inMonth && !cell.isPast && dayHasSlots(cell.key);
+                  const disabled = !cell.inMonth || cell.isPast || !dayHasSlots(cell.key);
+                  return (
+                    <button
+                      key={cell.key + (cell.inMonth ? "" : "-out")}
+                      type="button"
+                      role="gridcell"
+                      disabled={disabled}
+                      className={[
+                        "cal-day",
+                        cell.inMonth ? "in-month" : "out-month",
+                        cell.isToday ? "is-today" : "",
+                        dateKey === cell.key ? "is-active" : "",
+                        open ? "is-open" : "",
+                      ]
+                        .filter(Boolean)
+                        .join(" ")}
+                      onClick={() => {
+                        setDateKey(cell.key);
+                        setSlot(null);
+                      }}
+                    >
+                      {cell.day}
+                    </button>
+                  );
+                })}
+              </div>
+
+              <div className="slot-pane">
+                <h3 className="slot-heading">
+                  {dateKey
+                    ? new Date(dateKey + "T12:00:00").toLocaleDateString(undefined, {
+                        weekday: "long",
+                        month: "short",
+                        day: "numeric",
+                      })
+                    : "Select a day"}
+                </h3>
+                {!dateKey ? (
+                  <div className="slot-empty">
+                    <Image
+                      src="/assets/empty-book.jpg"
+                      alt=""
+                      width={220}
+                      height={165}
+                      className="slot-empty-art"
+                    />
+                    <p className="muted">Open days are marked on the calendar.</p>
+                  </div>
+                ) : slots.length === 0 ? (
+                  <p className="muted">No open slots this day.</p>
+                ) : (
+                  <div className="slot-grid">
+                    {slots.map((s, i) => (
+                      <button
+                        key={s.startIso}
+                        type="button"
+                        className={`slot-chip mono ${slot?.startIso === s.startIso ? "is-active" : ""}`}
+                        style={{ animationDelay: `${i * 18}ms` }}
+                        onClick={() => {
+                          setSlot(s);
+                          setStep("confirm");
+                        }}
+                      >
+                        {s.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           )}
         </section>
       </div>
-
-      <section className={`confirm-panel ${api.errorShake ? "is-shaking" : ""}`}>
-        <h2 className="panel-title">Confirm</h2>
-        <div className="grid-2">
-          <label>
-            Your name
-            <input
-              className={`t-input ${err ? "is-error" : ""}`}
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              autoComplete="name"
-            />
-          </label>
-          <label>
-            Email
-            <input
-              className={`t-input ${err ? "is-error" : ""}`}
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              autoComplete="email"
-            />
-          </label>
-        </div>
-        <label>
-          Note (optional)
-          <textarea
-            className="t-input"
-            rows={2}
-            value={note}
-            onChange={(e) => setNote(e.target.value)}
-          />
-        </label>
-        {err ? <p className="t-error-msg is-error">{err}</p> : null}
-        <button
-          type="button"
-          className="btn primary"
-          disabled={!slot || !meeting}
-          onClick={submit}
-        >
-          Reserve slot
-        </button>
-      </section>
     </div>
   );
 }
