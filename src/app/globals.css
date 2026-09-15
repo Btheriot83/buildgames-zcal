@@ -4207,3 +4207,89 @@ button.surface-card:active:not(:disabled) {
 @media (prefers-reduced-motion: reduce) {
   .week-slot { transition: none !important; }
 }
+
+
+/* ===== craft2: Cal.com host hairline + flat anti-slop ===== */
+.book-host.host-card,
+.book-card.surface-card {
+  box-shadow: none !important;
+  filter: none !important;
+  background-image: none !important;
+  border: 1px solid #d4d7db !important;
+  border-radius: 12px !important;
+}
+.book-host.host-card {
+  padding: 1rem 0.95rem 1.1rem !important;
+}
+.host-portrait {
+  width: 2.85rem !important;
+  height: 2.85rem !important;
+  max-width: 2.85rem !important;
+  border-radius: 999px !important;
+  border: 1px solid #d0d4d8 !important;
+  margin-bottom: 0.55rem !important;
+  overflow: hidden;
+}
+.host-portrait .host-photo,
+.host-portrait img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  display: block;
+  opacity: 1 !important;
+}
+.book-host .eyebrow {
+  font-size: 0.58rem !important;
+  letter-spacing: 0.14em !important;
+  margin-bottom: 0.35rem !important;
+}
+.host-name.display {
+  font-size: 1.05rem !important;
+  line-height: 1.2 !important;
+  margin-bottom: 0.2rem !important;
+}
+.host-headline {
+  font-size: 0.78rem !important;
+  margin-bottom: 0.15rem !important;
+}
+.host-tz {
+  font-size: 0.68rem !important;
+  margin-bottom: 0.65rem !important;
+}
+.host-meeting-title {
+  font-size: 0.88rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.015em;
+  margin: 0.35rem 0 0.15rem !important;
+  color: #121416;
+}
+.duration-card-row {
+  gap: 0.4rem !important;
+  margin-top: 0.65rem !important;
+}
+.duration-card {
+  padding: 0.55rem 0.5rem 0.6rem !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  border: 1px solid #d4d7db !important;
+  background: #fff !important;
+  transition: border-color 140ms ease, background 140ms ease;
+}
+.duration-card:hover { border-color: #121416 !important; }
+.duration-card.is-active {
+  border-color: #121416 !important;
+  box-shadow: none !important;
+  background: #f4f5f4 !important;
+}
+.duration-card-dur { font-size: 1.15rem !important; }
+.duration-card.is-active .duration-card-dur { color: #c41e3a !important; }
+button.surface-card:hover:not(:disabled),
+a.surface-card:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+.week-slot,
+.slot-card {
+  box-shadow: none !important;
+  background-image: none !important;
+}
