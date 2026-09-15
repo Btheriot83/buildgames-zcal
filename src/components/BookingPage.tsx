@@ -303,7 +303,7 @@ export function BookingPage({ slug }: { slug: string }) {
                 disabled={!name.trim() || !email.includes("@")}
                 onClick={submit}
               >
-                Confirm time
+                Confirm booking
               </button>
             </div>
           ) : (
