@@ -266,7 +266,7 @@ export function BookingPage({ slug }: { slug: string }) {
                 }}
               >
                 <span className="meet-chip-dur mono">{m.durationMin} min</span>
-                <span className="meet-chip-label">{m.title}</span>
+                <span className="meet-chip-label sr-only">{m.title}</span>
               </button>
             ))}
           </div>
