@@ -147,7 +147,7 @@ export function useSundial() {
   const reset = useCallback(async () => {
     const fresh = await resetDb();
     setState(fresh);
-    flash("Reset to Maya courtyard desk");
+    flash("Reset to Maya studio hours");
   }, [flash]);
 
   const doExport = useCallback(() => {

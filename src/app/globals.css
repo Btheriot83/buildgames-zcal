@@ -734,12 +734,14 @@ textarea.t-input {
   object-fit: cover;
   z-index: 0;
 }
-@media (prefers-reduced-motion: no-preference) {
-  .host-portrait .host-photo { opacity: 0; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .host-portrait .host-video { display: none !important; }
-  .host-portrait .host-photo { opacity: 1 !important; position: relative; }
+/* Clearline: still photo only — never hide .host-photo (Courtyard video-hide retired) */
+.host-portrait .host-video { display: none !important; }
+.host-portrait .host-photo {
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: relative !important;
+  inset: auto !important;
+  z-index: 1;
 }
 .host-name { font-size: clamp(1.8rem, 3.5vw, 2.35rem); margin-bottom: 0.35rem; }
 .host-headline { color: var(--ink-soft); line-height: 1.45; margin: 0 0 0.35rem; }

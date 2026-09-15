@@ -1,6 +1,6 @@
 "use client";
 
-/** Desk mark — real courtyard photo, flat chrome (no CSS gradient disc). */
+/** Desk mark — Clearline still, flat chrome (no CSS gradient disc). */
 export function SundialMark({ size = 160 }: { size?: number }) {
   return (
     <div
