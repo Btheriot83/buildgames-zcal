@@ -339,7 +339,7 @@ export function BookingPage({ slug }: { slug: string }) {
                 </div>
               </div>
 
-              <div className="week-strip-wrap" hidden={calMode !== "week"}>
+              <div className="week-strip-wrap week-density-wrap" hidden={calMode !== "week"}>
                 <div className="week-strip-head">
                   <button
                     type="button"
@@ -361,46 +361,87 @@ export function BookingPage({ slug }: { slug: string }) {
                     ›
                   </button>
                 </div>
-                <div className="week-strip" role="listbox" aria-label="Choose a day this week">
+                {/* SavvyCal steal: week-of-columns density — slots live under each day */}
+                <div className="week-density" role="grid" aria-label="Week availability">
                   {buildDayStrip(weekStart, 7, today).map((d) => {
                     const open = !d.isPast && dayHasSlots(d.key);
                     const disabled = d.isPast || !dayHasSlots(d.key);
-                    const count =
-                      meeting && open
-                        ? availableSlots(state, meeting, d.key).length
-                        : 0;
+                    const daySlots =
+                      meeting && open ? availableSlots(state, meeting, d.key) : [];
+                    const isActive = dateKey === d.key;
                     return (
-                      <button
+                      <div
                         key={d.key}
-                        type="button"
-                        role="option"
-                        aria-selected={dateKey === d.key}
-                        disabled={disabled}
+                        role="gridcell"
                         className={[
-                          "week-day",
+                          "week-col",
                           d.isToday ? "is-today" : "",
-                          dateKey === d.key ? "is-active" : "",
+                          isActive ? "is-active" : "",
                           open ? "is-open" : "",
+                          disabled ? "is-disabled" : "",
                         ]
                           .filter(Boolean)
                           .join(" ")}
-                        onClick={() => {
-                          setDateKey(d.key);
-                          setSlot(null);
-                          const [y, m] = d.key.split("-").map(Number);
-                          setMonth({ y, m0: m - 1 });
-                        }}
                       >
-                        <span className="week-day-wd">{d.weekdayShort}</span>
-                        <span className="week-day-num">{d.day}</span>
-                        {open ? (
-                          <span className="week-day-count mono">{count}</span>
-                        ) : (
-                          <span className="week-day-count is-empty" aria-hidden>
-                            ·
+                        <button
+                          type="button"
+                          className="week-col-head"
+                          disabled={disabled}
+                          aria-pressed={isActive}
+                          aria-label={`${d.weekdayShort} ${d.day}${open ? `, ${daySlots.length} open` : ""}`}
+                          onClick={() => {
+                            if (disabled) return;
+                            setDateKey(d.key);
+                            setSlot(null);
+                            const [y, m] = d.key.split("-").map(Number);
+                            setMonth({ y, m0: m - 1 });
+                          }}
+                        >
+                          <span className="week-day-wd">{d.weekdayShort}</span>
+                          <span className="week-day-num">{d.day}</span>
+                          <span className={`week-day-count mono ${open ? "" : "is-empty"}`}>
+                            {open ? daySlots.length : "·"}
                           </span>
-                        )}
-                      </button>
+                        </button>
+                        <div className="week-col-slots">
+                          {open ? (
+                            daySlots.slice(0, 8).map((s) => (
+                              <button
+                                key={s.startIso}
+                                type="button"
+                                className={`week-slot mono ${slot?.startIso === s.startIso && isActive ? "is-active" : ""}`}
+                                onClick={() => {
+                                  setDateKey(d.key);
+                                  setSlot(s);
+                                  setStep("confirm");
+                                  const [y, m] = d.key.split("-").map(Number);
+                                  setMonth({ y, m0: m - 1 });
+                                }}
+                              >
+                                {s.label}
+                              </button>
+                            ))
+                          ) : (
+                            <span className="week-col-empty" aria-hidden>
+                              —
+                            </span>
+                          )}
+                          {open && daySlots.length > 8 ? (
+                            <button
+                              type="button"
+                              className="week-col-more mono"
+                              onClick={() => {
+                                setDateKey(d.key);
+                                setSlot(null);
+                                const [y, m] = d.key.split("-").map(Number);
+                                setMonth({ y, m0: m - 1 });
+                              }}
+                            >
+                              +{daySlots.length - 8}
+                            </button>
+                          ) : null}
+                        </div>
+                      </div>
                     );
                   })}
                 </div>
@@ -472,7 +513,7 @@ export function BookingPage({ slug }: { slug: string }) {
               </div>
               </div>
 
-              <div className="slot-pane pick-slots slots-hero" key={dateKey || "none"} data-transition="clearline-panel">
+              <div className="slot-pane pick-slots slots-hero" key={dateKey || "none"} data-transition="clearline-panel" hidden={calMode === "week"}>
                 <h3 className="slot-heading">
                   {dateKey ? (
                     <span>
