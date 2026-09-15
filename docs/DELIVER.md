@@ -1,59 +1,35 @@
-# Deliver — Sundial / Courtyard Meridian
+# Deliver — Clearline reseed (Techniques 6–8)
 
-**Date:** 2026-09-14 PT  
-**One job:** Book a slot on a beautiful page.
+## Technique 6 — Cuts
+- Removed Courtyard Meridian eyebrow / brass gnomon caption / linen field texture
+- Removed gnomon-drift video from booking host rail (cheesy postcard)
+- Cut meeting titles “Courtyard intro” / “Shade coffee” → Intro call / Check-in
+- Cut sage-garden open-day language → vermillion open marks
+- No decorative gradients / glass / glow retained (hard flat bar)
 
-## Technique 6 — Cuts (Apple restraint)
-Removed / not shipping:
-- Marketing FAQ accordion
-- Fake trust/stat banner
-- Dual competing CTAs as equal weight → primary is **Book a sample slot**
-- Three-column Meeting/Day/Time sprawl → single cream card (month + times)
-- CSS sundial ornament as hero identity → real photo + motion clip
-- “Degraded mode” apologetic pill wording
-- Google OAuth / teams / round-robin / polls / welcome video (out of core personal job)
-- Glassmorphism / colored glow buttons
-- Headline badge pill above H1
-
-Kept only: host identity, meeting types, month calendar, times, confirm, Meridian assist, local calendar desk.
-
-## Technique 7 — Remove AI tells (ANTI_SLOP.md)
-| Tell | Status |
+## Technique 7 — Anti-slop
+| Fail | Status |
 | --- | --- |
-| Vibe purple | Cleared — copper/sage/olive |
-| Hero gradients / gradient text | Cleared — flat linen texture photo |
-| Glassmorphism | Cleared — solid cards |
-| Colored glow | Cleared |
-| Inter / Geist / Space Grotesk | Cleared — Newsreader + IBM Plex |
-| Fraunces-everywhere | N/A — Newsreader display only |
-| Centered Inter hero badge→H1→dual CTA | Cleared — asymmetric courtyard layout |
-| 3 identical icon cards | Cleared |
-| Numbered 1·2·3 strip | Cleared |
-| Fake stats | Cleared |
-| Emoji nav | Cleared |
-| Perma-dark + grey body | Cleared — light linen |
-| Accent stripe cards | Cleared |
-| shadcn fingerprint | Cleared — custom atelier CSS |
-| FAQ filler | Cleared |
-| Empty CSS blobs | Cleared — real empty-book photo |
+| Vibe purple | Clear |
+| Gradients | Clear (flat fills only) |
+| Glass | Clear |
+| Colored glow | Clear |
+| Inter/Geist default | Clear (IBM Plex + Source Serif 4 mark) |
+| Fraunces-everywhere | Clear |
+| Hero italic gimmick | Clear |
+| Fake stats / FAQ / emoji nav | Clear |
+| Linen-brass tourist materials | **Cleared by reseed** |
 
-## Technique 8 — Hand-rewritten copy (before → after)
-| Surface | Before (LLM/first pass) | After (hand) |
+## Technique 8 — Hand copy (before → after)
+| Surface | Before (Courtyard) | After (Clearline) |
 | --- | --- | --- |
-| Tagline | Freeform hours. Quiet bookings. | One beautiful page. Pick a day. Take an hour. |
-| Aesthetic name | Sundial Atelier | Courtyard Meridian |
-| Home body | Set the hours you actually have… no telemetry. | Share one quiet page. Guests pick a day, then an hour… |
-| Primary CTA | Open desk | Book a sample slot |
-| Host headline | Build Games · scheduling without the SaaS fog | Office hours under the linen shade |
-| Accent note | Local calendar only — Google Calendar not connected (degraded mode). | Bookings stay in this browser until you export. |
-| Assist CTA | Ask Meridian | Find a good hour |
-| Assist loading | Reading the dial… | Checking open hours… |
-| Success H1 | You're on the sundial | You're booked |
-| Confirm CTA | Reserve slot | Confirm time |
-| Meta title | Sundial — freeform scheduling | Sundial — book a quiet hour |
-
-## Core loop (must work first visit)
-1. Open `/b/brandon` (IndexedDB seeds sample host)
-2. Pick meeting → open day (sage) → time → confirm name/email → **Confirm time**
-3. Success → desk calendar shows booking
-4. Optional: **Find a good hour** runs `/api/assist` (LLM when `BUILD_GAMES_LLM_API_KEY` valid; else labeled local ranking)
+| Eyebrow | Courtyard Meridian | Clearline |
+| Tagline | (kept job) Set your hours… | Set your hours. Guests book a slot. |
+| Caption | Brass gnomon · limestone · linen shade | Graphite desk · cool paper · open hours |
+| Host headline | Courtyard studio hours — Phoenix | Studio hours — Phoenix |
+| Meet 1 | Courtyard intro / linen chat | Intro call / shipping stuck |
+| Meet 3 | Shade coffee | Check-in |
+| Home point | Sage days mark open hours | Vermillion days mark open hours |
+| Assist name | Meridian | Clearline |
+| Empty day | try another sage mark | try another open day |
+| Success H1 | You're booked | You're booked (kept) |

@@ -1,5 +1,5 @@
 /**
- * Meridian — AI availability assist for Sundial's one job: book a slot.
+ * Clearline — AI availability assist for Sundial's one job: book a slot.
  * Reads BUILD_GAMES_LLM_API_KEY first (gauntlet/LLM.md). Prefer xAI when key
  * starts with xai-; else OpenAI-compatible. Also XAI_API_KEY / GROK_API_KEY /
  * OPENAI_API_KEY. No fake LLM prose — local ranking is labeled when LLM fails.
@@ -103,7 +103,7 @@ export function localAssist(input: {
     model: null,
     copy,
     suggestions: top,
-    note: "Meridian local ranking — LLM key missing or unreachable.",
+    note: "Clearline local ranking — LLM key missing or unreachable.",
   };
 }
 
@@ -202,7 +202,7 @@ Write 2 short sentences of warm, concrete availability guidance (no hype, no emo
 Respond ONLY with JSON: {"copy":"...","order":["ISO","ISO",...]}`;
 
   const messages = [
-    { role: "system", content: "You are Meridian, a quiet scheduling assistant for Sundial." },
+    { role: "system", content: "You are Clearline, a scheduling assistant for Sundial." },
     { role: "user", content: prompt },
   ];
 
@@ -217,7 +217,7 @@ Respond ONLY with JSON: {"copy":"...","order":["ISO","ISO",...]}`;
           mode: provider.name,
           model: provider.model,
           copy: raw.slice(0, 400) || input.local.copy,
-          note: `Meridian via ${provider.name} (${provider.model}) · local ranks`,
+          note: `Clearline via ${provider.name} (${provider.model}) · local ranks`,
         };
       }
       const parsed = JSON.parse(jsonMatch[0]) as { copy?: string; order?: string[] };
@@ -235,13 +235,13 @@ Respond ONLY with JSON: {"copy":"...","order":["ISO","ISO",...]}`;
         model: provider.model,
         copy: (parsed.copy || input.local.copy).slice(0, 500),
         suggestions: ordered.slice(0, 5).map((s, i) => ({ ...s, rank: i + 1 })),
-        note: `Meridian via ${provider.name} (${provider.model})`,
+        note: `Clearline via ${provider.name} (${provider.model})`,
       };
     } catch {
       // try next
     }
   }
-  return { ...input.local, note: "LLM unreachable — Meridian local ranking." };
+  return { ...input.local, note: "LLM unreachable — Clearline local ranking." };
 }
 
 export function assistProvidersConfigured(): boolean {

@@ -1,54 +1,41 @@
-# Define — Sundial / Courtyard Meridian
+# Define — Clearline reseed (Techniques 3–5)
 
-**Date:** 2026-09-14 PT  
-**Core job:** Book a slot on a beautiful page.  
-**Bar product:** https://zcal.co/  
-**Candidate:** https://buildgames-zcal.vercel.app (redeploy after each round)
+**Bar:** https://zcal.co/ · **Demo:** http://127.0.0.1:3015 (local) → https://buildgames-zcal.vercel.app  
+**Identity:** Clearline (Courtyard Meridian retired)
 
-## Technique 3 — Fresh-context critic loops
+## Technique 3 — Critic loops (screenshot only)
+Shots in `docs/anshu-r5/` and `gauntlet/shots-r5/`.
+See critic log below after fresh-context passes.
 
-Critic sees **screenshots only** (no code, no builder rationale). Studio bar: a top boutique scheduling studio executing “Courtyard Meridian.”
-
-### Round A — baseline (pre-gauntlet, honest)
-- Shots: `gauntlet/shots/r0-home.png`, `gauntlet/shots/r0-booking.png`, `docs/original-zcal-home.png`
-- Aesthetic named: “Warm linen SaaS desk with CSS sundial ornament”
-- Studio bar gaps: no real month calendar (chip row), 3-column sprawl vs zcal cream card, CSS mark instead of material photo, apologetic “degraded mode” pill, radial AI-ish page wash
-- **Score vs studio bar: 3.8/10** (matches Brandon baseline; prior 8.9 discarded)
-
-### Round B — after Courtyard Meridian booking card
-- Shots: `gauntlet/shots/r1-booking.png`, `gauntlet/shots/r1-home.png` (filled after deploy)
-- Expected improvements: month grid, host photo/video, Meridian assist, linen texture, subtractive home CTA
-- Critic re-score logged in workbench after live smoke
-
-### Round C — polish / motion / copy
-- Shots: `gauntlet/shots/r5-booking.png`, `gauntlet/shots/r5-home.png`, `gauntlet/shots/r5-after-confirm.png`
-- Gaps chased: auto day, AM/PM groups, confirm gate, today vs active, success copy
-- Fresh critic after R5: ~7.1/10 vs studio bar for Courtyard Meridian; zcal still wins blind on SaaS depth/OAuth
-
-Builder never self-grades. Scores live in workbench + status JSON.
-
-## Technique 4 — Image generation
-| Asset | Source | Use |
+## Technique 4 — Images
+| Asset | Path | Job |
 | --- | --- | --- |
-| `public/assets/linen-texture.jpg` | Higgsfield gpt_image_2_5 | Body paper field (not CSS blob) |
-| `public/assets/sundial-hero.jpg` | Higgsfield Recraft V4.1 | Host portrait / home hero still |
-| `public/assets/empty-book.jpg` | Higgsfield Recraft V4.1 | Empty day / unknown-slug state |
+| Desk hero | `public/assets/clearline-hero.jpg` | eef8f1d3… |
+| Host portrait | `public/assets/host-maya.jpg` | 6e5b7936… |
+| Empty state | `public/assets/empty-book.jpg` | 70ec1d67… |
+| Cool paper | `public/assets/cool-paper.jpg` | 21fd24d2… |
+Model: `gpt_image_2_5`. No CSS-blob substitutes.
 
-## Technique 5 — Video / advanced motion
-| Asset | Craft | Use in core job |
+## Technique 5 — Video / motion
+| Asset | Path | Notes |
 | --- | --- | --- |
-| `public/assets/gnomon-drift.webm` + `.mp4` | ffmpeg Ken Burns / slow zoom from generated sundial still — documents sun-path feel on the booking rail | Autoplay muted loop behind host identity on `/b/[slug]` and home; elevates “beautiful page” before day pick |
-| Slot stagger + day-cell scale | CSS keyframes on slot chips / active day | Feedback while choosing time |
+| Desk light drift | `public/assets/clearline-drift.mp4` | minimax_h3 i2v from hero; job 0f0af271… |
+| Slot pane enter | CSS `clearline-panel` | Fires when day selected → slot list mounts |
+| Day/slot active | color transition 160ms | Real booking selection |
+transitions.dev recipes remain wired on book/toast/shake/success (see docs/TRANSITIONS.md).
 
-`transitions.dev` recipes (toast, success-check, shake, texts-reveal) remain **supplemental** only.
+## Mobbin / category comps
+Category: scheduling / calendar booking (zcal, Calendly-class). Primary blind bar = live https://zcal.co/ booking cream card clarity — white field, open-day circles, time chips. Clearline steals clarity, not blue SaaS marketing chrome.
 
-## Mobbin comps
-Mobbin MCP returned **paid-plan required** on 2026-09-14 PT (`search_flows` / `search_screens`).  
-**Fallback comps opened & cited:**
-- Live original https://zcal.co/ — cream calendar card in hero mock (`docs/original-zcal-home.png`, `gauntlet/shots/bar-zcal-home.png`)
-- Public Calendly / Cal.com booking pattern knowledge: host rail + month grid + time list (mirrored in Courtyard card)
+## Critic log
 
-When Mobbin access returns, re-pull web flows for “schedule meeting calendar time slots” and attach IDs here.
+### Round C1 — fresh screenshots `docs/anshu-r5/home.png` + `booking.png`
+- Names aesthetic: Clearline / cool desk scheduling (Courtyard retired).
+- Studio bar: still short of zcal’s pure-white SaaS polish; open-day pastel pink read soft → switched to cool slate open circles.
+- Gaps: job label had drifted serif → forced sans; field texture still slightly crafty → diluted blend + flatter #f4f5f4.
+- Score vs Clearline studio bar: **7.5/10** (converging; not self-cheer vs zcal).
 
-## Anti-slop during Define
-Killed dual radial body gradients; no vibe-purple; Newsreader constrained to display; real imagery required before calling identity done.
+### Round C2 — after critic fixes
+- Booking chrome closer to zcal day/time job: slate open days, ink selected, sans job label.
+- Residual: zcal still wins blue brand + OAuth depth; Clearline wins cooler anti-postcard materials.
+- Stop: two tight iterations; freeze IDENTITY for Phase B.

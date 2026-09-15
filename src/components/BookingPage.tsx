@@ -43,7 +43,7 @@ export function BookingPage({ slug }: { slug: string }) {
 
   const daysAhead = useMemo(() => nextDays(21), []);
 
-  // Auto-pick first open day (gauntlet density) — within Courtyard Meridian
+  // Auto-pick first open day (gauntlet density) — Clearline
   useEffect(() => {
     if (!api.ready || !api.state) return;
     const mt = api.state.meetingTypes.find((m) => m.id === meetingId) ?? api.state.meetingTypes[0];
@@ -232,19 +232,8 @@ export function BookingPage({ slug }: { slug: string }) {
       <div className="book-stage t-texts-reveal" data-reveal="in">
         <aside className="book-host">
           <div className="host-portrait" aria-hidden>
-            <video
-              className="host-video"
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster="/assets/sundial-hero.jpg"
-            >
-              <source src="/assets/gnomon-drift.webm" type="video/webm" />
-              <source src="/assets/gnomon-drift.mp4" type="video/mp4" />
-            </video>
             <img
-              src="/assets/sundial-hero.jpg"
+              src="/assets/host-maya.jpg"
               alt=""
               className="host-photo"
               width={280}
@@ -285,7 +274,7 @@ export function BookingPage({ slug }: { slug: string }) {
               Anything I should know?
               <input
                 className="t-input"
-                placeholder="e.g. courtyard intro before noon, shade coffee…"
+                placeholder="e.g. intro before noon, short check-in…"
                 value={intent}
                 onChange={(e) => setIntent(e.target.value)}
               />
@@ -491,7 +480,7 @@ export function BookingPage({ slug }: { slug: string }) {
                     <p className="muted">Sage days are open hours — tap one to see times.</p>
                   </div>
                 ) : slots.length === 0 ? (
-                  <p className="muted">No open hours left this day — try another sage mark.</p>
+                  <p className="muted">No open hours left this day — try another open day.</p>
                 ) : (
                   <div className="slot-groups">
                     {[

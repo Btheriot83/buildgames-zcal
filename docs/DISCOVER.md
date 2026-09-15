@@ -1,65 +1,60 @@
-# Discover — Sundial (zcal)
+# Discover — Sundial (zcal) RESEED Phase A
 
-**Date:** 2026-09-14 PT (~8:41 PM PT)  
-**Core job:** Book a slot on a beautiful page — one booking surface done excellently.  
-**Bar:** https://zcal.co/  
-**Gauntlet baseline:** honest **3.8/10** (prior 8.9 self-score discarded as theater).
+**Date:** 2026-09-14 ~11:48 PM PT  
+**Trigger:** Brandon — Sundial functionally fine but KIND OF CHEESY → upgrade KEEP→WEAK; full Anshu 1–8.  
+**Retire:** Courtyard Meridian (linen / brass gnomon / sage postcard vibes).  
+**Core job unchanged:** availability → share page → guest books a slot.  
+**Bar:** https://zcal.co/
 
 ## Seed (Technique 1)
 ```
-b8c596c42b849ba2748397b72c54fc2256479db1cf59a7a9a21946cd15f62d55
+17a70c92fb90f24719bd0e5f9240a2c6157f1287b27adc8a26eba810dbb26821
 ```
-Derived via `openssl rand -hex 32`. **Never shown in the UI.**
+`openssl rand -hex 32`. Never shown in UI.
 
 ### Subpattern reads
 | Slice | Hex | Decision |
 | --- | --- | --- |
-| `b8c596c4` | byte `b8`≈184° | Cool cyan band — **mute**; do not make primary accent (AI-adjacent) |
-| `2b849ba2` | `84`/`9b` | **Copper-brass** metal + **sage** lichen on stone |
-| `748397b7` | `74`/`83` | Olive ink captions; limestone field |
-| `2c54fc22` | `fc` | Warm linen shade / parchment paper |
-| layout `56`/`479` | — | **Split courtyard card**: host rail left, month calendar + times right (zcal/Calendly job pattern) |
-| type `db1c`/`f59a` | — | **Newsreader** as display *mark*; **IBM Plex Sans** UI; mono for times — not Fraunces-everywhere |
-| motion ` dig` `a219` | — | Day-cell select + slot stagger; gnomon only as photo, not CSS blob |
+| `17a70c` | deep cool green-grey | Cool field `#eef0ed` — **not** warm linen |
+| `90f247` | lime-cyan | Mute; do not accent (AI-adjacent) |
+| `19bd0e` | chartreuse | Discard |
+| `5f9240` | olive | Soft secondary only |
+| `a2c615` | **vermillion signal** `#c41e3a` | Open-day / active accent (not copper brass) |
+| `7f1287` | purple | **Ban** — vibe-purple |
+| `b27adc` | teal | Optional hairline only |
+| `8a26eb` | violet | Ban |
+| `a810db` | magenta | Ban |
+| `b26821` | warm brown | Discard (feeds courtyard cheese) |
+| layout | — | Keep zcal job pattern: host rail + white calendar card |
+| type | — | **IBM Plex Sans** everywhere; **Source Serif 4** host name only (Newsreader retired) |
+| motion | — | Slot select + confirm success; kill gnomon drift video |
 
+## Broad idea list (Technique 2)
+1. Transit departure board (amber LED)
+2. Clinic appointment desk (sterile white)
+3. Architect drafting rail / Clearline
+4. Gallery white-cube booking
+5. Newsroom copy desk
+6. Photographer contact sheet
+7. Municipal blotter (warm — cheese risk)
+8. Harbor tide chart (taken / wrong)
+9. Brass instrument shop (cheese — discard)
+10. Linen courtyard (OLD — discard)
 
-## Broad idea list (Technique 2 — imagination only)
-Short high-level languages floated before taste steering:
-1. Cloister sundial courtyard
-2. Night observatory dial
-3. Japanese stationery appointment ledger
-4. Brass instrument workshop
-5. Linen sail / shade cloth pavilion
-6. Municipal blotter desk
-7. Costume-drama prop table
-8. Tide chart + harbor hours
-9. Greenhouse potting bench calendar
-10. Stone mason’s chalk schedule
+**Taste:** Brass/linen/gnomon reads tourist postcard. Departure board too gimmicky/dark. Clinic too medical. **Architect drafting rail + contact-sheet host** feels sharp, anti-romantic, still serves “pick a day and time.”
 
-**Taste notes:** Night observatory and tide chart felt tacky/dashboard. Greenhouse risked cute-illustration blobs. **Cloister courtyard + linen shade + brass** landed — material, warm, and specific to the booking job. Avoid cyan from seed byte `b8`.
+## Feel statement
+Cool graphite desk under studio daylight. Hairline rails. Vermillion marks open hours like a sticky flag on a calendar — not a garden. Host portrait reads contact sheet, not lifestyle courtyard. Booking feels like locking a shoot time.
 
-## Feel statement (Technique 2 — sensory)
-Booking should feel like stepping into a **sunlit stone courtyard at 3pm**: limestone warm underfoot, a brass sundial casting a hard gnomon shadow, linen shade cloth moving once in the breeze. The guest’s finger finds an open day the way you’d choose a seat under that shade — calm, physical, no SaaS fog. Meridian (AI assist) should sound like a quiet concierge who already read the host’s hours, not a chatbot.
+## Bold briefs
+### A — “Signal Board” (discarded)
+Black/amber departure. **Why:** Perma-dark risk; fights zcal’s daylight bar.
 
-Ambitious references (not SaaS clones): a Mediterranean cloister; the prop sundial from a costume drama; a Japanese stationery counter’s appointment ledger; the cream booking card floating in zcal’s hero mock — **steal the clarity of that card**, not the marketing chrome.
+### B — “Clinic White” (discarded)
+Sterile teal. **Why:** Trustworthy but cold-medical; wrong emotional job.
 
-## Bold direction briefs
-
-### A — “Night Observatory” (discarded)
-Charcoal sky, teal star trails, HUD dials.  
-**Feel:** Mission-control scheduling.  
-**Why discarded:** Perma-dark + grey body is an instant-fail cluster; fights the warm “clients will love this page” bar that zcal sets in daylight.
-
-### B — “Tide Ledger” (discarded)
-Seafoam + charcoal financial ledger UI.  
-**Why discarded:** Dashboard soup; pulls attention to host admin instead of the **guest book-a-slot** job.
-
-### C — PICKED — “Courtyard Meridian”
-Limestone + linen shade + brass sundial photography; copper ink; sage open-day marks; single cream booking card with real month grid → times → confirm. Meridian assist ranks open slots from host availability (real LLM when keyed).  
-**Why:** Matches seed metals/stone/linen, serves one job, can win a blind A/B against zcal’s cream calendar card without copying their blue SaaS marketing site.
+### C — PICKED — “Clearline”
+Cool paper field, graphite ink, vermillion open days, flat white cards, documentary host, no linen/brass. Steal zcal’s calendar clarity; keep Sundial job verbs.
 
 ## Pick
-**C — Courtyard Meridian.** Ambition lives in material photography + calendar craft, not feature count.
-
-## Discarded why
-A = dark-slop risk. B = wrong job. Seed’s copper/sage/linen bytes and the live zcal bar both pull toward sunlit stone + cream card.
+**C — Clearline.** Ambition = anti-cheesy materials + calendar craft, not a new feature soup.
