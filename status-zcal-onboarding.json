@@ -35,6 +35,22 @@
   "repo": "https://github.com/Btheriot83/buildgames-zcal",
   "tests": "6 passed (vitest)",
   "build": "ok",
-  "finishedAtPt": "2026-09-15 11:12 AM PT",
-  "finishedAtUtc": "2026-09-15T18:12:02Z"
+  "finishedAtPt": "2026-09-15 11:16 AM PT",
+  "finishedAtUtc": "2026-09-15T18:16:06Z",
+  "pr": "https://github.com/Btheriot83/buildgames-zcal/pull/15",
+  "prState": "MERGED",
+  "mainSha": "f1dfc87b59a6be50e6765533aef78e9296d57c93",
+  "deploy": {
+    "url": "https://buildgames-zcal.vercel.app",
+    "deploymentId": "dpl_4zKRf17mKDcHuCvcTmvMjP9PFTSV",
+    "status": "READY",
+    "aliasConfirmed": true,
+    "verifiedAt": "2026-09-15T18:16:06Z"
+  },
+  "levelsLens": {
+    "jobHero": "Get a bookable link in one sitting.",
+    "liveMini": true,
+    "onePrimaryCta": true,
+    "noFakeRatings": true
+  }
 }
