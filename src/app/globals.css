@@ -2787,3 +2787,46 @@ html, body {
 /* r6: shell breathing room vs zcal centered card */
 .book-shell.shell { max-width: 980px; padding-top: 1.75rem; }
 .site-header { margin-bottom: 1.5rem !important; }
+
+/* r7: force duration chips horizontal — kill full-width meet-card residue */
+.book-host .meet-list {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  gap: 0.35rem !important;
+}
+.book-host .meet-card {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  width: auto !important;
+  max-width: none !important;
+  padding: 0.32rem 0.5rem !important;
+}
+.book-host .meet-card .meet-row {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.35rem;
+}
+.book-host .meet-card .meet-title {
+  white-space: nowrap;
+  font-size: 0.76rem !important;
+}
+
+/* r8: selected open wash + vermillion ring (ensure fill under ring) */
+.cal-day.in-month.is-open.is-active,
+.cal-day.in-month.is-active {
+  background: #c8d6e8 !important;
+  color: #121416 !important;
+  box-shadow: inset 0 0 0 2px #c41e3a !important;
+}
+
+/* r9: slot column denser like zcal time list */
+.pick-slots .slot-chip {
+  min-height: 2.15rem !important;
+  padding: 0.4rem 0.65rem !important;
+  font-size: 0.84rem !important;
+  border-radius: 8px !important;
+}
+.pick-slots .slot-groups { gap: 0.45rem !important; }
+.pick-slots .slot-grid { gap: 0.3rem !important; }
