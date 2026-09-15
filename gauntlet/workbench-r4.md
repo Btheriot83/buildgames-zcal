@@ -122,3 +122,9 @@ Bar comps: `shots-r4/bar-zcal-*.png` · Baseline: `shots-r4/r0-*-baseline.png`
 - shot: gauntlet/shots-r4/r17-fonts-slot-groups.png
 - verdict: MORNING caps quieter; target omits group labels and shows a flat chip row — residual structure gap.
 - commit: 080b960
+
+## r18 — contrast: host/assist secondary copy
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r18-contrast-secondary.png
+- verdict: Secondary copy darker on white cards; assist box still extra chrome vs target/zcal minimal left rail.
+- commit: 71e547d

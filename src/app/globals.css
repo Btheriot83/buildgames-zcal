@@ -1725,3 +1725,10 @@ textarea.t-input {
   margin: 0 0 0.4rem;
 }
 
+
+/* r18 contrast: assist/host secondary copy */
+.host-headline { color: #3a342c; font-size: 0.95rem; }
+.assist-label { color: var(--ink-soft); font-weight: 600; font-size: 0.82rem; }
+.assist-copy { color: var(--ink-soft); }
+.book-tz-foot { color: #3a342c; border-top-color: var(--stroke-strong); }
+
