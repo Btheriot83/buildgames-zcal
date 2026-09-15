@@ -27,3 +27,9 @@ Bar comps: `shots-r4/bar-zcal-*.png` · Baseline: `shots-r4/r0-*-baseline.png`
 - shot: gauntlet/shots-r4/r3-buttons-meet.png
 - verdict: Duration chips denser like zcal 30/60 toggles; meet cards still taller than bar duration-only UI.
 - commit: 57824b0
+
+## r4 — bar gap: timezone foot under calendar
+- files: src/components/BookingPage.tsx, src/app/globals.css
+- shot: gauntlet/shots-r4/r4-bar-gap-tz.png
+- verdict: Globe + America/Phoenix row appears under the month like zcal; bar still wins with live clock + am/pm toggle we omit on purpose.
+- commit: db7aa34

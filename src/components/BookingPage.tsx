@@ -450,6 +450,11 @@ export function BookingPage({ slug }: { slug: string }) {
                 })}
               </div>
 
+              <div className="book-tz-foot" aria-label="Timezone">
+                <span className="book-tz-globe" aria-hidden>🌐</span>
+                <span className="book-tz-label mono">{state.profile.timezone.replace(/_/g, " ")}</span>
+              </div>
+
               <div className="slot-pane">
                 <h3 className="slot-heading">
                   {dateKey
